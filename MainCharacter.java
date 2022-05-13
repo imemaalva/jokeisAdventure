@@ -1,23 +1,34 @@
 import greenfoot.*;
 public class MainCharacter extends Actor
 {
-    private static int MAX_COUNTER_STAY = 5;
-    private static int MAX_COUNTER_SWORD = 6;
-    private static int MAX_COUNTER_KNIFE = 9;
-    private static int MAX_COUNTER_BOMB = 9;
-    private static int MAX_COUNTER_FIST = 9;
-    private static int MAX_COUNTER_HURT = 4;
-    private static int MAX_COUNTER_DEATH = 15;
-    private static int MAX_COUNTER_WALK = 12;
+    //Sprites per animation
+    private static final int MAX_COUNTER_STAY = 5;
+    private static final int MAX_COUNTER_SWORD = 6;
+    private static final int MAX_COUNTER_KNIFE = 9;
+    private static final int MAX_COUNTER_BOMB = 9;
+    private static final int MAX_COUNTER_FIST = 9;
+    private static final int MAX_COUNTER_HURT = 4;
+    private static final int MAX_COUNTER_DEATH = 15;
+    private static final int MAX_COUNTER_WALK = 12;
     
-    private static int ACCELERATION = 2;
     
-    private static int MISA = 0;
-    private static int IME = 2;
+    private static final int ITEM_FIST = 0;
+    private static final int ITEM_SWORD = 1;
+    private static final int ITEM_KNIFE = 2;
+    private static final int ITEM_BOMB = 3;
     
-    private static int LEFT = 0;
-    private static int RIGHT = 1;
+    //Gravity constant
+    private static final int ACCELERATION = 2;
     
+    //Character constanr
+    private static final int MISA = 0;
+    private static final int IME = 2;
+
+    //Direction constant
+    private static final int LEFT = 0;
+    private static final int RIGHT = 1;
+    
+    //Array per animation
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack_sword;
     private GreenfootImage [][]attack_knife;
@@ -29,27 +40,32 @@ public class MainCharacter extends Actor
     private GreenfootImage []jump;
     private GreenfootImage []fall;
     
+    //Player resources
     private int character; 
     private int health = 100;
     private int power = 100;
     private int direction = RIGHT;
     private int score = 0;
+    private int selectedItem = 0;
     
+    //Movement values
     private int speed = 4;
     private int vSpeed = 0;
-    private int offsetY = 0;
-    private int counterMovement;
+    private int jumpStrength = 17;
+    
+    //Animation managment
     private int counterAnimation;
     private int currentImage=0;
-    private int jumpStrength = 18;
     private int imageRepetition=0;
     
+    //Action indicator
     private boolean jumping = false;
     private boolean attacking = false;
     private boolean hurted = false;
     private boolean died = false;
     private boolean walking = false;
     private boolean vulnerability = true;
+    private boolean change = false;
     
     public MainCharacter(int character)
     {
@@ -371,7 +387,7 @@ public class MainCharacter extends Actor
     private void animation()
     {
         //Do nothing
-        if(attacking == false && hurted == false && died == false && jumping == false && walking == false)
+        if(attacking == false && hurted == false && died == false && jumping == false && walking == false && vulnerability == true)
         {
             if (currentImage>=stay.length)
                 currentImage=0;
@@ -385,8 +401,9 @@ public class MainCharacter extends Actor
             }
             setImage(stay[currentImage][character+direction]);
         }
+        
         //walk
-        if(attacking == false && hurted == false && died == false && jumping == false && walking == true)
+        if(attacking == false && hurted == false && died == false && jumping == false && walking == true && vulnerability == true)
         {
             if (currentImage>=walk.length)
                 currentImage=0;
@@ -400,34 +417,69 @@ public class MainCharacter extends Actor
             }
             setImage(walk[currentImage][character+direction]);
         }
+        
+        if(attacking == true && hurted == false && died == false && vulnerability == true)
+        {
+            switch(selectedItem)
+            {
+                case ITEM_FIST:
+                    if (currentImage>=attack_fist.length)
+                        currentImage=0;
+                    if(imageRepetition >= 2)
+                    {
+                        imageRepetition=0;
+                        counterAnimation++;
+                        if(counterAnimation >= MAX_COUNTER_FIST)
+                            counterAnimation=0;
+                        currentImage = (currentImage + 1) % walk.length;
+                }
+                setImage(attack_fist[currentImage][character+direction]);
+                break;
+            }
+        }
         imageRepetition++;
         return;
     }
     
     private void keyCheckMove()
     {
-        
+        //Move left
         if(Greenfoot.isKeyDown("left")){
             direction = LEFT;
             setLocation(getX()-speed,getY());
             walking=true;
         }
         
+        //Move right
         if(Greenfoot.isKeyDown("right")){
             direction = RIGHT;
             setLocation(getX()+speed,getY());
             walking=true;
         }
         
+        //Key release walking
         if(!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right"))
         {
             walking=false;
         }
         
+        //Jump
         if(Greenfoot.isKeyDown("UP") && jumping == false)
         {
             jump();
         }
+        
+        //Character selector (TEMPORAL)
+        if(Greenfoot.isKeyDown("ENTER") && change == false)
+        {
+            if (character==MISA)
+                character = IME;
+            else
+                character=MISA;
+            change = true;
+        }
+        if(!Greenfoot.isKeyDown("ENTER") && change == true)
+            change = false;
     }
     
     private void checkFall()
@@ -542,13 +594,13 @@ public class MainCharacter extends Actor
         {
             int newX = wall.getX() - (wallWidth + getImage().getWidth())/2;
         
-            setLocation(newX-5, getY());
+            setLocation(newX+5, getY());
         }
         else
         {
             int newX = wall.getX() + (wallWidth + getImage().getWidth())/2;
         
-            setLocation(newX+5, getY());
+            setLocation(newX-5, getY());
         }
     }
     

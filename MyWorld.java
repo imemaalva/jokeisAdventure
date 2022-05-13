@@ -2,27 +2,30 @@ import greenfoot.*;
 public class MyWorld extends World
 {
     private static int BLOCK_SIZE = 32;
+    private static int WORLD_WIDTH = 2016;
+    private static int WORLD_HEIGHT = 608;
     private static int MISA = 0;
     private static int IME = 2;
-    public MainCharacter character = new MainCharacter(MISA);
+    public MainCharacter character;
     
     public MyWorld()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(640, 400, 1); 
-        addObject(character, 50, 50);
-        Block block = new Block();
-        addObject(block, 16, 384);
-        for(int i = 1; i<20;i++)
+    {   
+        super(WORLD_WIDTH, WORLD_HEIGHT, 1); 
+        setBackground(new GreenfootImage("images/Lvl_Jungle_0.png"));
+        Grass grass;
+        for(int i = 0; i<63;i++)
         {
-            block = new Block();
-            addObject(block, 16+BLOCK_SIZE*i, 384);
+            grass = new Grass();
+            addObject(grass, 16+BLOCK_SIZE*i, WORLD_HEIGHT-(BLOCK_SIZE/2)*3);
         }
-        block = new Block();
-        addObject(block, 16+BLOCK_SIZE*7, 384-BLOCK_SIZE);
-        block = new Block();
-        addObject(block, 16+BLOCK_SIZE*7, 384-BLOCK_SIZE*2);
-        block = new Block();
-        addObject(block, 16+BLOCK_SIZE*8, 384-BLOCK_SIZE*3);
+        grass = new Grass();
+        addObject(grass, 16+BLOCK_SIZE*7, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
+        grass = new Grass();
+        addObject(grass, 16+BLOCK_SIZE*7, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*2);
+        grass = new Grass();
+        addObject(grass, 16+BLOCK_SIZE*8, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*3);
+        character = new MainCharacter(MISA);
+        
+        addObject(character, 50, 50);
     }
 }
