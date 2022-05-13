@@ -386,6 +386,9 @@ public class MainCharacter extends Actor
 
     private void animation()
     {
+        
+        if(getImage() == attack_fist[MAX_COUNTER_FIST-1][character+direction] || getImage() == attack_sword[MAX_COUNTER_SWORD-1][character+direction] || getImage() == attack_knife[MAX_COUNTER_KNIFE-1][character+direction] || getImage() == attack_bomb[MAX_COUNTER_BOMB-1][character+direction] )
+            attacking = false;
         //Do nothing
         if(attacking == false && hurted == false && died == false && jumping == false && walking == false && vulnerability == true)
         {
@@ -418,7 +421,7 @@ public class MainCharacter extends Actor
             setImage(walk[currentImage][character+direction]);
         }
         
-        if(attacking == true && hurted == false && died == false && vulnerability == true)
+        if(attacking == true )
         {
             switch(selectedItem)
             {
@@ -431,9 +434,48 @@ public class MainCharacter extends Actor
                         counterAnimation++;
                         if(counterAnimation >= MAX_COUNTER_FIST)
                             counterAnimation=0;
-                        currentImage = (currentImage + 1) % walk.length;
-                }
-                setImage(attack_fist[currentImage][character+direction]);
+                        currentImage = (currentImage + 1) % attack_fist.length;
+                    }
+                    setImage(attack_fist[currentImage][character+direction]);
+                break;
+                case ITEM_SWORD:
+                    if (currentImage>=attack_sword.length)
+                        currentImage=0;
+                    if(imageRepetition >= 3)
+                    {
+                        imageRepetition=0;
+                        counterAnimation++;
+                        if(counterAnimation >= MAX_COUNTER_SWORD)
+                            counterAnimation=0;
+                        currentImage = (currentImage + 1) % attack_sword.length;
+                    }
+                    setImage(attack_sword[currentImage][character+direction]);
+                break;
+                case ITEM_KNIFE:
+                    if (currentImage>=attack_knife.length)
+                        currentImage=0;
+                    if(imageRepetition >= 3)
+                    {
+                        imageRepetition=0;
+                        counterAnimation++;
+                        if(counterAnimation >= MAX_COUNTER_KNIFE)
+                            counterAnimation=0;
+                        currentImage = (currentImage + 1) % attack_knife.length;
+                    }
+                    setImage(attack_knife[currentImage][character+direction]);
+                break;
+                case ITEM_BOMB:
+                    if (currentImage>=attack_bomb.length)
+                        currentImage=0;
+                    if(imageRepetition >= 3)
+                    {
+                        imageRepetition=0;
+                        counterAnimation++;
+                        if(counterAnimation >= MAX_COUNTER_BOMB)
+                            counterAnimation=0;
+                        currentImage = (currentImage + 1) % attack_bomb.length;
+                    }
+                    setImage(attack_bomb[currentImage][character+direction]);
                 break;
             }
         }
@@ -469,8 +511,23 @@ public class MainCharacter extends Actor
             jump();
         }
         
+        if(Greenfoot.isKeyDown("ENTER") &&  attacking == false && hurted == false && died == false && vulnerability == true)
+        {
+            attacking = true;
+        }
+        
+        if(Greenfoot.isKeyDown("1"))
+            selectedItem=ITEM_FIST;
+        if(Greenfoot.isKeyDown("2"))
+            selectedItem=ITEM_SWORD;
+        if(Greenfoot.isKeyDown("3"))
+            selectedItem=ITEM_KNIFE;
+        if(Greenfoot.isKeyDown("4"))
+            selectedItem=ITEM_BOMB;
+            
+        
         //Character selector (TEMPORAL)
-        if(Greenfoot.isKeyDown("ENTER") && change == false)
+        if(Greenfoot.isKeyDown("SPACE") && change == false)
         {
             if (character==MISA)
                 character = IME;
@@ -478,7 +535,7 @@ public class MainCharacter extends Actor
                 character=MISA;
             change = true;
         }
-        if(!Greenfoot.isKeyDown("ENTER") && change == true)
+        if(!Greenfoot.isKeyDown("SPACE") && change == true)
             change = false;
     }
     
@@ -499,11 +556,13 @@ public class MainCharacter extends Actor
     
     private void fall()
     {
-        setImage(fall[character+direction]);
+        if (attacking == false)
+            setImage(fall[character+direction]);
         setLocation(getX(), getY() + vSpeed);
         if(vSpeed <= 6)
         {
-            setImage(jump[character+direction]);
+            if (attacking == false)
+                setImage(jump[character+direction]);
             vSpeed = vSpeed+ACCELERATION;
         }
         jumping = true;
