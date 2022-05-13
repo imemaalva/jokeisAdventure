@@ -4,7 +4,7 @@ public class MyWorld extends World
     private static int BLOCK_SIZE = 32;
     private static int WORLD_WIDTH = 2016;
     private static int WORLD_HEIGHT = 608;
-    private static int MISA = 0;
+    private static final int MISA = 0;
     private static int IME = 2;
     public MainCharacter character;
     
