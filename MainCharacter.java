@@ -57,6 +57,7 @@ public class MainCharacter extends Actor
     private int counterAnimation;
     private int currentImage=0;
     private int imageRepetition=0;
+    private int holdToAttack=1;
     
     //Action indicator
     private boolean jumping = false;
@@ -386,9 +387,13 @@ public class MainCharacter extends Actor
 
     private void animation()
     {
-        
+        if(holdToAttack > 0 && holdToAttack < 15)
+            holdToAttack++;
         if(getImage() == attack_fist[MAX_COUNTER_FIST-1][character+direction] || getImage() == attack_sword[MAX_COUNTER_SWORD-1][character+direction] || getImage() == attack_knife[MAX_COUNTER_KNIFE-1][character+direction] || getImage() == attack_bomb[MAX_COUNTER_BOMB-1][character+direction] )
+        {
             attacking = false;
+            holdToAttack++;
+        }    
         //Do nothing
         if(attacking == false && hurted == false && died == false && jumping == false && walking == false && vulnerability == true)
         {
@@ -441,7 +446,7 @@ public class MainCharacter extends Actor
                 case ITEM_SWORD:
                     if (currentImage>=attack_sword.length)
                         currentImage=0;
-                    if(imageRepetition >= 3)
+                    if(imageRepetition >= 4)
                     {
                         imageRepetition=0;
                         counterAnimation++;
@@ -511,9 +516,11 @@ public class MainCharacter extends Actor
             jump();
         }
         
-        if(Greenfoot.isKeyDown("ENTER") &&  attacking == false && hurted == false && died == false && vulnerability == true)
+        if(Greenfoot.isKeyDown("ENTER") &&  holdToAttack>=10 && hurted == false && died == false && vulnerability == true)
         {
             attacking = true;
+            holdToAttack=0;
+            createWeapon();
         }
         
         if(Greenfoot.isKeyDown("1"))
@@ -537,6 +544,40 @@ public class MainCharacter extends Actor
         }
         if(!Greenfoot.isKeyDown("SPACE") && change == true)
             change = false;
+    }
+    
+    private void createWeapon()
+    {
+        switch(selectedItem)
+        {
+            case ITEM_FIST:
+                if(direction == RIGHT)
+                    getWorld().addObject(new FistAttack(),getX()+8,getY());
+                else
+                    getWorld().addObject(new FistAttack(),getX()-8,getY());
+            break;
+            
+            case ITEM_SWORD:
+                if(direction == RIGHT)
+                    getWorld().addObject(new SwordAttack(),getX()+12,getY());
+                else
+                    getWorld().addObject(new SwordAttack(),getX()-12,getY());
+            break;
+            
+            case ITEM_KNIFE:
+                if(direction == RIGHT)
+                    getWorld().addObject(new KnifeAttack(direction),getX()+32,getY());
+                else
+                    getWorld().addObject(new KnifeAttack(direction),getX()-32,getY());
+            break;
+            
+            case ITEM_BOMB:
+                if(direction == RIGHT)
+                    getWorld().addObject(new BombAttack(),getX()+32,getY()+8);
+                else
+                    getWorld().addObject(new BombAttack(),getX()-32,getY()+8);
+            break;
+        }
     }
     
     private void checkFall()
