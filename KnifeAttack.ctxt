@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=KnifeAttack
+comment1.params=direction
+comment1.target=KnifeAttack(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ movement()
+comment4.params=
+comment4.target=boolean\ checkWallColision()
+numComments=5
