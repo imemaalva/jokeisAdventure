@@ -11,6 +11,7 @@ public class idMainCharacter extends Actor
     private int currentImage = 0;
     private int imageRepetition = 0;
     private int timeDoNothing=0;
+    private boolean controlChange = false;
     
     private int character;
     
@@ -58,12 +59,28 @@ public class idMainCharacter extends Actor
     
     private void animation()
     {
-        if(getImage() == id[MAX_ID_COUNTER-1][character])
+        if(currentImage == MAX_ID_COUNTER-1)
         {
             timeDoNothing=0;
             currentImage=0;
         }
-        if(imageRepetition >= 4)
+        
+        if(currentImage == 4 || currentImage == 6 && timeDoNothing > 45 )
+        {
+            if (controlChange == false)
+            {
+                timeDoNothing=0;
+                controlChange = true;
+            }
+            else
+            {
+                currentImage = (currentImage + 1) % id.length;
+                imageRepetition = 0;
+                controlChange = false;
+            }
+        }
+        
+        if(imageRepetition>=4)
             {
                 if(timeDoNothing >40)
                 {
@@ -73,7 +90,7 @@ public class idMainCharacter extends Actor
                         counterAnimation=0;
                     currentImage = (currentImage + 1) % id.length;
                 }
-                if(timeDoNothing<=40)
+                else 
                     timeDoNothing++;
             }
         setImage(id[currentImage][character]);
@@ -82,8 +99,8 @@ public class idMainCharacter extends Actor
     
     private void checkCharacter()
     {
-        character = getWorldOfType(ScrollingWorld.class).character.getCharacter();
+        character = getWorldOfType(ScrollingWorld.class).getChar();
         if (character == IME+1)
-            character--;
+            character=IME;
     }
 }

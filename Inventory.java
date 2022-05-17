@@ -17,7 +17,7 @@ public class Inventory extends Actor
     }
     private void checkCharacter()
     {
-        if(getWorldOfType(ScrollingWorld.class).character.getCharacter() == MISA)
+        if(getWorldOfType(ScrollingWorld.class).getChar() == MISA)
             setImage(inventory[0]);
         else
             setImage(inventory[1]);

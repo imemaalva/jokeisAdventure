@@ -44,7 +44,7 @@ public class MainCharacter extends Actor
     
     //Player resources
     private int character; 
-    private int health = 100;
+    private int health = 50;
     private int power = 100;
     private int direction = RIGHT;
     private int score = 0;
@@ -70,7 +70,6 @@ public class MainCharacter extends Actor
     private boolean died = false;
     private boolean walking = false;
     private boolean vulnerability = true;
-    private boolean change = false;
     
     public MainCharacter(int character)
     {
@@ -265,7 +264,7 @@ public class MainCharacter extends Actor
         hurt[0][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_right_0.png");
         hurt[1][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_right_1.png");
         hurt[2][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_right_2.png");
-        hurt[3][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_left_3.png");
+        hurt[3][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_right_3.png");
         
         death = new GreenfootImage[MAX_COUNTER_DEATH][4];
         death[0][MISA+LEFT]=new GreenfootImage("images/Misa_Dead_left_0.png");
@@ -392,6 +391,8 @@ public class MainCharacter extends Actor
            checkCellingColision();
            checkWallColision();
            checkHealth();
+           checkCharacter();
+           checkHurted();
        }
     
     }
@@ -415,7 +416,10 @@ public class MainCharacter extends Actor
         if(getImage() == hurt[MAX_COUNTER_HURT-1][character+direction])
         {
             if(imageRepetition==6)
+            {
                 hurted=false;
+                vulnerability=true;
+            }
                 timeSinceLastHurt=0;
         }
         
@@ -546,9 +550,9 @@ public class MainCharacter extends Actor
     
     private void checkHealth()
     {
-        if (timeSinceLastHurt == 10)
+        if (timeSinceLastHurt > 40)
         {
-            if (timeToHeal >= 5)
+            if (timeToHeal >= 10)
             {
                 timeToHeal = 0;
                 if (health <100)
@@ -556,10 +560,14 @@ public class MainCharacter extends Actor
             }
             timeToHeal++;
         }
-        if(timeSinceLastHurt<10)
             timeSinceLastHurt++;
         if(health <=0)
+        {
             died = true;
+            hurted = false;
+        }
+            
+        getWorldOfType(ScrollingWorld.class).bar.setValue(health);
     }
     
     private void keyCheckMove()
@@ -610,17 +618,6 @@ public class MainCharacter extends Actor
             selectedItem=ITEM_BOMB;
             
         
-        //Character selector (TEMPORAL)
-        if(Greenfoot.isKeyDown("SPACE") && change == false)
-        {
-            if (character==MISA)
-                character = IME;
-            else
-                character=MISA;
-            change = true;
-        }
-        if(!Greenfoot.isKeyDown("SPACE") && change == true)
-            change = false;
     }
     
     private void createWeapon()
@@ -654,6 +651,21 @@ public class MainCharacter extends Actor
                 else
                     getWorld().addObject(new BombAttack(),getX()-32,getY()+8);
             break;
+        }
+    }
+    
+    private void checkCharacter()
+    {
+        character = getWorldOfType(ScrollingWorld.class).getChar();
+    }
+    
+    private void checkHurted()
+    {
+        if (Greenfoot.mouseClicked(this) && vulnerability == true && hurted == false)
+        {
+            health-=5;
+            hurted = true;
+            vulnerability = false;
         }
     }
     
@@ -802,14 +814,14 @@ public class MainCharacter extends Actor
         hurted = true;
     }
     
+    public int getHealth()
+    {
+        return health;
+    }
+    
     public int getSelectedItem()
     {
         return selectedItem;
     }
     
-    
-    public int getCharacter()
-    {
-        return character;
-    }
 }

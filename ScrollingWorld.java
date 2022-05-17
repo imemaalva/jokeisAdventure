@@ -6,6 +6,9 @@ public class ScrollingWorld extends World
     static final int MISA = 0;
     static final int IME = 2;
     public MainCharacter character;
+    public HealthBar bar;
+    
+    private int charac=MISA;
     
     private int xOffset = 0;
     private int yOffset = 0;
@@ -13,7 +16,9 @@ public class ScrollingWorld extends World
     final static int SCROLL_HEIGHT = 400;
     private int worldWidth;
     private int worldHeight;
-    private GreenfootImage bimg;    
+    private GreenfootImage bimg;  
+    
+    private boolean change = false;
     
     public ScrollingWorld(int fullWidth, int fullHeight)
     {   
@@ -22,6 +27,25 @@ public class ScrollingWorld extends World
         worldHeight = fullHeight;
         bimg = new GreenfootImage("images/Lvl_Jungle_0.png");
         shiftWorld(0,0);
+    }
+    
+    public void act()
+    {
+        changeCharacter();
+    }
+    
+    private void changeCharacter()
+    {
+        if(Greenfoot.isKeyDown("SPACE") && change == false)
+        {
+            if (charac == MISA)
+                charac = IME;
+            else
+                charac=MISA;
+            change = true;
+        }
+        if(!Greenfoot.isKeyDown("SPACE") && change == true)
+            change = false;
     }
     
     public void shiftWorld(int dx, int dy) 
@@ -54,6 +78,11 @@ public class ScrollingWorld extends World
         {
             a.setAbsoluteLocation(dx,dy);
         }
+    }
+    
+    public int getChar()
+    {
+        return charac;
     }
     
     

@@ -18,11 +18,13 @@ public class Testing extends ScrollingWorld
         addObject(new Grass(), 16+BLOCK_SIZE*9, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*4);
         
         character = new MainCharacter(MISA);
+        bar = new HealthBar(character.getHealth(),100);
         addObject(character, 50,50);
         
         addObject(new idMainCharacter(), (BLOCK_SIZE/2)*3, SCROLL_HEIGHT-BLOCK_SIZE/2-BLOCK_SIZE);
         addObject(new Inventory(), BLOCK_SIZE*3, SCROLL_HEIGHT-BLOCK_SIZE/2);
         addObject(new Cursor(), (BLOCK_SIZE/2)*3, SCROLL_HEIGHT-BLOCK_SIZE/2);
+        addObject(bar,(BLOCK_SIZE/2)+BLOCK_SIZE*3+1 , SCROLL_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE);
         
         //addObject(new Scroller(), 0, 0);
     }
