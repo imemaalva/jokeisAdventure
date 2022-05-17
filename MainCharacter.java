@@ -10,7 +10,8 @@ public class MainCharacter extends Actor
     private static final int MAX_COUNTER_HURT = 4;
     private static final int MAX_COUNTER_DEATH = 15;
     private static final int MAX_COUNTER_WALK = 12;
-    
+
+    private static final int X_BOUNDARY = 112;
     
     private static final int ITEM_FIST = 0;
     private static final int ITEM_SWORD = 1;
@@ -19,6 +20,7 @@ public class MainCharacter extends Actor
     
     //Gravity constant
     private static final int ACCELERATION = 2;
+    private static final int HSPEED = 4;
     
     //Character constanr
     private static final int MISA = 0;
@@ -49,15 +51,17 @@ public class MainCharacter extends Actor
     private int selectedItem = 0;
     
     //Movement values
-    private int speed = 4;
+    private int speed = HSPEED;
     private int vSpeed = 0;
-    private int jumpStrength = 17;
+    private int jumpStrength = 15;
     
     //Animation managment
     private int counterAnimation;
-    private int currentImage=0;
-    private int imageRepetition=0;
-    private int holdToAttack=1;
+    private int currentImage = 0;
+    private int imageRepetition = 0;
+    private int holdToAttack = 1;
+    private int timeSinceLastHurt = 0;
+    private int timeToHeal = 0;
     
     //Action indicator
     private boolean jumping = false;
@@ -379,10 +383,17 @@ public class MainCharacter extends Actor
     public void act()
     {
        animation();
-       keyCheckMove();
-       checkFall(); 
-       checkCellingColision();
-       checkWallColision();
+       if (died==false)
+       {
+           
+           keyCheckMove();
+           boundedMove();
+           checkFall(); 
+           checkCellingColision();
+           checkWallColision();
+           checkHealth();
+       }
+    
     }
 
     private void animation()
@@ -394,6 +405,20 @@ public class MainCharacter extends Actor
             attacking = false;
             holdToAttack++;
         }    
+        
+        if(getImage() == death[MAX_COUNTER_DEATH-1][character+direction])
+        {
+            if(imageRepetition==20)
+                getWorld().removeObject(this);
+        }
+        
+        if(getImage() == hurt[MAX_COUNTER_HURT-1][character+direction])
+        {
+            if(imageRepetition==6)
+                hurted=false;
+                timeSinceLastHurt=0;
+        }
+        
         //Do nothing
         if(attacking == false && hurted == false && died == false && jumping == false && walking == false && vulnerability == true)
         {
@@ -484,8 +509,57 @@ public class MainCharacter extends Actor
                 break;
             }
         }
+        
+        if(died == true && getImage() != death[MAX_COUNTER_DEATH-1][character+direction])
+        {
+            if (currentImage>=death.length)
+                currentImage=0;
+            if(imageRepetition >= 2)
+            {
+                imageRepetition=0;
+                counterAnimation++;
+                if(counterAnimation >= MAX_COUNTER_DEATH)
+                    counterAnimation=0;
+                currentImage = (currentImage + 1) % death.length;
+            }
+            setImage(death[currentImage][character+direction]);
+        }
+        
+        if(hurted == true && getImage()!= hurt[MAX_COUNTER_HURT-1][character+direction])
+        {
+            if (currentImage>=hurt.length)
+                currentImage=0;
+            if(imageRepetition >= 5)
+            {
+                imageRepetition=0;
+                counterAnimation++;
+                if(counterAnimation >= MAX_COUNTER_HURT)
+                    counterAnimation=0;
+                currentImage = (currentImage + 1) % hurt.length;
+            }
+            setImage(hurt[currentImage][character+direction]);
+        }
+        
         imageRepetition++;
         return;
+    }
+    
+    private void checkHealth()
+    {
+        if (timeSinceLastHurt == 10)
+        {
+            if (timeToHeal >= 5)
+            {
+                timeToHeal = 0;
+                if (health <100)
+                    health++;
+            }
+            timeToHeal++;
+        }
+        if(timeSinceLastHurt<10)
+            timeSinceLastHurt++;
+        if(health <=0)
+            died = true;
     }
     
     private void keyCheckMove()
@@ -493,13 +567,15 @@ public class MainCharacter extends Actor
         //Move left
         if(Greenfoot.isKeyDown("left")){
             direction = LEFT;
-            setLocation(getX()-speed,getY());
+            speed = -HSPEED;
+            setLocation(getX()+speed,getY());
             walking=true;
         }
         
         //Move right
         if(Greenfoot.isKeyDown("right")){
             direction = RIGHT;
+            speed = HSPEED;
             setLocation(getX()+speed,getY());
             walking=true;
         }
@@ -507,6 +583,7 @@ public class MainCharacter extends Actor
         //Key release walking
         if(!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right"))
         {
+            speed=0;
             walking=false;
         }
         
@@ -597,12 +674,14 @@ public class MainCharacter extends Actor
     
     private void fall()
     {
-        if (attacking == false)
+        if (attacking == false && died == false && hurted == false)
             setImage(fall[character+direction]);
         setLocation(getX(), getY() + vSpeed);
+        if(vSpeed>=-12)
+        ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
         if(vSpeed <= 6)
         {
-            if (attacking == false)
+            if (attacking == false && died == false && hurted == false)
                 setImage(jump[character+direction]);
             vSpeed = vSpeed+ACCELERATION;
         }
@@ -674,7 +753,6 @@ public class MainCharacter extends Actor
     {
         int cellingHeight = celling.getImage().getHeight();
         int newY = celling.getY() + (cellingHeight + getImage().getHeight())/2;
-        
         setLocation(getX(), newY);
     }
     
@@ -686,7 +764,7 @@ public class MainCharacter extends Actor
         setLocation(getX(), newY);
         jumping = false;
     }
-    
+
     private void stopByWall(Actor wall)
     {
         int wallWidth = wall.getImage().getWidth();
@@ -704,6 +782,34 @@ public class MainCharacter extends Actor
         }
     }
     
+    private void boundedMove() 
+    {
+        if( speed+getX() <= X_BOUNDARY ) 
+        {
+            setLocation(X_BOUNDARY, getY());
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,getY());
+        } else if( speed+getX() >= getWorld().getWidth()-X_BOUNDARY ) 
+        {
+            setLocation(getWorld().getWidth()-X_BOUNDARY, getY());
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,getY());
+        } 
+        
+    }
+    
+    public void setHealthAfterDamage(int damage)
+    {
+        health+=damage;
+        hurted = true;
+    }
+    
+    public int getSelectedItem()
+    {
+        return selectedItem;
+    }
     
     
+    public int getCharacter()
+    {
+        return character;
+    }
 }

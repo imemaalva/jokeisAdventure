@@ -8,6 +8,8 @@ public class BombAttack extends Weapon
     private int timeBeforeExplode = 0;
     private int counterAnimation;
     private int currentImage=0;
+    private int imageRepetition = 0;
+    
     private GreenfootImage []explode;
     public BombAttack()
     {
@@ -45,16 +47,20 @@ public class BombAttack extends Weapon
             damage=true;
         if(getImage() == explode[MAX_COUNTER_EXPLODE-1])
             getWorld().removeObject(this);
-        
-        if(timeBeforeExplode > 15)
+        if(imageRepetition >=2)
         {
-            counterAnimation++;
-            if(counterAnimation >= MAX_COUNTER_EXPLODE)
-                counterAnimation=0;
-            currentImage = (currentImage + 1) % explode.length;
-            setImage(explode[currentImage]);
+            imageRepetition = 0;
+            if(timeBeforeExplode > 15)
+            {
+                counterAnimation++;
+                if(counterAnimation >= MAX_COUNTER_EXPLODE)
+                    counterAnimation=0;
+                currentImage = (currentImage + 1) % explode.length;
+                setImage(explode[currentImage]);
+            }
+            if(timeBeforeExplode <= 15)
+                timeBeforeExplode++;
         }
-        if(timeBeforeExplode <= 15)
-            timeBeforeExplode++;
+        imageRepetition++;
     }
 }
