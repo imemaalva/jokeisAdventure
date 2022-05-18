@@ -5,8 +5,10 @@ public class ScrollingWorld extends World
     static final int BLOCK_SIZE = 32;
     static final int MISA = 0;
     static final int IME = 2;
+    
     public MainCharacter character;
     public HealthBar bar;
+    public Inventory inventory;
     
     private int charac=MISA;
     

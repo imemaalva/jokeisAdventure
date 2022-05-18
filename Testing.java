@@ -16,16 +16,26 @@ public class Testing extends ScrollingWorld
         addObject(new Grass(), 16+BLOCK_SIZE*7, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*2);
         addObject(new Grass(), 16+BLOCK_SIZE*8, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*4);
         addObject(new Grass(), 16+BLOCK_SIZE*9, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*4);
+        addObject(new BombAmmo(), 16+BLOCK_SIZE*9, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*5);
+        addObject(new Jokeis(), 16+BLOCK_SIZE*10, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
+        addObject(new Jokeis(), 16+BLOCK_SIZE*12, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
+        addObject(new Jokeis(), 16+BLOCK_SIZE*14, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
+
+        
         
         character = new MainCharacter(MISA);
-        bar = new HealthBar(character.getHealth(),100);
         addObject(character, 50,50);
         
+        bar = new HealthBar(character.getHealth(),100);
+        inventory = new Inventory();
+        
         addObject(new idMainCharacter(), (BLOCK_SIZE/2)*3, SCROLL_HEIGHT-BLOCK_SIZE/2-BLOCK_SIZE);
-        addObject(new Inventory(), BLOCK_SIZE*3, SCROLL_HEIGHT-BLOCK_SIZE/2);
+        addObject(inventory, BLOCK_SIZE*3, SCROLL_HEIGHT-BLOCK_SIZE/2);
         addObject(new Cursor(), (BLOCK_SIZE/2)*3, SCROLL_HEIGHT-BLOCK_SIZE/2);
         addObject(bar,(BLOCK_SIZE/2)+BLOCK_SIZE*3+1 , SCROLL_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE);
+        for(int i = 1; i<= 3; i++)
+            addObject(new JokeisIndicator(i), 16+BLOCK_SIZE*4+BLOCK_SIZE*i, SCROLL_HEIGHT-(BLOCK_SIZE/2)*3);
+        addObject(new Score(), 0,0);
         
-        //addObject(new Scroller(), 0, 0);
     }
 }

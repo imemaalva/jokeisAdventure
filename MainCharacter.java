@@ -49,6 +49,8 @@ public class MainCharacter extends Actor
     private int direction = RIGHT;
     private int score = 0;
     private int selectedItem = 0;
+    private int bombAmmo=0;
+    private int jokeisQuantity = 0;
     
     //Movement values
     private int speed = HSPEED;
@@ -393,6 +395,8 @@ public class MainCharacter extends Actor
            checkHealth();
            checkCharacter();
            checkHurted();
+           checkItemBombCollision();
+           checkItemJokeisCollision();
        }
     
     }
@@ -499,17 +503,25 @@ public class MainCharacter extends Actor
                     setImage(attack_knife[currentImage][character+direction]);
                 break;
                 case ITEM_BOMB:
-                    if (currentImage>=attack_bomb.length)
-                        currentImage=0;
-                    if(imageRepetition >= 3)
+                    if(bombAmmo>0)
                     {
-                        imageRepetition=0;
-                        counterAnimation++;
-                        if(counterAnimation >= MAX_COUNTER_BOMB)
-                            counterAnimation=0;
-                        currentImage = (currentImage + 1) % attack_bomb.length;
+                        if (currentImage>=attack_bomb.length)
+                            currentImage=0;
+                        if(imageRepetition >= 3)
+                        {
+                            imageRepetition=0;
+                            counterAnimation++;
+                            if(counterAnimation >= MAX_COUNTER_BOMB)
+                                counterAnimation=0;
+                            currentImage = (currentImage + 1) % attack_bomb.length;
+                        }
+                        setImage(attack_bomb[currentImage][character+direction]);
                     }
-                    setImage(attack_bomb[currentImage][character+direction]);
+                    else
+                    {
+                        attacking = false;
+                        holdToAttack = 15;
+                    }
                 break;
             }
         }
@@ -550,7 +562,7 @@ public class MainCharacter extends Actor
     
     private void checkHealth()
     {
-        if (timeSinceLastHurt > 40)
+        if (timeSinceLastHurt > 100)
         {
             if (timeToHeal >= 10)
             {
@@ -560,13 +572,13 @@ public class MainCharacter extends Actor
             }
             timeToHeal++;
         }
-            timeSinceLastHurt++;
         if(health <=0)
         {
             died = true;
             hurted = false;
         }
-            
+        
+        timeSinceLastHurt++;    
         getWorldOfType(ScrollingWorld.class).bar.setValue(health);
     }
     
@@ -601,7 +613,7 @@ public class MainCharacter extends Actor
             jump();
         }
         
-        if(Greenfoot.isKeyDown("ENTER") &&  holdToAttack>=10 && hurted == false && died == false && vulnerability == true)
+        if(Greenfoot.isKeyDown("ENTER") &&  holdToAttack>=15 && hurted == false && died == false && vulnerability == true)
         {
             attacking = true;
             holdToAttack=0;
@@ -646,10 +658,15 @@ public class MainCharacter extends Actor
             break;
             
             case ITEM_BOMB:
-                if(direction == RIGHT)
-                    getWorld().addObject(new BombAttack(),getX()+32,getY()+8);
-                else
-                    getWorld().addObject(new BombAttack(),getX()-32,getY()+8);
+                if(bombAmmo>0)
+                {
+                    if(direction == RIGHT)
+                        getWorld().addObject(new BombAttack(),getX()+32,getY()+8);
+                    else
+                        getWorld().addObject(new BombAttack(),getX()-32,getY()+8);
+                    bombAmmo--;    
+                    getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
+                }
             break;
         }
     }
@@ -726,9 +743,7 @@ public class MainCharacter extends Actor
             return true;
         }
         else
-        {
             return false;
-        }
     }
     
     private boolean checkWallColision()
@@ -737,9 +752,7 @@ public class MainCharacter extends Actor
         {
             Actor wall = getOneObjectAtOffset(16, 0, Block.class);
             if(wall == null)
-            {
                 return false;
-            }
             else
             {
                 stopByWall(wall);
@@ -750,9 +763,7 @@ public class MainCharacter extends Actor
         {
             Actor wall = getOneObjectAtOffset(-16, 0, Block.class);
             if(wall == null)
-            {
                 return false;
-            }
             else
             {
                 stopByWall(wall);
@@ -783,14 +794,74 @@ public class MainCharacter extends Actor
         if(direction == RIGHT)
         {
             int newX = wall.getX() - (wallWidth + getImage().getWidth())/2;
-        
             setLocation(newX+5, getY());
         }
         else
         {
             int newX = wall.getX() + (wallWidth + getImage().getWidth())/2;
-        
             setLocation(newX-5, getY());
+        }
+    }
+    
+    private boolean checkItemBombCollision()
+    {
+        if (direction == RIGHT)
+        {
+            Actor bomb = getOneObjectAtOffset(20, 0, BombAmmo.class);
+            if(bomb == null)
+                return false;
+            else
+            {
+                getWorld().removeObject(bomb);
+                bombAmmo+=5;
+                getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
+                return true;
+            }
+        }
+        else
+        {
+            Actor bomb = getOneObjectAtOffset(-20, 0, BombAmmo.class);
+            if(bomb == null)
+                return false;
+            else
+            {
+                getWorld().removeObject(bomb);
+                bombAmmo+=5;
+                getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
+                return true;
+            }
+        }
+    }
+    
+    private boolean checkItemJokeisCollision()
+    {
+        if (direction == RIGHT)
+        {
+            Actor jokeis = getOneObjectAtOffset(20, 0, Jokeis.class);
+            if(jokeis == null)
+                return false;
+            else
+            {
+                getWorld().removeObject(jokeis);
+                score+=100;
+                jokeisQuantity++;
+                getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
+                return true;
+            }
+        }
+        else
+        {
+            Actor jokeis = getOneObjectAtOffset(-20, 0, Jokeis.class);
+            if(jokeis == null)
+                return false;
+            else
+            {
+                getWorld().removeObject(jokeis);
+                score+=100;
+                jokeisQuantity++;
+                getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
+                return true;
+            }
         }
     }
     
@@ -808,12 +879,6 @@ public class MainCharacter extends Actor
         
     }
     
-    public void setHealthAfterDamage(int damage)
-    {
-        health+=damage;
-        hurted = true;
-    }
-    
     public int getHealth()
     {
         return health;
@@ -823,5 +888,12 @@ public class MainCharacter extends Actor
     {
         return selectedItem;
     }
-    
+    public int getJokeisQuantity()
+    {
+        return jokeisQuantity;
+    }
+    public int getScore()
+    {
+        return score;
+    }
 }
