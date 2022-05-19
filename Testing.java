@@ -19,11 +19,7 @@ public class Testing extends ScrollingWorld
         addObject(new BombAmmo(), 16+BLOCK_SIZE*9, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*5);
         addObject(new Jokeis(), 16+BLOCK_SIZE*10, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
         addObject(new Jokeis(), 16+BLOCK_SIZE*12, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
-        addObject(new Jokeis(), 16+BLOCK_SIZE*14, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
-        addObject(new Grass(), 16+BLOCK_SIZE*15, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*4);
-        addObject(new Grass(), 16+BLOCK_SIZE*15, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*3);
-        addObject(new Grass(), 16+BLOCK_SIZE*15, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*2);
-        addObject(new Grass(), 16+BLOCK_SIZE*15, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
+        addObject(new Jokeis(), 16+BLOCK_SIZE*30, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
 
         
         

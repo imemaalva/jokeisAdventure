@@ -5,13 +5,13 @@ public class ScrollingWorld extends World
     static final int BLOCK_SIZE = 32;
     static final int MISA = 0;
     static final int IME = 2;
-    
+
     public MainCharacter character;
     public HealthBar bar;
     public Inventory inventory;
-    
+
     private int characterId=MISA;
-    
+
     private int xOffset = 0;
     private int yOffset = 0;
     final static int SCROLL_WIDTH = 600;
@@ -19,9 +19,9 @@ public class ScrollingWorld extends World
     private int worldWidth;
     private int worldHeight;
     private GreenfootImage bimg;  
-    
+
     private boolean change = false;
-    
+
     public ScrollingWorld(int fullWidth, int fullHeight)
     {   
         super(SCROLL_WIDTH, SCROLL_HEIGHT, 1, false);
@@ -30,12 +30,12 @@ public class ScrollingWorld extends World
         bimg = new GreenfootImage("images/Lvl_Jungle_0.png");
         shiftWorld(0,0);
     }
-    
+
     public void act()
     {
         changeCharacter();
     }
-    
+
     private void changeCharacter()
     {
         if(Greenfoot.isKeyDown("SPACE") && change == false)
@@ -49,7 +49,7 @@ public class ScrollingWorld extends World
         if(!Greenfoot.isKeyDown("SPACE") && change == true)
             change = false;
     }
-    
+
     public void shiftWorld(int x, int y) 
     {
         if( (xOffset + x) <= 0 && (xOffset + x) >= SCROLL_WIDTH - worldWidth) 
@@ -65,14 +65,14 @@ public class ScrollingWorld extends World
             shiftWorldActors(0, y);
         }
     }
-    
+
     private void shiftWorldBackground(int x, int y) 
     {
         GreenfootImage bkgd = new GreenfootImage(SCROLL_WIDTH, SCROLL_HEIGHT);
         bkgd.drawImage(bimg, xOffset, yOffset);
         setBackground(bkgd);
     }
-    
+
     private void shiftWorldActors(int x, int y) 
     {
         List<ScrollingActor> scrollingActorList = getObjects(ScrollingActor.class);
@@ -81,11 +81,10 @@ public class ScrollingWorld extends World
             actor.setNewLocation(x,y);
         }
     }
-    
+
     public int getCharacter()
     {
         return characterId;
     }
-    
-    
+
 }

@@ -528,7 +528,7 @@ public class MainCharacter extends Actor
             }
         }
 
-        if(died == true && getImage() != death[MAX_COUNTER_DEATH-1][character+direction])
+        if(died == true && getImage() != death[character+direction][MAX_COUNTER_DEATH-1])
         {
             if (currentImage>=MAX_COUNTER_DEATH)
                 currentImage=0;
@@ -543,7 +543,7 @@ public class MainCharacter extends Actor
             setImage(death[character+direction][currentImage]);
         }
 
-        if(hurted == true && getImage()!= hurt[MAX_COUNTER_HURT-1][character+direction])
+        if(hurted == true && getImage()!= hurt[character+direction][MAX_COUNTER_HURT-1])
         {
             if (currentImage>=MAX_COUNTER_HURT)
                 currentImage=0;
@@ -860,16 +860,32 @@ public class MainCharacter extends Actor
     private void boundedMove() 
     {
 
-        if( speed+getX() <= X_BOUNDARY ) 
+        if( speed+getX() <= X_BOUNDARY && jumping ==false) 
         {
             setLocation(X_BOUNDARY, getY());
             ((ScrollingWorld)getWorld()).shiftWorld(-speed,getY());
-        } else if( speed+getX() >= getWorld().getWidth()-X_BOUNDARY ) 
+        } else if( speed+getX() >= getWorld().getWidth()-X_BOUNDARY && jumping ==false) 
         {
             setLocation(getWorld().getWidth()-X_BOUNDARY, getY());
             ((ScrollingWorld)getWorld()).shiftWorld(-speed,getY());
         } 
-        if(vSpeed >=-12 &&jumping)
+        else if(vSpeed >=-12 && jumping==true && speed+getX() <= X_BOUNDARY)
+        {
+            setLocation(X_BOUNDARY, getY());
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
+        }else if(vSpeed >=-12 && jumping==true && speed+getX() >= getWorld().getWidth()-X_BOUNDARY)
+        {
+            setLocation(getWorld().getWidth()-X_BOUNDARY, getY());
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
+        }
+        else if(vSpeed >=-12 && jumping==true && speed+getX() > X_BOUNDARY )
+        {
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
+        }else if(vSpeed >=-12 && jumping==true && speed+getX() < getWorld().getWidth()-X_BOUNDARY )
+        {
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
+        }
+        else if(vSpeed >=-12 && jumping==true)
             ((ScrollingWorld)getWorld()).shiftWorld(getX(),-vSpeed);
 
     }
