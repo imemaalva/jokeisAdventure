@@ -50,35 +50,35 @@ public class ScrollingWorld extends World
             change = false;
     }
     
-    public void shiftWorld(int dx, int dy) 
+    public void shiftWorld(int x, int y) 
     {
-        if( (xOffset + dx) <= 0 && (xOffset + dx) >= SCROLL_WIDTH - worldWidth) 
+        if( (xOffset + x) <= 0 && (xOffset + x) >= SCROLL_WIDTH - worldWidth) 
         {
-            xOffset = xOffset + dx;
-            shiftWorldBackground(dx, 0);
-            shiftWorldActors(dx, 0);
+            xOffset = xOffset + x;
+            shiftWorldBackground(x, 0);
+            shiftWorldActors(x, 0);
         }
-        if( (yOffset + dy) <= 0 && (yOffset + dy) >= SCROLL_HEIGHT - worldHeight) 
+        if( (yOffset + y) <= 0 && (yOffset + y) >= SCROLL_HEIGHT - worldHeight) 
         {
-            yOffset = yOffset + dy;
-            shiftWorldBackground(0, dy);
-            shiftWorldActors(0, dy);
+            yOffset = yOffset + y;
+            shiftWorldBackground(0, y);
+            shiftWorldActors(0, y);
         }
     }
     
-    private void shiftWorldBackground(int dx, int dy) 
+    private void shiftWorldBackground(int x, int y) 
     {
         GreenfootImage bkgd = new GreenfootImage(SCROLL_WIDTH, SCROLL_HEIGHT);
         bkgd.drawImage(bimg, xOffset, yOffset);
         setBackground(bkgd);
     }
     
-    private void shiftWorldActors(int dx, int dy) 
+    private void shiftWorldActors(int x, int y) 
     {
-        List<ScrollingActor> saList = getObjects(ScrollingActor.class);
-        for( ScrollingActor a : saList ) 
+        List<ScrollingActor> scrollingActorList = getObjects(ScrollingActor.class);
+        for( ScrollingActor actor : scrollingActorList ) 
         {
-            a.setNewLocation(dx,dy);
+            actor.setNewLocation(x,y);
         }
     }
     
