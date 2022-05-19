@@ -8,7 +8,9 @@ public class Zombie extends Enemy
     private static final int MAX_COUNTER_APPEAR = 8;
     private static final int MAX_COUNTER_WALK = 12;
     
-    
+    private static final int SPEED = 3;
+    private static final int INITIAL_HEALTH = 10;
+
     
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack;
@@ -16,19 +18,19 @@ public class Zombie extends Enemy
     private GreenfootImage []appear;
     private GreenfootImage [][]walk;
     private GreenfootImage []fall;
-    
+
     private boolean appearing;
     private boolean appearingStart = false;
-    
+
     public Zombie()
-    {
-        super(10, 4);
+{
+        super(INITIAL_HEALTH, SPEED);
         appearing = true;
-        
+
         fall = new GreenfootImage[2];
         fall[LEFT]=new GreenfootImage("images/Zombie_Walk_left_2.png");
         fall[RIGHT]=new GreenfootImage("images/Zombie_Walk_right_2.png");
-        
+
         stay = new GreenfootImage[MAX_COUNTER_STAY][2];
         stay[0][LEFT]=new GreenfootImage("images/Zombie_left_0.png");
         stay[1][LEFT]=new GreenfootImage("images/Zombie_left_1.png");
@@ -40,7 +42,7 @@ public class Zombie extends Enemy
         stay[2][RIGHT]=new GreenfootImage("images/Zombie_right_2.png");
         stay[3][RIGHT]=new GreenfootImage("images/Zombie_right_3.png");
         stay[4][RIGHT]=new GreenfootImage("images/Zombie_right_4.png");
-        
+
         attack = new GreenfootImage[MAX_COUNTER_ATTACK][2];
         attack[0][LEFT]=new GreenfootImage("images/Zombie_Attack_left_0.png");
         attack[1][LEFT]=new GreenfootImage("images/Zombie_Attack_left_1.png");
@@ -54,8 +56,7 @@ public class Zombie extends Enemy
         attack[3][RIGHT]=new GreenfootImage("images/Zombie_Attack_right_3.png");
         attack[4][RIGHT]=new GreenfootImage("images/Zombie_Attack_right_4.png");
         attack[5][RIGHT]=new GreenfootImage("images/Zombie_Attack_right_5.png");
-        
-     
+
         hurt = new GreenfootImage[MAX_COUNTER_HURT][2];
         hurt[0][LEFT]=new GreenfootImage("images/Zombie_Hurt_left_0.png");
         hurt[1][LEFT]=new GreenfootImage("images/Zombie_Hurt_left_1.png");
@@ -65,7 +66,7 @@ public class Zombie extends Enemy
         hurt[1][RIGHT]=new GreenfootImage("images/Zombie_Hurt_right_1.png");
         hurt[2][RIGHT]=new GreenfootImage("images/Zombie_Hurt_right_2.png");
         hurt[3][RIGHT]=new GreenfootImage("images/Zombie_Hurt_right_3.png");
-        
+
         appear = new GreenfootImage[MAX_COUNTER_APPEAR];
         appear[0]=new GreenfootImage("images/Zombie_Appear_right_0.png");
         appear[1]=new GreenfootImage("images/Zombie_Appear_right_1.png");
@@ -75,7 +76,7 @@ public class Zombie extends Enemy
         appear[5]=new GreenfootImage("images/Zombie_Appear_right_5.png");
         appear[6]=new GreenfootImage("images/Zombie_Appear_right_6.png");
         appear[7]=new GreenfootImage("images/Zombie_Appear_right_7.png");
-        
+
         walk = new GreenfootImage[MAX_COUNTER_WALK][2];
         walk[0][LEFT]=new GreenfootImage("images/Zombie_Walk_left_0.png");
         walk[1][LEFT]=new GreenfootImage("images/Zombie_Walk_left_1.png");
@@ -101,46 +102,44 @@ public class Zombie extends Enemy
         walk[9][RIGHT]=new GreenfootImage("images/Zombie_Walk_right_9.png");
         walk[10][RIGHT]=new GreenfootImage("images/Zombie_Walk_right_10.png");
         walk[11][RIGHT]=new GreenfootImage("images/Zombie_Walk_right_11.png");
-    
+
     }
-    public void act()
-    {
+
+    public void act(){
         checkAppearing();
         animation();
+        calculateDistanceWithPlayer();
+        calculatePlayerLocation();
+        checkDistance();
+        checkChasing();
+
     }
-    
-    private void animation()
-    {
+
+    private void animation(){
         if(holdToAttack > 0 && holdToAttack < 15)
             holdToAttack++;
-            
-        if(getImage() == appear[MAX_COUNTER_APPEAR-1] )
-        {
+
+        if(getImage() == appear[MAX_COUNTER_APPEAR-1] ){
             appearing = false;
         }  
-            
-        if(getImage() == attack[MAX_COUNTER_ATTACK-1][direction] )
-        {
+
+        if(getImage() == attack[MAX_COUNTER_ATTACK-1][direction] ){
             attacking = false;
             holdToAttack++;
         }  
-        
-        if(getImage() == hurt[MAX_COUNTER_HURT-1][direction])
-        {
-            if(imageRepetition==6)
-            {
+
+        if(getImage() == hurt[MAX_COUNTER_HURT-1][direction]){
+            if(imageRepetition==6){
                 hurted=false;
                 vulnerability=true;
             }
         }
-        
+
         //Do nothing
-        if(attacking == false && hurted == false  && walking == false && vulnerability == true && appearing == false)
-        {
+        if(attacking == false && hurted == false  && walking == false && vulnerability == true && appearing == false){
             if (currentImage>=stay.length)
                 currentImage=0;
-            if(imageRepetition >= 3)
-            {
+            if(imageRepetition >= 3){
                 imageRepetition=0;
                 counterAnimation++;
                 if(counterAnimation >= MAX_COUNTER_STAY)
@@ -149,14 +148,12 @@ public class Zombie extends Enemy
             }
             setImage(stay[currentImage][direction]);
         }
-        
+
         //walk
-        if(attacking == false && hurted == false && walking == true && vulnerability == true && appearing == false)
-        {
+        if(attacking == false && hurted == false && walking == true && vulnerability == true && appearing == false){
             if (currentImage>=walk.length)
                 currentImage=0;
-            if(imageRepetition >= 2)
-            {
+            if(imageRepetition >= 2){
                 imageRepetition=0;
                 counterAnimation++;
                 if(counterAnimation >= MAX_COUNTER_WALK)
@@ -165,28 +162,24 @@ public class Zombie extends Enemy
             }
             setImage(walk[currentImage][direction]);
         }
-        
-        if(attacking == true )
-        {
-                if (currentImage>=attack.length)
-                    currentImage=0;
-                if(imageRepetition >= 2)
-                {
-                    imageRepetition=0;
-                    counterAnimation++;
-                    if(counterAnimation >= MAX_COUNTER_ATTACK)
-                        counterAnimation=0;
-                        currentImage = (currentImage + 1) % attack.length;
-                }
-                setImage(attack[currentImage][direction]);        
+
+        if(attacking == true ){
+            if (currentImage>=attack.length)
+                currentImage=0;
+            if(imageRepetition >= 2){
+                imageRepetition=0;
+                counterAnimation++;
+                if(counterAnimation >= MAX_COUNTER_ATTACK)
+                    counterAnimation=0;
+                currentImage = (currentImage + 1) % attack.length;
+            }
+            setImage(attack[currentImage][direction]);        
         }
-        
-        if(hurted == true && getImage()!= hurt[MAX_COUNTER_HURT-1][direction])
-        {
+
+        if(hurted == true && getImage()!= hurt[MAX_COUNTER_HURT-1][direction]){
             if (currentImage>=hurt.length)
                 currentImage=0;
-            if(imageRepetition >= 5)
-            {
+            if(imageRepetition >= 5){
                 imageRepetition=0;
                 counterAnimation++;
                 if(counterAnimation >= MAX_COUNTER_HURT)
@@ -195,13 +188,12 @@ public class Zombie extends Enemy
             }
             setImage(hurt[currentImage][direction]);
         }
-        if(appearing == true && getImage()!= appear[MAX_COUNTER_APPEAR-1])
-            if (appearingStart==true)
-            {
+        
+        if(appearing == true && getImage()!= appear[MAX_COUNTER_APPEAR-1]){
+            if (appearingStart==true){
                 if (currentImage>=appear.length)
                     currentImage=0;
-                if(imageRepetition >= 2)
-                {
+                if(imageRepetition >= 2){
                     imageRepetition=0;
                     counterAnimation++;
                     if(counterAnimation >= MAX_COUNTER_APPEAR)
@@ -214,12 +206,15 @@ public class Zombie extends Enemy
                 setImage(appear[0]);
         imageRepetition++;
         return;
+        }
     }
     
-    private void checkAppearing()
-    {
-        Actor mainCharacter = getOneObjectAtOffset(-192, 0, MainCharacter.class);
-        if(mainCharacter != null)
+    private void calculateDistanceWithPlayer(){
+        distance=(((playerX-getX())^2)+((playerY-getY())^2))^(1/2);
+    }
+
+    private void checkAppearing(){
+        if(distance<256)
             appearingStart = true;
     }
 }

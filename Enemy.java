@@ -1,73 +1,63 @@
 import greenfoot.*; 
-public class Enemy extends Actor
-{
+public class Enemy extends Actor{
     static final int LEFT = 0;
     static final int RIGHT = 1;
     static final int CHASING_RANGE = 160;
-    
+
     int holdToAttack=0;
     int imageRepetition;
     int currentImage = 0;
     int counterAnimation = 0;
     
+    int playerX;
+    int playerY;
+    int distance;
+
     private int health;
     int direction = RIGHT;    
-    int xDistance;
-    int yDistance;
-    int hipotenuse;
     private int speed;
-    
+
     boolean attacking = false;
     boolean hurted = false;
     boolean vulnerability = true;
     boolean walking = false;
     boolean isNear = false;
-    
-    
-    public Enemy(int health, int speed)
-    {
+
+    public Enemy(int health, int speed){
         this.health = health;
         this.speed = speed;
-        
+
+
     }
-    public void act()
-    {
-        setDistance();
-        checkChasing();
+
+    public void calculatePlayerLocation(){
+        
+        MainCharacter player =(MainCharacter)getWorld().getObjects(MainCharacter.class).get(0);
+        playerX=player.getX();
+        playerY=player.getY();
     }
     
-    private void setDistance()
-    {
-        xDistance = getWorldOfType(MyWorld.class).character.getX()-getX();
-        yDistance = getWorldOfType(MyWorld.class).character.getY()-getY();
+    public void checkDistance(){
         
-        hipotenuse = (xDistance^2 + yDistance^2)^(1/2);
-        if(hipotenuse <= 160)
+        if((distance<=160 && distance>=32) || (distance >= -160 && distance <=32))
             isNear = true;
         else
             isNear = false;
-        
+
     }
-    
-    private void checkChasing()
-    {
-        if(isNear==true)
-        {
-            if(xDistance > 0 )
-            {
+
+    public void checkChasing(){
+        if(isNear==true){
+            if(playerX > getX() ){
                 setLocation(getX()+speed,getY());
                 direction = RIGHT;
             }
-            else if(xDistance < 0)
-            {
+            else if(playerX < getX() ){
                 setLocation(getX()-speed,getY());
                 direction = LEFT;
             }
             walking = true;
-                
-        }
-    }
 
-    
-    
+        }
+    }  
 }
