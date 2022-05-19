@@ -12,16 +12,16 @@ public class MainCharacter extends Actor
     private static final int MAX_COUNTER_WALK = 12;
 
     private static final int X_BOUNDARY = 112;
-    
+
     private static final int ITEM_FIST = 0;
     private static final int ITEM_SWORD = 1;
     private static final int ITEM_KNIFE = 2;
     private static final int ITEM_BOMB = 3;
-    
+
     //Gravity constant
     private static final int ACCELERATION = 2;
     private static final int HSPEED = 4;
-    
+
     //Character constanr
     private static final int MISA = 0;
     private static final int IME = 2;
@@ -29,7 +29,7 @@ public class MainCharacter extends Actor
     //Direction constant
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
-    
+
     //Array per animation
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack_sword;
@@ -41,7 +41,7 @@ public class MainCharacter extends Actor
     private GreenfootImage [][]walk;
     private GreenfootImage []jump;
     private GreenfootImage []fall;
-    
+
     //Player resources
     private int character; 
     private int health = 50;
@@ -51,12 +51,12 @@ public class MainCharacter extends Actor
     private int selectedItem = 0;
     private int bombAmmo=0;
     private int jokeisQuantity = 0;
-    
+
     //Movement values
     private int speed = HSPEED;
     private int vSpeed = 0;
     private int jumpStrength = 15;
-    
+
     //Animation managment
     private int counterAnimation;
     private int currentImage = 0;
@@ -64,7 +64,7 @@ public class MainCharacter extends Actor
     private int holdToAttack = 1;
     private int timeSinceLastHurt = 0;
     private int timeToHeal = 0;
-    
+
     //Action indicator
     private boolean jumping = false;
     private boolean attacking = false;
@@ -72,7 +72,7 @@ public class MainCharacter extends Actor
     private boolean died = false;
     private boolean walking = false;
     private boolean vulnerability = true;
-    
+
     public MainCharacter(int character)
     {
         this.character = character;
@@ -81,13 +81,13 @@ public class MainCharacter extends Actor
         jump[MISA+RIGHT]=new GreenfootImage("images/Misa_Jump_right_0.png");
         jump[IME+LEFT]=new GreenfootImage("images/Ime_Jump_left_0.png");
         jump[IME+RIGHT]=new GreenfootImage("images/Ime_Jump_right_0.png");
-        
+
         fall = new GreenfootImage[4];
         fall[MISA+LEFT]=new GreenfootImage("images/Misa_Fall_left_0.png");
         fall[MISA+RIGHT]=new GreenfootImage("images/Misa_Fall_right_0.png");
         fall[IME+LEFT]=new GreenfootImage("images/Ime_Fall_left_0.png");
         fall[IME+RIGHT]=new GreenfootImage("images/Ime_Fall_right_0.png");
-        
+
         stay = new GreenfootImage[MAX_COUNTER_STAY][4];
         stay[0][MISA+LEFT]=new GreenfootImage("images/Misa_left_0.png");
         stay[1][MISA+LEFT]=new GreenfootImage("images/Misa_left_1.png");
@@ -109,7 +109,7 @@ public class MainCharacter extends Actor
         stay[2][IME+RIGHT]=new GreenfootImage("images/Ime_right_2.png");
         stay[3][IME+RIGHT]=new GreenfootImage("images/Ime_right_3.png");
         stay[4][IME+RIGHT]=new GreenfootImage("images/Ime_right_4.png");
-        
+
         attack_sword = new GreenfootImage[MAX_COUNTER_SWORD][4];
         attack_sword[0][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Sword_left_0.png");
         attack_sword[1][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Sword_left_1.png");
@@ -135,7 +135,7 @@ public class MainCharacter extends Actor
         attack_sword[3][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Sword_right_3.png");
         attack_sword[4][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Sword_right_4.png");
         attack_sword[5][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Sword_right_5.png");
-        
+
         attack_knife = new GreenfootImage[MAX_COUNTER_KNIFE][4];
         attack_knife[0][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Knife_left_0.png");
         attack_knife[1][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Knife_left_1.png");
@@ -173,7 +173,7 @@ public class MainCharacter extends Actor
         attack_knife[6][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Knife_right_6.png");
         attack_knife[7][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Knife_right_7.png");
         attack_knife[8][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Knife_right_8.png");
-        
+
         attack_bomb = new GreenfootImage[MAX_COUNTER_BOMB][4];
         attack_bomb[0][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Bomb_left_0.png");
         attack_bomb[1][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Bomb_left_1.png");
@@ -211,7 +211,7 @@ public class MainCharacter extends Actor
         attack_bomb[6][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Bomb_right_6.png");
         attack_bomb[7][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Bomb_right_7.png");
         attack_bomb[8][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Bomb_right_8.png");
-    
+
         attack_fist = new GreenfootImage[MAX_COUNTER_FIST][4];
         attack_fist[0][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Fist_left_0.png");
         attack_fist[1][MISA+LEFT]=new GreenfootImage("images/Misa_Attack_Fist_left_1.png");
@@ -249,7 +249,7 @@ public class MainCharacter extends Actor
         attack_fist[6][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Fist_right_6.png");
         attack_fist[7][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Fist_right_7.png");
         attack_fist[8][IME+RIGHT]=new GreenfootImage("images/Ime_Attack_Fist_right_8.png");
-     
+
         hurt = new GreenfootImage[MAX_COUNTER_HURT][4];
         hurt[0][MISA+LEFT]=new GreenfootImage("images/Misa_Hurt_left_0.png");
         hurt[1][MISA+LEFT]=new GreenfootImage("images/Misa_Hurt_left_1.png");
@@ -267,7 +267,7 @@ public class MainCharacter extends Actor
         hurt[1][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_right_1.png");
         hurt[2][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_right_2.png");
         hurt[3][IME+RIGHT]=new GreenfootImage("images/Ime_Hurt_right_3.png");
-        
+
         death = new GreenfootImage[MAX_COUNTER_DEATH][4];
         death[0][MISA+LEFT]=new GreenfootImage("images/Misa_Dead_left_0.png");
         death[1][MISA+LEFT]=new GreenfootImage("images/Misa_Dead_left_1.png");
@@ -329,7 +329,7 @@ public class MainCharacter extends Actor
         death[12][IME+RIGHT]=new GreenfootImage("images/Ime_Dead_right_12.png");
         death[13][IME+RIGHT]=new GreenfootImage("images/Ime_Dead_right_13.png");
         death[14][IME+RIGHT]=new GreenfootImage("images/Ime_Dead_right_14.png");
-        
+
         walk = new GreenfootImage[MAX_COUNTER_WALK][4];
         walk[0][MISA+LEFT]=new GreenfootImage("images/Misa_Walk_left_0.png");
         walk[1][MISA+LEFT]=new GreenfootImage("images/Misa_Walk_left_1.png");
@@ -380,25 +380,25 @@ public class MainCharacter extends Actor
         walk[10][IME+RIGHT]=new GreenfootImage("images/Ime_Walk_right_10.png");
         walk[11][IME+RIGHT]=new GreenfootImage("images/Ime_Walk_right_11.png");
     }
-    
+
     public void act()
     {
-       animation();
-       if (died==false)
-       {
-           
-           keyCheckMove();
-           boundedMove();
-           checkFall(); 
-           checkCellingColision();
-           checkWallColision();
-           checkHealth();
-           checkCharacter();
-           checkHurted();
-           checkItemBombCollision();
-           checkItemJokeisCollision();
-       }
-    
+        animation();
+        if (died==false)
+        {
+
+            keyCheckMove();
+            boundedMove();
+            checkFall(); 
+            checkCellingColision();
+            checkWallColision();
+            checkHealth();
+            checkCharacter();
+            checkHurted();
+            checkItemBombCollision();
+            checkItemJokeisCollision();
+        }
+
     }
 
     private void animation()
@@ -410,13 +410,13 @@ public class MainCharacter extends Actor
             attacking = false;
             holdToAttack++;
         }    
-        
+
         if(getImage() == death[MAX_COUNTER_DEATH-1][character+direction])
         {
             if(imageRepetition==20)
                 getWorld().removeObject(this);
         }
-        
+
         if(getImage() == hurt[MAX_COUNTER_HURT-1][character+direction])
         {
             if(imageRepetition==6)
@@ -424,9 +424,9 @@ public class MainCharacter extends Actor
                 hurted=false;
                 vulnerability=true;
             }
-                timeSinceLastHurt=0;
+            timeSinceLastHurt=0;
         }
-        
+
         //Do nothing
         if(attacking == false && hurted == false && died == false && jumping == false && walking == false && vulnerability == true)
         {
@@ -442,7 +442,7 @@ public class MainCharacter extends Actor
             }
             setImage(stay[currentImage][character+direction]);
         }
-        
+
         //walk
         if(attacking == false && hurted == false && died == false && jumping == false && walking == true && vulnerability == true)
         {
@@ -458,7 +458,7 @@ public class MainCharacter extends Actor
             }
             setImage(walk[currentImage][character+direction]);
         }
-        
+
         if(attacking == true )
         {
             switch(selectedItem)
@@ -475,7 +475,7 @@ public class MainCharacter extends Actor
                         currentImage = (currentImage + 1) % attack_fist.length;
                     }
                     setImage(attack_fist[currentImage][character+direction]);
-                break;
+                    break;
                 case ITEM_SWORD:
                     if (currentImage>=attack_sword.length)
                         currentImage=0;
@@ -488,7 +488,7 @@ public class MainCharacter extends Actor
                         currentImage = (currentImage + 1) % attack_sword.length;
                     }
                     setImage(attack_sword[currentImage][character+direction]);
-                break;
+                    break;
                 case ITEM_KNIFE:
                     if (currentImage>=attack_knife.length)
                         currentImage=0;
@@ -501,7 +501,7 @@ public class MainCharacter extends Actor
                         currentImage = (currentImage + 1) % attack_knife.length;
                     }
                     setImage(attack_knife[currentImage][character+direction]);
-                break;
+                    break;
                 case ITEM_BOMB:
                     if(bombAmmo>0)
                     {
@@ -522,10 +522,10 @@ public class MainCharacter extends Actor
                         attacking = false;
                         holdToAttack = 15;
                     }
-                break;
+                    break;
             }
         }
-        
+
         if(died == true && getImage() != death[MAX_COUNTER_DEATH-1][character+direction])
         {
             if (currentImage>=death.length)
@@ -540,7 +540,7 @@ public class MainCharacter extends Actor
             }
             setImage(death[currentImage][character+direction]);
         }
-        
+
         if(hurted == true && getImage()!= hurt[MAX_COUNTER_HURT-1][character+direction])
         {
             if (currentImage>=hurt.length)
@@ -555,11 +555,11 @@ public class MainCharacter extends Actor
             }
             setImage(hurt[currentImage][character+direction]);
         }
-        
+
         imageRepetition++;
         return;
     }
-    
+
     private void checkHealth()
     {
         if (timeSinceLastHurt > 100)
@@ -577,11 +577,11 @@ public class MainCharacter extends Actor
             died = true;
             hurted = false;
         }
-        
+
         timeSinceLastHurt++;    
         getWorldOfType(ScrollingWorld.class).bar.setValue(health);
     }
-    
+
     private void keyCheckMove()
     {
         //Move left
@@ -591,7 +591,7 @@ public class MainCharacter extends Actor
             setLocation(getX()+speed,getY());
             walking=true;
         }
-        
+
         //Move right
         if(Greenfoot.isKeyDown("right")){
             direction = RIGHT;
@@ -599,27 +599,27 @@ public class MainCharacter extends Actor
             setLocation(getX()+speed,getY());
             walking=true;
         }
-        
+
         //Key release walking
         if(!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right"))
         {
             speed=0;
             walking=false;
         }
-        
+
         //Jump
         if(Greenfoot.isKeyDown("UP") && jumping == false)
         {
             jump();
         }
-        
+
         if(Greenfoot.isKeyDown("ENTER") &&  holdToAttack>=15 && hurted == false && died == false && vulnerability == true)
         {
             attacking = true;
             holdToAttack=0;
             createWeapon();
         }
-        
+
         if(Greenfoot.isKeyDown("1"))
             selectedItem=ITEM_FIST;
         if(Greenfoot.isKeyDown("2"))
@@ -628,10 +628,8 @@ public class MainCharacter extends Actor
             selectedItem=ITEM_KNIFE;
         if(Greenfoot.isKeyDown("4"))
             selectedItem=ITEM_BOMB;
-            
-        
+
     }
-    
     private void createWeapon()
     {
         switch(selectedItem)
@@ -641,22 +639,22 @@ public class MainCharacter extends Actor
                     getWorld().addObject(new FistAttack(),getX()+8,getY());
                 else
                     getWorld().addObject(new FistAttack(),getX()-8,getY());
-            break;
-            
+                break;
+
             case ITEM_SWORD:
                 if(direction == RIGHT)
                     getWorld().addObject(new SwordAttack(),getX()+12,getY());
                 else
                     getWorld().addObject(new SwordAttack(),getX()-12,getY());
-            break;
-            
+                break;
+
             case ITEM_KNIFE:
                 if(direction == RIGHT)
                     getWorld().addObject(new KnifeAttack(direction),getX()+32,getY());
                 else
                     getWorld().addObject(new KnifeAttack(direction),getX()-32,getY());
-            break;
-            
+                break;
+
             case ITEM_BOMB:
                 if(bombAmmo>0)
                 {
@@ -667,15 +665,15 @@ public class MainCharacter extends Actor
                     bombAmmo--;    
                     getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
                 }
-            break;
+                break;
         }
     }
-    
+
     private void checkCharacter()
     {
-        character = getWorldOfType(ScrollingWorld.class).getChar();
+        character = getWorldOfType(ScrollingWorld.class).getCharacter();
     }
-    
+
     private void checkHurted()
     {
         if (Greenfoot.mouseClicked(this) && vulnerability == true && hurted == false)
@@ -685,7 +683,7 @@ public class MainCharacter extends Actor
             vulnerability = false;
         }
     }
-    
+
     private void checkFall()
     {
         if(onGround())
@@ -693,21 +691,21 @@ public class MainCharacter extends Actor
         else
             fall();
     }
-    
+
     private void jump()
     {
         vSpeed = vSpeed - jumpStrength;
         jumping = true;
         fall();
     }
-    
+
     private void fall()
     {
         if (attacking == false && died == false && hurted == false)
             setImage(fall[character+direction]);
         setLocation(getX(), getY() + vSpeed);
         if(vSpeed>=-12)
-        ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
         if(vSpeed <= 6)
         {
             if (attacking == false && died == false && hurted == false)
@@ -716,7 +714,7 @@ public class MainCharacter extends Actor
         }
         jumping = true;
     }
-    
+
     private boolean onGround()
     {
         Actor ground = getOneObjectAtOffset(0, 32, Block.class);
@@ -731,10 +729,10 @@ public class MainCharacter extends Actor
             return true;
         }
     }
-    
+
     private boolean checkCellingColision()
     {
-        
+
         Actor celling = getOneObjectAtOffset(0, -16, Block.class);
         if(celling != null)
         {
@@ -745,7 +743,7 @@ public class MainCharacter extends Actor
         else
             return false;
     }
-    
+
     private boolean checkWallColision()
     {
         if (direction == RIGHT)
@@ -771,19 +769,19 @@ public class MainCharacter extends Actor
             }
         }
     }
-    
+
     private void bopHead(Actor celling)
     {
         int cellingHeight = celling.getImage().getHeight();
         int newY = celling.getY() + (cellingHeight + getImage().getHeight())/2;
         setLocation(getX(), newY);
     }
-    
+
     private void moveToGround(Actor ground)
     {
         int groundHeight = ground.getImage().getHeight();
         int newY = ground.getY() - (groundHeight + getImage().getHeight())/2;
-        
+
         setLocation(getX(), newY);
         jumping = false;
     }
@@ -802,7 +800,7 @@ public class MainCharacter extends Actor
             setLocation(newX-5, getY());
         }
     }
-    
+
     private boolean checkItemBombCollision()
     {
         if (direction == RIGHT)
@@ -832,7 +830,7 @@ public class MainCharacter extends Actor
             }
         }
     }
-    
+
     private boolean checkItemJokeisCollision()
     {
         if (direction == RIGHT)
@@ -864,7 +862,7 @@ public class MainCharacter extends Actor
             }
         }
     }
-    
+
     private void boundedMove() 
     {
         if( speed+getX() <= X_BOUNDARY ) 
@@ -876,22 +874,24 @@ public class MainCharacter extends Actor
             setLocation(getWorld().getWidth()-X_BOUNDARY, getY());
             ((ScrollingWorld)getWorld()).shiftWorld(-speed,getY());
         } 
-        
+
     }
-    
+
     public int getHealth()
     {
         return health;
     }
-    
+
     public int getSelectedItem()
     {
         return selectedItem;
     }
+
     public int getJokeisQuantity()
     {
         return jokeisQuantity;
     }
+
     public int getScore()
     {
         return score;

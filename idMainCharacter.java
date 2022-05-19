@@ -1,5 +1,5 @@
 import greenfoot.*;
-public class idMainCharacter extends Actor
+public class IdMainCharacter extends Actor
 {
     private static final int MAX_ID_COUNTER = 15;
     
@@ -16,7 +16,7 @@ public class idMainCharacter extends Actor
     private int character;
     
     private GreenfootImage [][]id;
-    idMainCharacter()
+    IdMainCharacter()
     {
         id = new GreenfootImage [MAX_ID_COUNTER][2];
         id[0][MISA] = new GreenfootImage("images/ID_0_0.png");
@@ -99,7 +99,7 @@ public class idMainCharacter extends Actor
     
     private void checkCharacter()
     {
-        character = getWorldOfType(ScrollingWorld.class).getChar();
+        character = getWorldOfType(ScrollingWorld.class).getCharacter();
         if (character == IME+1)
             character=IME;
     }

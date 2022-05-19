@@ -10,7 +10,7 @@ public class ScrollingWorld extends World
     public HealthBar bar;
     public Inventory inventory;
     
-    private int charac=MISA;
+    private int characterId=MISA;
     
     private int xOffset = 0;
     private int yOffset = 0;
@@ -40,10 +40,10 @@ public class ScrollingWorld extends World
     {
         if(Greenfoot.isKeyDown("SPACE") && change == false)
         {
-            if (charac == MISA)
-                charac = IME;
+            if (characterId == MISA)
+                characterId = IME;
             else
-                charac=MISA;
+                characterId = MISA;
             change = true;
         }
         if(!Greenfoot.isKeyDown("SPACE") && change == true)
@@ -78,13 +78,13 @@ public class ScrollingWorld extends World
         List<ScrollingActor> saList = getObjects(ScrollingActor.class);
         for( ScrollingActor a : saList ) 
         {
-            a.setAbsoluteLocation(dx,dy);
+            a.setNewLocation(dx,dy);
         }
     }
     
-    public int getChar()
+    public int getCharacter()
     {
-        return charac;
+        return characterId;
     }
     
     

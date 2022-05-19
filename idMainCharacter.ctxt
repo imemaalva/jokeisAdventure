@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=idMainCharacter
+comment0.target=IdMainCharacter
 comment1.params=
-comment1.target=idMainCharacter()
+comment1.target=IdMainCharacter()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
