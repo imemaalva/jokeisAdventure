@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=JokeisIndicator
-comment1.params=quantity
-comment1.target=JokeisIndicator(int)
-comment2.params=
-comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ checkQuantity()
-numComments=4
