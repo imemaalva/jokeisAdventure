@@ -39,6 +39,7 @@ public class MainCharacter extends Actor
     private GreenfootImage [][]hurt;
     private GreenfootImage [][]death;
     private GreenfootImage [][]walk;
+    private GreenfootImage [][]run;
     private GreenfootImage []jump;
     private GreenfootImage []fall;
 
@@ -384,6 +385,32 @@ public class MainCharacter extends Actor
         walk[IME+RIGHT][9]=new GreenfootImage("images/Ime_Walk_right_9.png");
         walk[IME+RIGHT][10]=new GreenfootImage("images/Ime_Walk_right_10.png");
         walk[IME+RIGHT][11]=new GreenfootImage("images/Ime_Walk_right_11.png");
+        
+        run = new GreenfootImage[2][MAX_COUNTER_WALK];
+        run[MISA+LEFT][0]=new GreenfootImage("images/Misa_PowerUp_left_0.png");
+        run[MISA+LEFT][1]=new GreenfootImage("images/Misa_PowerUp_left_1.png");
+        run[MISA+LEFT][2]=new GreenfootImage("images/Misa_PowerUp_left_2.png");
+        run[MISA+LEFT][3]=new GreenfootImage("images/Misa_PowerUp_left_3.png");
+        run[MISA+LEFT][4]=new GreenfootImage("images/Misa_PowerUp_left_4.png");
+        run[MISA+LEFT][5]=new GreenfootImage("images/Misa_PowerUp_left_5.png");
+        run[MISA+LEFT][6]=new GreenfootImage("images/Misa_PowerUp_left_6.png");
+        run[MISA+LEFT][7]=new GreenfootImage("images/Misa_PowerUp_left_7.png");
+        run[MISA+LEFT][8]=new GreenfootImage("images/Misa_PowerUp_left_8.png");
+        run[MISA+LEFT][9]=new GreenfootImage("images/Misa_PowerUp_left_9.png");
+        run[MISA+LEFT][10]=new GreenfootImage("images/Misa_PowerUp_left_10.png");
+        run[MISA+LEFT][11]=new GreenfootImage("images/Misa_PowerUp_left_11.png");
+        run[MISA+RIGHT][0]=new GreenfootImage("images/Misa_PowerUp_right_0.png");
+        run[MISA+RIGHT][1]=new GreenfootImage("images/Misa_PowerUp_right_1.png");
+        run[MISA+RIGHT][2]=new GreenfootImage("images/Misa_PowerUp_right_2.png");
+        run[MISA+RIGHT][3]=new GreenfootImage("images/Misa_PowerUp_right_3.png");
+        run[MISA+RIGHT][4]=new GreenfootImage("images/Misa_PowerUp_right_4.png");
+        run[MISA+RIGHT][5]=new GreenfootImage("images/Misa_PowerUp_right_5.png");
+        run[MISA+RIGHT][6]=new GreenfootImage("images/Misa_PowerUp_right_6.png");
+        run[MISA+RIGHT][7]=new GreenfootImage("images/Misa_PowerUp_right_7.png");
+        run[MISA+RIGHT][8]=new GreenfootImage("images/Misa_PowerUp_right_8.png");
+        run[MISA+RIGHT][9]=new GreenfootImage("images/Misa_PowerUp_right_9.png");
+        run[MISA+RIGHT][10]=new GreenfootImage("images/Misa_PowerUp_right_10.png");
+        run[MISA+RIGHT][11]=new GreenfootImage("images/Misa_PowerUp_right_11.png");
     }
 
     public void act()
@@ -462,6 +489,9 @@ public class MainCharacter extends Actor
                     counterAnimation=0;
                 currentImage = (currentImage + 1) % MAX_COUNTER_WALK;
             }
+            if(powerUp == true && character == MISA)
+            setImage(run[character+direction][currentImage]);
+            else
             setImage(walk[character+direction][currentImage]);
         }
 
