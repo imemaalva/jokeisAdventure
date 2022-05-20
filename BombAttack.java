@@ -1,9 +1,12 @@
 import greenfoot.*;  
 public class BombAttack extends Weapon
 {
-    private static int MAX_COUNTER_EXPLODE = 14;
+    private static final int MAX_COUNTER_EXPLODE = 14;
     
-    private boolean damage = false;
+    private boolean damaging = false;
+    
+    private static final int DAMAGE = 10;
+
     
     private int timeBeforeExplode = 0;
     private int counterAnimation;
@@ -38,13 +41,13 @@ public class BombAttack extends Weapon
     
     public boolean getDamage()
     {
-        return damage;
+        return damaging;
     }
     
     private void animation()
     {
         if(getImage() == explode[9])
-            damage=true;
+            damaging=true;
         if(getImage() == explode[MAX_COUNTER_EXPLODE-1])
             getWorld().removeObject(this);
         if(imageRepetition >=2)

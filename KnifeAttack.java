@@ -1,9 +1,12 @@
 import greenfoot.*; 
 public class KnifeAttack extends Weapon
 {
+    private static final int DAMAGE = 3;
     private static final int MAX_COUNTER_SPIN = 4;
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
+    
+    private int damageQuantity;
     
     private int counterAnimation;
     private int currentImage=0;
@@ -11,8 +14,9 @@ public class KnifeAttack extends Weapon
     private int direction;
     private int speed=6;
     
-    public KnifeAttack(int direction)
+    public KnifeAttack(int direction, int damageMultiplicator)
     {
+        damageQuantity = DAMAGE * damageMultiplicator;
         spin = new GreenfootImage [MAX_COUNTER_SPIN];
         spin[0] = new GreenfootImage("images/Knife_0.png");
         spin[1] = new GreenfootImage("images/Knife_1.png");

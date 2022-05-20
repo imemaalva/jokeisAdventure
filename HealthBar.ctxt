@@ -10,6 +10,4 @@ comment4.params=
 comment4.target=void\ checkValue()
 comment5.params=
 comment5.target=int\ getValue()
-comment6.params=
-comment6.target=int\ getMinimumValue()
-numComments=7
+numComments=6

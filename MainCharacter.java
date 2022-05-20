@@ -45,12 +45,13 @@ public class MainCharacter extends Actor
     //Player resources
     private int character; 
     private int health = 50;
-    private int power = 100;
+    private int power = 50;
     private int direction = RIGHT;
     private int score = 0;
     private int selectedItem = 0;
     private int bombAmmo=0;
     private int jokeisQuantity = 0;
+    private int strenght = 1;
 
     //Movement values
     private int speed = HSPEED;
@@ -64,6 +65,7 @@ public class MainCharacter extends Actor
     private int holdToAttack = 1;
     private int timeSinceLastHurt = 0;
     private int timeToHeal = 0;
+    private int timeToReloadPower=0;
 
     //Action indicator
     private boolean jumping = false;
@@ -74,6 +76,7 @@ public class MainCharacter extends Actor
     private boolean collision = false;
     private boolean walking = false;
     private boolean vulnerability = true;
+    private boolean powerUp = false;
 
     public MainCharacter(int character)
     {
@@ -395,6 +398,7 @@ public class MainCharacter extends Actor
             checkCellingColision();
             checkWallColision();
             checkHealth();
+            checkPowerUpQuantity();
             checkCharacter();
             checkHurted();
             checkItemBombCollision();
@@ -584,12 +588,37 @@ public class MainCharacter extends Actor
         getWorldOfType(ScrollingWorld.class).bar.setValue(health);
     }
 
+    private void checkPowerUpQuantity()
+    {
+        if (powerUp==true)
+        {
+            if(character == IME)
+                strenght = 2;
+            power--;    
+        }
+        else if(powerUp == false && power<100 && timeToReloadPower >= 3)
+        {
+            timeToReloadPower = 0;
+            power++;
+        }
+        if (power <= 0)
+        {
+            powerUp=false;
+            strenght = 1;
+        }
+        timeToReloadPower++;
+        getWorldOfType(ScrollingWorld.class).powerUpBar.setValue(power);
+    }
+
     private void keyCheckMove()
     {
         //Move left
         if(Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")){
             if((direction==LEFT && collision == false)||(direction == RIGHT && collision == true))
-                speed = -HSPEED;
+                if(powerUp == true && character == MISA)
+                    speed = -HSPEED*2;
+                else
+                    speed = -HSPEED;
             direction = LEFT;
             setLocation(getX()+speed,getY());
             walking=true;
@@ -598,7 +627,10 @@ public class MainCharacter extends Actor
         //Move right
         if(Greenfoot.isKeyDown("right") && !Greenfoot.isKeyDown("left")){
             if((direction==RIGHT && collision == false)||(direction == LEFT && collision == true))
-                speed = HSPEED;
+                if(powerUp == true && character == MISA)
+                    speed = HSPEED*2;
+                else
+                    speed = HSPEED;
             direction = RIGHT;
             setLocation(getX()+speed,getY());
             walking=true;
@@ -624,6 +656,11 @@ public class MainCharacter extends Actor
             createWeapon();
         }
 
+        if(Greenfoot.isKeyDown("SPACE") && power == 100)
+        {
+            powerUp=true;
+        }
+
         if(Greenfoot.isKeyDown("1"))
             selectedItem=ITEM_FIST;
         if(Greenfoot.isKeyDown("2"))
@@ -641,23 +678,23 @@ public class MainCharacter extends Actor
         {
             case ITEM_FIST:
                 if(direction == RIGHT)
-                    getWorld().addObject(new FistAttack(),getX()+8,getY());
+                    getWorld().addObject(new FistAttack(strenght),getX()+8,getY());
                 else
-                    getWorld().addObject(new FistAttack(),getX()-8,getY());
+                    getWorld().addObject(new FistAttack(strenght),getX()-8,getY());
                 break;
 
             case ITEM_SWORD:
                 if(direction == RIGHT)
-                    getWorld().addObject(new SwordAttack(),getX()+12,getY());
+                    getWorld().addObject(new SwordAttack(strenght),getX()+12,getY());
                 else
-                    getWorld().addObject(new SwordAttack(),getX()-12,getY());
+                    getWorld().addObject(new SwordAttack(strenght),getX()-12,getY());
                 break;
 
             case ITEM_KNIFE:
                 if(direction == RIGHT)
-                    getWorld().addObject(new KnifeAttack(direction),getX()+32,getY());
+                    getWorld().addObject(new KnifeAttack(direction, strenght),getX()+32,getY());
                 else
-                    getWorld().addObject(new KnifeAttack(direction),getX()-32,getY());
+                    getWorld().addObject(new KnifeAttack(direction, strenght),getX()-32,getY());
                 break;
 
             case ITEM_BOMB:
@@ -893,6 +930,11 @@ public class MainCharacter extends Actor
     public int getHealth()
     {
         return health;
+    }
+
+    public int getPowerUpQuantity()
+    {
+        return power;
     }
 
     public int getSelectedItem()

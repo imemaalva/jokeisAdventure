@@ -8,9 +8,10 @@ public class ScrollingWorld extends World
 
     public MainCharacter character;
     public HealthBar bar;
+    public PowerUpBar powerUpBar;
     public Inventory inventory;
 
-    private int characterId=MISA;
+    int characterId=MISA;
 
     private int xOffset = 0;
     private int yOffset = 0;
@@ -38,7 +39,7 @@ public class ScrollingWorld extends World
 
     private void changeCharacter()
     {
-        if(Greenfoot.isKeyDown("SPACE") && change == false)
+        if(Greenfoot.isKeyDown("SHIFT") && change == false)
         {
             if (characterId == MISA)
                 characterId = IME;
@@ -46,7 +47,7 @@ public class ScrollingWorld extends World
                 characterId = MISA;
             change = true;
         }
-        if(!Greenfoot.isKeyDown("SPACE") && change == true)
+        if(!Greenfoot.isKeyDown("SHIFT") && change == true)
             change = false;
     }
 
