@@ -7,9 +7,8 @@ public class MyWorld extends World
     private static final int MISA = 0;
     private static int IME = 2;
     public MainCharacter character;
-        Enemy zombie = new Zombie();
+    Enemy zombie = new Zombie();
 
-    
     public MyWorld()
     {   
         super(WORLD_WIDTH, WORLD_HEIGHT, 1); 
@@ -27,12 +26,13 @@ public class MyWorld extends World
         grass = new Grass();
         addObject(grass, 16+BLOCK_SIZE*8, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE*3);
         character = new MainCharacter(MISA);            
-        addObject(zombie, 16+BLOCK_SIZE*10, WORLD_HEIGHT-BLOCK_SIZE*2-24);
-        
+        addObject(zombie, 16+BLOCK_SIZE*15, WORLD_HEIGHT-BLOCK_SIZE*2-24);
+
         addObject(character, 50, 50);
     }
+
     public void act(){
         showText(" "+ zombie.distance,100,100);
-        
+
     }
 }

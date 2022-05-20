@@ -1,17 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Zombie extends Enemy
-{
+public class Zombie extends Enemy {
     private static final int MAX_COUNTER_STAY = 5;
     private static final int MAX_COUNTER_ATTACK = 6;
     private static final int MAX_COUNTER_HURT = 4;
     private static final int MAX_COUNTER_APPEAR = 8;
     private static final int MAX_COUNTER_WALK = 12;
-    
+
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 10;
 
-    
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack;
     private GreenfootImage [][]hurt;
@@ -19,11 +17,10 @@ public class Zombie extends Enemy
     private GreenfootImage [][]walk;
     private GreenfootImage []fall;
 
-    private boolean appearing;
+    private boolean appearing = true;
     private boolean appearingStart = false;
 
-    public Zombie()
-{
+    public Zombie(){
         super(INITIAL_HEALTH, SPEED);
         appearing = true;
 
@@ -151,7 +148,7 @@ public class Zombie extends Enemy
 
         //walk
         if(attacking == false && hurted == false && walking == true && vulnerability == true && appearing == false){
-            if (currentImage>=walk.length)
+            if (currentImage>=MAX_COUNTER_WALK)
                 currentImage=0;
             if(imageRepetition >= 2){
                 imageRepetition=0;
@@ -188,7 +185,7 @@ public class Zombie extends Enemy
             }
             setImage(hurt[currentImage][direction]);
         }
-        
+
         if(appearing == true && getImage()!= appear[MAX_COUNTER_APPEAR-1]){
             if (appearingStart==true){
                 if (currentImage>=appear.length)
@@ -204,17 +201,20 @@ public class Zombie extends Enemy
             }
             else
                 setImage(appear[0]);
+        }
         imageRepetition++;
         return;
-        }
     }
-    
+
     private void calculateDistanceWithPlayer(){
-        distance=(((playerX-getX())^2)+((playerY-getY())^2))^(1/2);
+        distance=(int)Math.sqrt(Math.pow(playerX-getX(),2)+Math.pow(playerY-getY(),2));
     }
 
     private void checkAppearing(){
-        if(distance<256)
+        if(distance <= 224 && appearingStart == false){
             appearingStart = true;
+        }
+        else   
+            appearingStart = false;
     }
 }
