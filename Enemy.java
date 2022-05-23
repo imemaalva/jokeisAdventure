@@ -1,5 +1,5 @@
 import greenfoot.*; 
-public class Enemy extends Actor{
+public class Enemy extends ScrollingActor{
     static final int LEFT = 0;
     static final int RIGHT = 1;
     static final int CHASING_RANGE = 160;
