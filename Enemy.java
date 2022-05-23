@@ -4,24 +4,24 @@ public class Enemy extends Actor{
     static final int RIGHT = 1;
     static final int CHASING_RANGE = 160;
 
-    int holdToAttack=0;
-    int imageRepetition;
-    int currentImage = 0;
-    int counterAnimation = 0;
+    public int holdToAttack=0;
+    public int imageRepetition;
+    public int currentImage = 0;
+    public int counterAnimation = 0;
 
-    int playerX;
-    int playerY;
-    int distance;
+    public int playerX;
+    public int playerY;
+    public int distance;
 
-    private int health;
-    int direction = RIGHT;    
-    private int speed;
+    public int health;
+    public int direction = RIGHT;    
+    public int speed;
 
-    boolean attacking = false;
-    boolean hurted = false;
-    boolean vulnerability = true;
-    boolean walking = false;
-    boolean isNear = false;
+    public boolean attacking = false;
+    public boolean hurted = false;
+    public boolean vulnerability = true;
+    public boolean walking = false;
+    public boolean isNear = false;
 
     public Enemy(int health, int speed){
         this.health = health;

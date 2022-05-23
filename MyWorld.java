@@ -7,7 +7,8 @@ public class MyWorld extends World
     private static final int MISA = 0;
     private static int IME = 2;
     public MainCharacter character;
-    Enemy zombie = new Zombie();
+    
+    public Enemy zombie = new Zombie();
 
     public MyWorld()
     {   
