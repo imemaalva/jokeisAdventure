@@ -10,18 +10,12 @@ public class FistAttack extends Weapon
     public FistAttack(int damageMultiplicator)
     {
         damageQuantity = DAMAGE * damageMultiplicator;
+        super.setDamage(damageQuantity);
     }
     
     public void act()
     {
-        lifeTime();
-    }
-    
-    private void lifeTime()
-    {
-        if(timeToAttack > 5)
+        if(checkWallCollision() == false)
             getWorld().removeObject(this);
-        if(timeToAttack <= 5)
-            timeToAttack++;
     }
 }

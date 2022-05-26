@@ -10,18 +10,15 @@ public class SwordAttack extends Weapon
     public SwordAttack(int damageMultiplicator)
     {
         damageQuantity = DAMAGE * damageMultiplicator;
+        super.setDamage(damageQuantity);
     }
     
     public void act()
     {
-        lifeTime();
+        if(checkWallCollision() == false)
+            getWorld().removeObject(this);
     }
     
-    private void lifeTime()
-    {
-        if(timeToAttack > 5)
-            getWorld().removeObject(this);
-        if(timeToAttack <= 5)
-            timeToAttack++;
-    }
+    
+    
 }

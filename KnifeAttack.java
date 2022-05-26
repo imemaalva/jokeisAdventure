@@ -22,12 +22,14 @@ public class KnifeAttack extends Weapon
         spin[1] = new GreenfootImage("images/Knife_1.png");
         spin[2] = new GreenfootImage("images/Knife_2.png");
         spin[3] = new GreenfootImage("images/Knife_3.png");
+        super.setDamage(damageQuantity);
         this.direction=direction;
     }
     public void act()
     {
         movement();
-        checkWallColision();
+        checkWallCollision();
+        
     }
     private void movement()
     {
@@ -43,34 +45,6 @@ public class KnifeAttack extends Weapon
         
     }
     
-    private boolean checkWallColision()
-    {
-        if (direction == RIGHT)
-        {
-            Actor wall = getOneObjectAtOffset(0, 0, Block.class);
-            if(wall == null)
-            {
-                return false;
-            }
-            else
-            {
-                getWorld().removeObject(this);
-                return true;
-            }
-        }
-        else
-        {
-            Actor wall = getOneObjectAtOffset(-0, 0, Block.class);
-            if(wall == null)
-            {
-                return false;
-            }
-            else
-            {
-                getWorld().removeObject(this);
-                return true;
-            }
-        }
-    }
+    
     
 }

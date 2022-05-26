@@ -1,7 +1,7 @@
-import greenfoot.*;
-public class Weapon extends ScrollingActor
+import greenfoot.*;  
+public class EnemyAttack extends ScrollingActor
 {
-    public int damage = 0;
+    private int damage;
     
     public void setDamage(int damage)
     {

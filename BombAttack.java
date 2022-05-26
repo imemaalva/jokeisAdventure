@@ -39,7 +39,7 @@ public class BombAttack extends Weapon
         animation();
     }
     
-    public boolean getDamage()
+    public boolean isDamaging()
     {
         return damaging;
     }
@@ -47,7 +47,10 @@ public class BombAttack extends Weapon
     private void animation()
     {
         if(getImage() == explode[9])
+        {
             damaging=true;
+            super.setDamage(DAMAGE);
+        }
         if(getImage() == explode[MAX_COUNTER_EXPLODE-1])
             getWorld().removeObject(this);
         if(imageRepetition >=2)
