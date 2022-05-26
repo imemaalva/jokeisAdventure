@@ -1,4 +1,4 @@
-    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class BossZombie extends Enemy {
     private static final int MAX_COUNTER_STAY = 5;
@@ -9,7 +9,7 @@ public class BossZombie extends Enemy {
 
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 50;
-    private static final int STRENGHT = 10;
+    private static final int STRENGTH = 10;
 
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack;
@@ -17,9 +17,11 @@ public class BossZombie extends Enemy {
     private GreenfootImage [][]walk;
     private GreenfootImage []fall;
 
-
     public BossZombie(){
-        super(INITIAL_HEALTH, SPEED, 0, STRENGHT);
+        super(INITIAL_HEALTH, SPEED, 0, STRENGTH, 0);
+
+        appearing = false;
+        appearingStart = true;
 
         fall = new GreenfootImage[2];
         fall[LEFT]=new GreenfootImage("images/B_Zombie_Walk_left_2.png");
@@ -98,7 +100,6 @@ public class BossZombie extends Enemy {
     private void animation(){
         if(holdToAttack > 0 && holdToAttack < 20)
             holdToAttack++;
-
 
         if(getImage() == attack[MAX_COUNTER_ATTACK-1][direction] ){
             attacking = false;

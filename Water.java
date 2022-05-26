@@ -2,13 +2,13 @@ import greenfoot.*;
 public class Water extends ScrollingActor
 {
     private static final int MAX_COUNTER_WATER = 16;
-    
+
     private int counterAnimation;
     private int currentImage = 0;
     private int imageRepetition = 0;
-    
+
     private GreenfootImage []water;
-    
+
     public Water()
     {
         water = new GreenfootImage [MAX_COUNTER_WATER];
@@ -29,22 +29,22 @@ public class Water extends ScrollingActor
         water[14] = new GreenfootImage("images/Water_14.png");
         water[15] = new GreenfootImage("images/Water_15.png");
     }
-    
+
     public void act()
     {
         animation();
     }
-    
+
     private void animation()
     {
         if(imageRepetition>=5)
-            {
-                imageRepetition=0;
-                counterAnimation++;
-                if(counterAnimation >= water.length)
-                    counterAnimation=0;
-                currentImage = (currentImage + 1) % MAX_COUNTER_WATER;
-            }
+        {
+            imageRepetition=0;
+            counterAnimation++;
+            if(counterAnimation >= water.length)
+                counterAnimation=0;
+            currentImage = (currentImage + 1) % MAX_COUNTER_WATER;
+        }
         setImage(water[currentImage]);
         imageRepetition++;   
     }

@@ -22,25 +22,32 @@ public class Enemy extends ScrollingActor{
     public int health;
     public int direction = RIGHT;    
     public int speed;
-    private int strenght;
+    private int strength;
+    public int jumpStrength;
 
     public boolean attacking = false;
     public boolean hurted = false;
     public boolean vulnerability = true;
     public boolean walking = false;
     public boolean destroyed = false;
+    public boolean up;
+    public boolean appearing = true;
+    public boolean appearingStart = false;
 
     public static final int ACCELERATION = 1;
     public int vSpeed = 0;
     public boolean jumping = false;
     public boolean collision = false;
 
-    public Enemy(int health, int speed, int type, int strenght){
+    public Enemy(int health, int speed, int type, int strength, int jumpStrength){
         this.health = health;
         this.speed = speed;
         enemyType = type;
-        this.strenght = strenght;
+        this.strength = strength;
+        this.jumpStrength = jumpStrength;
     }
+    
+    
 
     public void checkDestroyed()
     {
@@ -69,7 +76,7 @@ public class Enemy extends ScrollingActor{
 
     public boolean onGround()
     {
-        Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/2, Block.class);
+        Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/2+8, Block.class);
         if(ground == null)
         {
             jumping = true;
@@ -85,7 +92,7 @@ public class Enemy extends ScrollingActor{
     public boolean checkCellingColision()
     {
 
-        Actor celling = getOneObjectAtOffset(0, -24, Block.class);
+        Actor celling = getOneObjectAtOffset(0, -getImage().getHeight()/2, Block.class);
         if(celling != null)
         {
             vSpeed = 0;
@@ -159,7 +166,7 @@ public class Enemy extends ScrollingActor{
     }
 
     public void checkChasing(){
-        if(distance<=160 && distance>=32 && hurted == false){
+        if(distance<=160 && distance>=32 && hurted == false && appearingStart == true && appearing == false){
             if(playerX > getX()+24){
                 walking = true;
                 setLocation(getX()+speed,getY());
@@ -183,25 +190,32 @@ public class Enemy extends ScrollingActor{
             walking = false;
         }
         else if(distance < 32)
-            if (holdToAttack >= 20 && hurted == false && vulnerability == true)
+            if (holdToAttack >= 20 && hurted == false && vulnerability == true )
             {
                 switch(enemyType)
                 {
                     case ZOMBIE: 
                         if(direction == RIGHT)
-                            getWorld().addObject(new BasicEnemyAttack(strenght),getX()+8,getY());
+                            getWorld().addObject(new BasicEnemyAttack(strength),getX()+8,getY());
                         else
-                            getWorld().addObject(new BasicEnemyAttack(strenght),getX()-8,getY());
+                            getWorld().addObject(new BasicEnemyAttack(strength),getX()-8,getY());
                         break;
                     case SKELLINGTON: 
                         if(direction == RIGHT)
-                            getWorld().addObject(new BasicEnemyAttack(strenght),getX()+8,getY());
+                            getWorld().addObject(new BasicEnemyAttack(strength),getX()+8,getY());
                         else
-                            getWorld().addObject(new BasicEnemyAttack(strenght),getX()-8,getY());
+                            getWorld().addObject(new BasicEnemyAttack(strength),getX()-8,getY());
                         break;
                 }
                 attacking = true;
                 holdToAttack=0;
             }
     }  
+    public void checkAppearing(){
+        if(distance <= 163 && appearingStart == false){
+            appearingStart = true;
+        }
+        else   
+            appearingStart = false;
+    }
 }

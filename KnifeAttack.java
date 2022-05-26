@@ -5,15 +5,15 @@ public class KnifeAttack extends Weapon
     private static final int MAX_COUNTER_SPIN = 4;
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
-    
+
     private int damageQuantity;
-    
+
     private int counterAnimation;
     private int currentImage=0;
     private GreenfootImage []spin;
     private int direction;
     private int speed=6;
-    
+
     public KnifeAttack(int direction, int damageMultiplicator)
     {
         damageQuantity = DAMAGE * damageMultiplicator;
@@ -25,12 +25,14 @@ public class KnifeAttack extends Weapon
         super.setDamage(damageQuantity);
         this.direction=direction;
     }
+
     public void act()
     {
         movement();
         checkWallCollision();
-        
+
     }
+
     private void movement()
     {
         counterAnimation++;
@@ -42,9 +44,8 @@ public class KnifeAttack extends Weapon
             setLocation(getX()+speed,getY());
         else
             setLocation(getX()-speed,getY());
-        
+
     }
-    
-    
+
     
 }

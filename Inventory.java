@@ -3,9 +3,9 @@ public class Inventory extends Actor
 {
     private static final int MISA = 0;
     private static final int IME = 1;
-    
+
     private int bomb=0;
-    
+
     private GreenfootImage [][]inventory;
     Inventory()
     {
@@ -15,10 +15,12 @@ public class Inventory extends Actor
         inventory[IME][0] = new GreenfootImage("images/Inventory_2.png");
         inventory[IME][1] = new GreenfootImage("images/Inventory_3.png");
     }
+
     public void act()
     {
         checkCharacter();
     }
+
     private void checkCharacter()
     {
         if(getWorldOfType(ScrollingWorld.class).getCharacter() == MISA)
@@ -26,7 +28,7 @@ public class Inventory extends Actor
         else
             setImage(inventory[IME][bomb]);
     }
-    
+
     public void setBombExistence(int ammo)
     {
         if (ammo > 0)

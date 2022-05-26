@@ -1,4 +1,4 @@
-    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Zombie extends Enemy {
     private static final int MAX_COUNTER_STAY = 5;
@@ -9,7 +9,7 @@ public class Zombie extends Enemy {
 
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 20;
-    private static final int STRENGHT = 5;
+    private static final int STRENGTH = 5;
 
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack;
@@ -18,11 +18,9 @@ public class Zombie extends Enemy {
     private GreenfootImage [][]walk;
     private GreenfootImage []fall;
 
-    private boolean appearing = true;
-    private boolean appearingStart = false;
 
     public Zombie(){
-        super(INITIAL_HEALTH, SPEED, 0, STRENGHT);
+        super(INITIAL_HEALTH, SPEED, 0, STRENGTH, 0);
         appearing = true;
 
         fall = new GreenfootImage[2];
@@ -200,7 +198,7 @@ public class Zombie extends Enemy {
             if (appearingStart==true){
                 if (currentImage>=appear.length)
                     currentImage=0;
-                if(imageRepetition >= 3){
+                if(imageRepetition >= 2){
                     imageRepetition=0;
                     counterAnimation++;
                     if(counterAnimation >= MAX_COUNTER_APPEAR)
@@ -235,12 +233,4 @@ public class Zombie extends Enemy {
         jumping = true;
     }
 
-
-    private void checkAppearing(){
-        if(distance <= 224 && appearingStart == false){
-            appearingStart = true;
-        }
-        else   
-            appearingStart = false;
-    }
 }

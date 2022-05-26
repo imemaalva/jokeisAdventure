@@ -6,7 +6,6 @@ public class Testing extends ScrollingWorld
     
     private int x;
     
-        BossZombie zombie = new BossZombie();
 
     public Testing()
     {
@@ -19,7 +18,7 @@ public class Testing extends ScrollingWorld
         }
         for(x=11;x<23;x++)
             addObject(new Sand(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-        addObject(zombie, (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-64);
+        addObject(new BossDeath(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-64);
         for(x=x; x<33;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
         for(x=x; x<35;x++)
@@ -174,9 +173,5 @@ public class Testing extends ScrollingWorld
             addObject(new JokeisIndicator(i), 16+BLOCK_SIZE*4+BLOCK_SIZE*i, SCROLL_HEIGHT-(BLOCK_SIZE/2)*3);
         addObject(new Score(), 0,0);
 
-    }
-    public void act()
-    {
-        showText(""+zombie.distance,50,50);
     }
 }

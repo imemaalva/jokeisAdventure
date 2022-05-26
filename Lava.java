@@ -2,13 +2,13 @@ import greenfoot.*;
 public class Lava extends ScrollingActor
 {
     private static final int MAX_COUNTER_LAVA = 16;
-    
+
     private int counterAnimation;
     private int currentImage = 0;
     private int imageRepetition = 0;
-    
+
     private GreenfootImage []lava;
-    
+
     public Lava()
     {
         lava = new GreenfootImage [MAX_COUNTER_LAVA];
@@ -29,22 +29,22 @@ public class Lava extends ScrollingActor
         lava[14] = new GreenfootImage("images/Lava_14.png");
         lava[15] = new GreenfootImage("images/Lava_15.png");
     }
-    
+
     public void act()
     {
         animation();
     }
-    
+
     private void animation()
     {
         if(imageRepetition>=7)
-            {
-                imageRepetition=0;
-                counterAnimation++;
-                if(counterAnimation >= lava.length)
-                    counterAnimation=0;
-                currentImage = (currentImage + 1) % MAX_COUNTER_LAVA;
-            }
+        {
+            imageRepetition=0;
+            counterAnimation++;
+            if(counterAnimation >= lava.length)
+                counterAnimation=0;
+            currentImage = (currentImage + 1) % MAX_COUNTER_LAVA;
+        }
         setImage(lava[currentImage]);
         imageRepetition++;   
     }

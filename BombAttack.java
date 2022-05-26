@@ -2,17 +2,16 @@ import greenfoot.*;
 public class BombAttack extends Weapon
 {
     private static final int MAX_COUNTER_EXPLODE = 14;
-    
+
     private boolean damaging = false;
-    
+
     private static final int DAMAGE = 10;
 
-    
     private int timeBeforeExplode = 0;
     private int counterAnimation;
     private int currentImage=0;
     private int imageRepetition = 0;
-    
+
     private GreenfootImage []explode;
     public BombAttack()
     {
@@ -31,19 +30,20 @@ public class BombAttack extends Weapon
         explode[11] = new GreenfootImage("images/Bomb_Explode_11.png");
         explode[12] = new GreenfootImage("images/Bomb_Explode_12.png");
         explode[13] = new GreenfootImage("images/Bomb_Explode_13.png");
-        
+
         setImage(explode[currentImage]);
     }
+
     public void act()
     {
         animation();
     }
-    
+
     public boolean isDamaging()
     {
         return damaging;
     }
-    
+
     private void animation()
     {
         if(getImage() == explode[9])

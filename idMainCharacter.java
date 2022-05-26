@@ -2,19 +2,18 @@ import greenfoot.*;
 public class IdMainCharacter extends Actor
 {
     private static final int MAX_ID_COUNTER = 15;
-    
+
     private static final int MISA = 0;
     private static final int IME = 1;
-    
-    
+
     private int counterAnimation;
     private int currentImage = 0;
     private int imageRepetition = 0;
     private int timeDoNothing=0;
     private boolean controlChange = false;
-    
+
     private int character;
-    
+
     private GreenfootImage [][]id;
     IdMainCharacter()
     {
@@ -50,13 +49,13 @@ public class IdMainCharacter extends Actor
         id[IME][13] = new GreenfootImage("images/ID_1_13.png");
         id[IME][14] = new GreenfootImage("images/ID_1_14.png");
     }
-    
+
     public void act()
     {
         checkCharacter();
         animation();
     }
-    
+
     private void animation()
     {
         if(currentImage == MAX_ID_COUNTER-1)
@@ -64,7 +63,7 @@ public class IdMainCharacter extends Actor
             timeDoNothing=0;
             currentImage=0;
         }
-        
+
         if(currentImage == 4 || currentImage == 6 && timeDoNothing > 45 )
         {
             if (controlChange == false)
@@ -79,24 +78,24 @@ public class IdMainCharacter extends Actor
                 controlChange = false;
             }
         }
-        
+
         if(imageRepetition>=4)
+        {
+            if(timeDoNothing >40)
             {
-                if(timeDoNothing >40)
-                {
-                    imageRepetition=0;
-                    counterAnimation++;
-                    if(counterAnimation >= MAX_ID_COUNTER)
-                        counterAnimation=0;
-                    currentImage = (currentImage + 1) % MAX_ID_COUNTER;
-                }
-                else 
-                    timeDoNothing++;
+                imageRepetition=0;
+                counterAnimation++;
+                if(counterAnimation >= MAX_ID_COUNTER)
+                    counterAnimation=0;
+                currentImage = (currentImage + 1) % MAX_ID_COUNTER;
             }
+            else 
+                timeDoNothing++;
+        }
         setImage(id[character][currentImage]);
         imageRepetition++;        
     }
-    
+
     private void checkCharacter()
     {
         character = getWorldOfType(ScrollingWorld.class).getCharacter();

@@ -11,7 +11,7 @@ public class MainCharacter extends Actor
     private static final int MAX_COUNTER_DEATH = 15;
     private static final int MAX_COUNTER_WALK = 12;
 
-    private static final int X_BOUNDARY = 120;
+    private static final int X_BOUNDARY = 170;
     private static final int Y_BOUNDARY = 64;
 
     private static final int ITEM_FIST = 0;
@@ -967,6 +967,7 @@ public class MainCharacter extends Actor
         }
 
     }
+
     public int getHealth()
     {
         return health;
