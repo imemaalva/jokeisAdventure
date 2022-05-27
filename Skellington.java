@@ -241,7 +241,6 @@ public class Skellington extends Enemy {
 
     private void jump()
     { 
-        up = true;
         vSpeed = vSpeed - jumpStrength;
         jumping = true;
         fall();

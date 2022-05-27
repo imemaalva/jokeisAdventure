@@ -30,7 +30,6 @@ public class Enemy extends ScrollingActor{
     public boolean vulnerability = true;
     public boolean walking = false;
     public boolean destroyed = false;
-    public boolean up;
     public boolean appearing = true;
     public boolean appearingStart = false;
 
@@ -46,8 +45,7 @@ public class Enemy extends ScrollingActor{
         this.strength = strength;
         this.jumpStrength = jumpStrength;
     }
-    
-    
+
 
     public void checkDestroyed()
     {
@@ -76,7 +74,7 @@ public class Enemy extends ScrollingActor{
 
     public boolean onGround()
     {
-        Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/2+8, Block.class);
+        Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/2, Block.class);
         if(ground == null)
         {
             jumping = true;
@@ -166,7 +164,7 @@ public class Enemy extends ScrollingActor{
     }
 
     public void checkChasing(){
-        if(distance<=160 && distance>=32 && hurted == false && appearingStart == true && appearing == false){
+        if(distance<=160+15*enemyType && distance>=32 && hurted == false && appearingStart == true && appearing == false){
             if(playerX > getX()+24){
                 walking = true;
                 setLocation(getX()+speed,getY());
@@ -181,36 +179,27 @@ public class Enemy extends ScrollingActor{
             {
                 walking = false;
             }
-            attacking = false;
+                attacking = false;
             holdToAttack = 20;
         }
-        else if (distance > 160)
+        else if (distance > 160+15*enemyType)
         {
             attacking = false;
             walking = false;
         }
-        else if(distance < 32)
-            if (holdToAttack >= 20 && hurted == false && vulnerability == true )
-            {
-                switch(enemyType)
-                {
-                    case ZOMBIE: 
-                        if(direction == RIGHT)
-                            getWorld().addObject(new BasicEnemyAttack(strength),getX()+8,getY());
-                        else
-                            getWorld().addObject(new BasicEnemyAttack(strength),getX()-8,getY());
-                        break;
-                    case SKELLINGTON: 
-                        if(direction == RIGHT)
-                            getWorld().addObject(new BasicEnemyAttack(strength),getX()+8,getY());
-                        else
-                            getWorld().addObject(new BasicEnemyAttack(strength),getX()-8,getY());
-                        break;
-                }
-                attacking = true;
-                holdToAttack=0;
-            }
+        else if (distance < 32 &&holdToAttack >= 20 && hurted == false && vulnerability == true )
+        {
+            if(direction == RIGHT)
+                getWorld().addObject(new BasicEnemyAttack(strength),getX()+8,getY());
+            else
+                getWorld().addObject(new BasicEnemyAttack(strength),getX()-8,getY());
+                walking = false;
+            attacking = true;
+            holdToAttack=0;
+        }
+
     }  
+
     public void checkAppearing(){
         if(distance <= 163 && appearingStart == false){
             appearingStart = true;

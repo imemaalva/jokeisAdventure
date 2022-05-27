@@ -8,9 +8,9 @@ public class BossDeath extends Enemy {
     private static final int MAX_COUNTER_JUMP = 12;
 
     private static final int SPEED = 3;
-    private static final int INITIAL_HEALTH = 70;
+    private static final int INITIAL_HEALTH = 60;
     private static final int STRENGTH = 15;
-    private static final int JUMP_STRENGTH = 17;
+    private static final int JUMP_STRENGTH = 20;
 
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack;
@@ -248,7 +248,6 @@ public class BossDeath extends Enemy {
 
     private void jump()
     { 
-        up = true;
         vSpeed = vSpeed - jumpStrength;
         jumping = true;
         fall();

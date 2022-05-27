@@ -5,7 +5,6 @@ public class Testing extends ScrollingWorld
     private static final int WORLD_HEIGHT = 608;
     
     private int x;
-    
 
     public Testing()
     {
@@ -18,7 +17,7 @@ public class Testing extends ScrollingWorld
         }
         for(x=11;x<23;x++)
             addObject(new Sand(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-        addObject(new BossDeath(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-64);
+        addObject(new BossDemon(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-5), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-80);
         for(x=x; x<33;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
         for(x=x; x<35;x++)
@@ -32,7 +31,7 @@ public class Testing extends ScrollingWorld
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
         }
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*42, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5-40);
+        addObject(new Demon(), (BLOCK_SIZE/2)+BLOCK_SIZE*42, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5-40);
         for(x=x; x<44;x++)
         {
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
