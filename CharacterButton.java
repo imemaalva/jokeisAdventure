@@ -1,5 +1,6 @@
-import greenfoot.*;
-public class IdMainCharacter extends Actor
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+public class CharacterButton extends Actor
 {
     private static final int MAX_ID_COUNTER = 15;
     
@@ -16,8 +17,10 @@ public class IdMainCharacter extends Actor
     private int character;
     
     private GreenfootImage [][]id;
-    public IdMainCharacter()
-    {
+    
+    public CharacterButton(int idCharacter){
+        character = idCharacter;
+       
         id = new GreenfootImage [2][MAX_ID_COUNTER];
         id[MISA][0] = new GreenfootImage("images/ID_0_0.png");
         id[MISA][1] = new GreenfootImage("images/ID_0_1.png");
@@ -49,41 +52,60 @@ public class IdMainCharacter extends Actor
         id[IME][12] = new GreenfootImage("images/ID_1_12.png");
         id[IME][13] = new GreenfootImage("images/ID_1_13.png");
         id[IME][14] = new GreenfootImage("images/ID_1_14.png");
+        
+        
+        id[MISA][0].scale(96,96);
+        id[MISA][1].scale(96,96);
+        id[MISA][2].scale(96,96);
+        id[MISA][3].scale(96,96);
+        id[MISA][4].scale(96,96);
+        id[MISA][5].scale(96,96);
+        id[MISA][6].scale(96,96);
+        id[MISA][7].scale(96,96);
+        id[MISA][8].scale(96,96);
+        id[MISA][9].scale(96,96);
+        id[MISA][10].scale(96,96);
+        id[MISA][11].scale(96,96);
+        id[MISA][12].scale(96,96);
+        id[MISA][13].scale(96,96);
+        id[MISA][14].scale(96,96);
+        id[IME][0].scale(96,96);
+        id[IME][1].scale(96,96);
+        id[IME][2].scale(96,96);
+        id[IME][3].scale(96,96);
+        id[IME][4].scale(96,96);
+        id[IME][5].scale(96,96);
+        id[IME][6].scale(96,96);
+        id[IME][7].scale(96,96);
+        id[IME][8].scale(96,96);
+        id[IME][9].scale(96,96);
+        id[IME][10].scale(96,96);
+        id[IME][11].scale(96,96);
+        id[IME][12].scale(96,96);
+        id[IME][13].scale(96,96);
+        id[IME][14].scale(96,96);
     }
     
-    public void act()
-    {
-        checkCharacter();
-        animation();
-    }
-    
-    private void animation()
-    {
-        if(currentImage == MAX_ID_COUNTER-1)
-        {
+    private void animation(){
+        if(currentImage == MAX_ID_COUNTER-1){
             timeDoNothing=0;
             currentImage=0;
         }
         
-        if(currentImage == 4 || currentImage == 6 && timeDoNothing > 45 )
-        {
-            if (controlChange == false)
-            {
+        if(currentImage == 4 || currentImage == 6 && timeDoNothing > 45 ){
+            if (controlChange == false){
                 timeDoNothing=0;
                 controlChange = true;
             }
-            else
-            {
+            else{
                 currentImage = (currentImage + 1) % MAX_ID_COUNTER;
                 imageRepetition = 0;
                 controlChange = false;
             }
         }
         
-        if(imageRepetition>=4)
-            {
-                if(timeDoNothing >40)
-                {
+        if(imageRepetition>=4){
+                if(timeDoNothing >40){
                     imageRepetition=0;
                     counterAnimation++;
                     if(counterAnimation >= MAX_ID_COUNTER)
@@ -97,10 +119,16 @@ public class IdMainCharacter extends Actor
         imageRepetition++;        
     }
     
-    private void checkCharacter()
-    {
-        character = getWorldOfType(ScrollingWorld.class).getCharacter();
-        if (character == IME+1)
-            character=IME;
+    public void act(){
+        animation();
+        checkClick();
     }
+    
+    public void checkClick(){
+        if(Greenfoot.mouseClicked(this))
+                Greenfoot.setWorld(new Testing(character));
+            
+    }
+    
+    
 }
