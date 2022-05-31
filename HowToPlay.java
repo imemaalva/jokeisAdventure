@@ -8,6 +8,7 @@ public class HowToPlay extends Menu
         bg.scale(600,400);
         setBackground(bg);
         
+        
         addObject(new MenuButton(3,1), 508, 360);
     }
 }

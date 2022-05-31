@@ -9,5 +9,7 @@ public class ChooseYourCharacter extends Menu
         setBackground(bg);
         
         addObject(new MenuButton(3,1), 508, 360);
+        addObject(new CharacterButton(0),134, 160);
+        addObject(new CharacterButton(1),440, 160);
     }
 }
