@@ -76,11 +76,11 @@ public class RoomPass extends ScrollingActor
                 case 1:
                     Greenfoot.setWorld(new Level2(character, health, bombAmmo, selectedItem, score));
                 break;
-                /*
-                case 2:
-                    Greenfoot.setWorld(new Level3());
-                break;
                 
+                case 2:
+                    Greenfoot.setWorld(new Level3(character, health, bombAmmo, selectedItem, score));
+                break;
+                /*
                 case 3:
                     Greenfoot.setWorld(new WinScreen());
                 break;

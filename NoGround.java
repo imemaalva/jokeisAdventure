@@ -21,10 +21,10 @@ public class NoGround extends ScrollingActor
 
     public void act()
     {
-        checkLevelPassed();
+        checkTouching();
     }
 
-    private void checkLevelPassed()
+    private void checkTouching()
     {
         MainCharacter mainCharacter =(MainCharacter) getOneIntersectingObject(MainCharacter.class);
         if(mainCharacter != null)

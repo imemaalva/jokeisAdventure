@@ -174,7 +174,7 @@ public class Level2 extends ScrollingWorld
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
             
         
-        addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*(x-5), WORLD_HEIGHT-BLOCK_SIZE*3);
+        addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*(x-10), WORLD_HEIGHT-BLOCK_SIZE*3);
 
         
         addObject(character, 96,200);

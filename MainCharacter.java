@@ -11,7 +11,7 @@ public class MainCharacter extends Actor
     private static final int MAX_COUNTER_DEATH = 15;
     private static final int MAX_COUNTER_WALK = 12;
 
-    private static final int X_BOUNDARY = 170;
+    private static final int X_BOUNDARY = 64;
     private static final int Y_BOUNDARY = 64;
 
     private static final int ITEM_FIST = 0;
@@ -440,6 +440,7 @@ public class MainCharacter extends Actor
             checkItemBombCollision();
             checkItemHeartCollision();
             checkItemJokeisCollision();
+            checkBreakWallRunning();
         }
 
     }
@@ -923,46 +924,56 @@ public class MainCharacter extends Actor
         speed = 0;
     }
 
-    private boolean checkItemBombCollision()
+    private void checkItemBombCollision()
     {
 
         Actor bomb = getOneIntersectingObject(BombAmmo.class);
-        if(bomb == null)
-            return false;
-        else
+        if(bomb != null)
         {
             getWorld().removeObject(bomb);
             bombAmmo+=5;
             getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
-            return true;
         }
     }
     
-    private boolean checkItemHeartCollision()
+    private void checkItemHeartCollision()
     {
         Actor life = getOneIntersectingObject(HealthCure.class);
-        if(life == null)
-            return false;
-        else
+        if(life != null)
         {
             getWorld().removeObject(life);
             health = 100;
-            return true;
         }
     }
+    
+    private void checkBreakWallRunning()
+    {
+        Actor block, block2;
+        if (direction == RIGHT)
+        {
+            block = getOneObjectAtOffset(32,16,FragileBrick.class);
+            block2 = getOneObjectAtOffset(32,-16,FragileBrick.class);
+        }
+        else
+        {
+            block = getOneObjectAtOffset(-32,16,FragileBrick.class);
+            block2 = getOneObjectAtOffset(-32,-16,FragileBrick.class);
+        }
+        if(block != null && speed != 0 && character == MISA && powerUp == true)
+            getWorld().removeObject(block);
+        if(block2 != null && speed != 0 && character == MISA && powerUp == true)
+            getWorld().removeObject(block2);
+    }
 
-    private boolean checkItemJokeisCollision()
+    private void checkItemJokeisCollision()
     {
 
         Actor jokeis = getOneIntersectingObject(Jokeis.class);
-        if(jokeis == null)
-            return false;
-        else
+        if(jokeis != null)
         {
             getWorld().removeObject(jokeis);
             score+=100;
             jokeisQuantity++;
-            return true;
         }
     }
 
