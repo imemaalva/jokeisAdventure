@@ -8,7 +8,8 @@ public class Zombie extends Enemy {
     private static final int MAX_COUNTER_WALK = 12;
 
     private static final int SPEED = 3;
-    private static final int INITIAL_HEALTH = 10;
+    private static final int INITIAL_HEALTH = 20;
+    private static final int STRENGTH = 5;
 
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack;
@@ -17,11 +18,9 @@ public class Zombie extends Enemy {
     private GreenfootImage [][]walk;
     private GreenfootImage []fall;
 
-    private boolean appearing = true;
-    private boolean appearingStart = false;
 
     public Zombie(){
-        super(INITIAL_HEALTH, SPEED);
+        super(INITIAL_HEALTH, SPEED, 0, STRENGTH, 0);
         appearing = true;
 
         fall = new GreenfootImage[2];
@@ -103,17 +102,22 @@ public class Zombie extends Enemy {
     }
 
     public void act(){
-        checkAppearing();
-        animation();
-        calculateDistanceWithPlayer();
-        calculatePlayerLocation();
-        checkDistance();
-        checkChasing();
-
+        checkDestroyed();
+        if(destroyed == false)
+        {
+            checkDamageCollision();
+            checkAppearing();
+            animation();
+            calculateDistanceWithPlayer();
+            calculatePlayerLocation();
+            checkChasing();
+            checkFall(); 
+            checkWallColision();
+        }
     }
 
     private void animation(){
-        if(holdToAttack > 0 && holdToAttack < 15)
+        if(holdToAttack > 0 && holdToAttack < 20)
             holdToAttack++;
 
         if(getImage() == appear[MAX_COUNTER_APPEAR-1] ){
@@ -160,7 +164,7 @@ public class Zombie extends Enemy {
             setImage(walk[currentImage][direction]);
         }
 
-        if(attacking == true ){
+        if(attacking == true && hurted == false ){
             if (currentImage>=attack.length)
                 currentImage=0;
             if(imageRepetition >= 2){
@@ -177,6 +181,10 @@ public class Zombie extends Enemy {
             if (currentImage>=hurt.length)
                 currentImage=0;
             if(imageRepetition >= 5){
+                if(direction == RIGHT)
+                    setLocation(getX()-SPEED,getY());
+                else
+                    setLocation(getX()+SPEED,getY());
                 imageRepetition=0;
                 counterAnimation++;
                 if(counterAnimation >= MAX_COUNTER_HURT)
@@ -186,7 +194,7 @@ public class Zombie extends Enemy {
             setImage(hurt[currentImage][direction]);
         }
 
-        if(appearing == true && getImage()!= appear[MAX_COUNTER_APPEAR-1]){
+        if(appearing == true && getImage()!= appear[MAX_COUNTER_APPEAR-1] && hurted == false){
             if (appearingStart==true){
                 if (currentImage>=appear.length)
                     currentImage=0;
@@ -203,18 +211,26 @@ public class Zombie extends Enemy {
                 setImage(appear[0]);
         }
         imageRepetition++;
-        return;
     }
 
-    private void calculateDistanceWithPlayer(){
-        distance=(int)Math.sqrt(Math.pow(playerX-getX(),2)+Math.pow(playerY-getY(),2));
+    private void checkFall()
+    {
+        if(onGround())
+            vSpeed=0;
+        else
+            fall();
     }
 
-    private void checkAppearing(){
-        if(distance <= 224 && appearingStart == false){
-            appearingStart = true;
+    private void fall()
+    {
+        if (attacking == false && hurted == false)
+            setImage(fall[direction]);
+        setLocation(getX(), getY() + vSpeed);
+        if(vSpeed <= 6)
+        {
+            vSpeed = vSpeed+ACCELERATION;
         }
-        else   
-            appearingStart = false;
+        jumping = true;
     }
+
 }

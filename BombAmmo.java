@@ -2,13 +2,13 @@ import greenfoot.*;
 public class BombAmmo extends ScrollingActor
 {
     private static final int MAX_COUNTER_BOMB = 10;
-    
+
     private int counterAnimation;
     private int currentImage = 0;
     private int imageRepetition = 0;
-    
+
     private GreenfootImage []bomb;
-    
+
     BombAmmo()
     {
         bomb = new GreenfootImage [MAX_COUNTER_BOMB];
@@ -23,22 +23,22 @@ public class BombAmmo extends ScrollingActor
         bomb[8] = new GreenfootImage("images/Bomb_8.png");
         bomb[9] = new GreenfootImage("images/Bomb_9.png");
     }
-    
+
     public void act()
     {
         animation();
     }
-    
+
     private void animation()
     {
         if(imageRepetition>=4)
-            {
-                imageRepetition=0;
-                counterAnimation++;
-                if(counterAnimation >= bomb.length)
-                    counterAnimation=0;
-                currentImage = (currentImage + 1) % MAX_COUNTER_BOMB;
-            }
+        {
+            imageRepetition=0;
+            counterAnimation++;
+            if(counterAnimation >= bomb.length)
+                counterAnimation=0;
+            currentImage = (currentImage + 1) % MAX_COUNTER_BOMB;
+        }
         setImage(bomb[currentImage]);
         imageRepetition++;   
     }

@@ -11,15 +11,20 @@ public class MainCharacter extends Actor
     private static final int MAX_COUNTER_DEATH = 15;
     private static final int MAX_COUNTER_WALK = 12;
 
-    private static final int X_BOUNDARY = 112;
+    private static final int X_BOUNDARY = 64;
+    private static final int Y_BOUNDARY = 64;
 
     private static final int ITEM_FIST = 0;
     private static final int ITEM_SWORD = 1;
     private static final int ITEM_KNIFE = 2;
     private static final int ITEM_BOMB = 3;
+    
+    private static final int JUNGLE = 0;
+    private static final int CEMENTERY = 1;
+    private static final int HELL = 2;
 
     //Gravity constant
-    private static final int ACCELERATION = 2;
+    private static final int ACCELERATION = 1;
     private static final int HSPEED = 4;
 
     //Character constanr
@@ -45,19 +50,19 @@ public class MainCharacter extends Actor
 
     //Player resources
     private int character; 
-    private int health = 50;
-    private int power = 50;
+    private int health;
+    private int power = 100;
     private int direction = RIGHT;
-    private int score = 0;
-    private int selectedItem = 0;
-    private int bombAmmo=0;
+    private int score;
+    private int selectedItem;
+    private int bombAmmo;
     private int jokeisQuantity = 0;
     private int strenght = 1;
 
     //Movement values
     private int speed = HSPEED;
     private int vSpeed = 0;
-    private int jumpStrength = 15;
+    private int jumpStrength = 9;
 
     //Animation managment
     private int counterAnimation;
@@ -79,9 +84,13 @@ public class MainCharacter extends Actor
     private boolean vulnerability = true;
     private boolean powerUp = false;
 
-    public MainCharacter(int character)
+    public MainCharacter(int character, int health, int score, int selectedItem, int bombAmmo)
     {
         this.character = character;
+        this.health = health;
+        this.score = score;
+        this.selectedItem = selectedItem;
+        this.bombAmmo = bombAmmo;
         jump = new GreenfootImage[4];
         jump[MISA+LEFT]=new GreenfootImage("images/Misa_Jump_left_0.png");
         jump[MISA+RIGHT]=new GreenfootImage("images/Misa_Jump_right_0.png");
@@ -385,7 +394,7 @@ public class MainCharacter extends Actor
         walk[IME+RIGHT][9]=new GreenfootImage("images/Ime_Walk_right_9.png");
         walk[IME+RIGHT][10]=new GreenfootImage("images/Ime_Walk_right_10.png");
         walk[IME+RIGHT][11]=new GreenfootImage("images/Ime_Walk_right_11.png");
-        
+
         run = new GreenfootImage[2][MAX_COUNTER_WALK];
         run[MISA+LEFT][0]=new GreenfootImage("images/Misa_PowerUp_left_0.png");
         run[MISA+LEFT][1]=new GreenfootImage("images/Misa_PowerUp_left_1.png");
@@ -429,16 +438,18 @@ public class MainCharacter extends Actor
             checkCharacter();
             checkHurted();
             checkItemBombCollision();
+            checkItemHeartCollision();
             checkItemJokeisCollision();
+            checkBreakWallRunning();
         }
 
     }
 
     private void animation()
     {
-        if(holdToAttack > 0 && holdToAttack < 15)
+        if(holdToAttack > 0 && holdToAttack < 15 && died == false)
             holdToAttack++;
-        if(getImage() == attack_fist[character+direction][MAX_COUNTER_FIST-1]|| getImage() == attack_sword[character+direction][MAX_COUNTER_SWORD-1] || getImage() == attack_knife[character+direction][MAX_COUNTER_KNIFE-1] || getImage() == attack_bomb[character+direction][MAX_COUNTER_BOMB-1])
+        if(getImage() == attack_fist[character+direction][MAX_COUNTER_FIST-1]|| getImage() == attack_sword[character+direction][MAX_COUNTER_SWORD-1] || getImage() == attack_knife[character+direction][MAX_COUNTER_KNIFE-1] || getImage() == attack_bomb[character+direction][MAX_COUNTER_BOMB-1] && died == false)
         {
             attacking = false;
             holdToAttack++;
@@ -447,10 +458,21 @@ public class MainCharacter extends Actor
         if(getImage() == death[character+direction][MAX_COUNTER_DEATH-1])
         {
             if(imageRepetition==20)
-                getWorld().removeObject(this);
+                switch(getWorldOfType(ScrollingWorld.class).getLevel())
+                {
+                    case JUNGLE:
+                        Greenfoot.setWorld(new JungleGameOver(character));
+                    break;
+                    case CEMENTERY:
+                        Greenfoot.setWorld(new CementeryGameOver(character));
+                    break;
+                    case HELL:
+                        Greenfoot.setWorld(new HellGameOver(character));
+                    break;
+                }
         }
 
-        if(getImage() == hurt[character+direction][MAX_COUNTER_HURT-1])
+        if(getImage() == hurt[character+direction][MAX_COUNTER_HURT-1]&& died == false)
         {
             if(imageRepetition==6)
             {
@@ -490,12 +512,12 @@ public class MainCharacter extends Actor
                 currentImage = (currentImage + 1) % MAX_COUNTER_WALK;
             }
             if(powerUp == true && character == MISA)
-            setImage(run[character+direction][currentImage]);
+                setImage(run[character+direction][currentImage]);
             else
-            setImage(walk[character+direction][currentImage]);
+                setImage(walk[character+direction][currentImage]);
         }
 
-        if(attacking == true )
+        if(attacking == true && died == false && hurted == false)
         {
             switch(selectedItem)
             {
@@ -577,7 +599,7 @@ public class MainCharacter extends Actor
             setImage(death[character+direction][currentImage]);
         }
 
-        if(hurted == true && getImage()!= hurt[character+direction][MAX_COUNTER_HURT-1])
+        if(hurted == true && getImage()!= hurt[character+direction][MAX_COUNTER_HURT-1] && died == false)
         {
             if (currentImage>=MAX_COUNTER_HURT)
                 currentImage=0;
@@ -643,7 +665,7 @@ public class MainCharacter extends Actor
     private void keyCheckMove()
     {
         //Move left
-        if(Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")){
+        if((Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("A")) && !(Greenfoot.isKeyDown("right") && Greenfoot.isKeyDown("D"))){
             if((direction==LEFT && collision == false)||(direction == RIGHT && collision == true))
                 if(powerUp == true && character == MISA)
                     speed = -HSPEED*2;
@@ -655,7 +677,7 @@ public class MainCharacter extends Actor
         }
 
         //Move right
-        if(Greenfoot.isKeyDown("right") && !Greenfoot.isKeyDown("left")){
+        if((Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("D")) && !(Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("A"))){
             if((direction==RIGHT && collision == false)||(direction == LEFT && collision == true))
                 if(powerUp == true && character == MISA)
                     speed = HSPEED*2;
@@ -667,14 +689,14 @@ public class MainCharacter extends Actor
         }
 
         //Key release walking
-        if((!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")) || (Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right")))
+        if((!(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("A")) && !(Greenfoot.isKeyDown("right") || (Greenfoot.isKeyDown("D")))) || ((Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("A")) && (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("D"))))
         {
             speed=0;
             walking=false;
         } 
 
         //Jump
-        if(Greenfoot.isKeyDown("UP") && jumping == false)
+        if((Greenfoot.isKeyDown("UP") || Greenfoot.isKeyDown("W")) && jumping == false)
         {
             jump();
         }
@@ -731,9 +753,9 @@ public class MainCharacter extends Actor
                 if(bombAmmo>0)
                 {
                     if(direction == RIGHT)
-                        getWorld().addObject(new BombAttack(),getX()+32,getY()+8);
+                        getWorld().addObject(new BombAttack(),getX()+32,getY()+7);
                     else
-                        getWorld().addObject(new BombAttack(),getX()-32,getY()+8);
+                        getWorld().addObject(new BombAttack(),getX()-32,getY()+7);
                     bombAmmo--;    
                     getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
                 }
@@ -748,11 +770,16 @@ public class MainCharacter extends Actor
 
     private void checkHurted()
     {
-        if (Greenfoot.mouseClicked(this) && vulnerability == true && hurted == false)
+        EnemyAttack  attack =(EnemyAttack) getOneIntersectingObject(EnemyAttack.class);
+        if(attack != null && vulnerability == true && hurted == false)
         {
-            health-=5;
-            hurted = true;
-            vulnerability = false;
+            if(attack.getDamage() > 0)
+            {
+                getWorld().removeObject(attack);
+                health -= attack.getDamage();
+                hurted = true;
+                vulnerability = false;
+            }
         }
     }
 
@@ -850,41 +877,44 @@ public class MainCharacter extends Actor
         int newY;
         int wallWidth = wall.getImage().getWidth();
         int wallHeight = wall.getImage().getHeight();
+
         if(direction == RIGHT && wall.getX()-16 > getX() && up == false)
         {
             newX = wall.getX() - (wallWidth + getImage().getWidth())/2;
-            setLocation(newX+5, getY());
+            collision = true;
+            setLocation(newX-speed+5, getY());
         }
         else if(direction == LEFT && wall.getX()+16 < getX() && up == false)
         {
             newX = wall.getX() + (wallWidth + getImage().getWidth())/2;
-            setLocation(newX-5, getY());
+            collision = true;
+            setLocation(newX-speed-5, getY());
         }
         else if (wall.getX()-16 > getX() && up == true && Greenfoot.isKeyDown("right"))
         {
             newX = wall.getX() - (wallWidth + getImage().getWidth())/2;
             collision = true;
-            setLocation(newX+5, getY());
+            setLocation(newX-speed+5, getY());
         }
 
         else if (wall.getX()+16 < getX() && up == true && Greenfoot.isKeyDown("left"))
         {
             newX = wall.getX() + (wallWidth + getImage().getWidth())/2;
             collision = true;
-            setLocation(newX-5, getY());
+            setLocation(newX-speed-5, getY());
         }
         else if (wall.getX()-16 > getX() && up == true && !Greenfoot.isKeyDown("right"))
         {
             newX = wall.getX() - (wallWidth + getImage().getWidth())/2;
             collision = true;
-            setLocation(newX+5, getY());
+            setLocation(newX-speed+5, getY());
         }
 
         else if (wall.getX()+16 < getX() && up == true && !Greenfoot.isKeyDown("left"))
         {
             newX = wall.getX() + (wallWidth + getImage().getWidth())/2;
             collision = true;
-            setLocation(newX-5, getY());
+            setLocation(newX-speed-5, getY());
         }
         else if(wall.getY()+16 <= getY() && up == true && !(wall.getX()+14 <= getX()-24 && wall.getX()-14 >= getX()+24 ))
         {
@@ -894,67 +924,97 @@ public class MainCharacter extends Actor
         speed = 0;
     }
 
-    private boolean checkItemBombCollision()
+    private void checkItemBombCollision()
     {
 
         Actor bomb = getOneIntersectingObject(BombAmmo.class);
-        if(bomb == null)
-            return false;
-        else
+        if(bomb != null)
         {
             getWorld().removeObject(bomb);
             bombAmmo+=5;
             getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
-            return true;
         }
     }
+    
+    private void checkItemHeartCollision()
+    {
+        Actor life = getOneIntersectingObject(HealthCure.class);
+        if(life != null)
+        {
+            getWorld().removeObject(life);
+            health = 100;
+        }
+    }
+    
+    private void checkBreakWallRunning()
+    {
+        Actor block, block2;
+        if (direction == RIGHT)
+        {
+            block = getOneObjectAtOffset(32,16,FragileBrick.class);
+            block2 = getOneObjectAtOffset(32,-16,FragileBrick.class);
+        }
+        else
+        {
+            block = getOneObjectAtOffset(-32,16,FragileBrick.class);
+            block2 = getOneObjectAtOffset(-32,-16,FragileBrick.class);
+        }
+        if(block != null && speed != 0 && character == MISA && powerUp == true)
+            getWorld().removeObject(block);
+        if(block2 != null && speed != 0 && character == MISA && powerUp == true)
+            getWorld().removeObject(block2);
+    }
 
-    private boolean checkItemJokeisCollision()
+    private void checkItemJokeisCollision()
     {
 
         Actor jokeis = getOneIntersectingObject(Jokeis.class);
-        if(jokeis == null)
-            return false;
-        else
+        if(jokeis != null)
         {
             getWorld().removeObject(jokeis);
             score+=100;
             jokeisQuantity++;
-            return true;
         }
     }
 
     private void boundedMove() 
     {
-
-        if( speed+getX() <= X_BOUNDARY && jumping ==false) 
+        if( speed+getX() <= X_BOUNDARY && jumping ==false)
         {
             setLocation(X_BOUNDARY, getY());
-            ((ScrollingWorld)getWorld()).shiftWorld(-speed,getY());
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
         } else if( speed+getX() >= getWorld().getWidth()-X_BOUNDARY && jumping ==false) 
         {
             setLocation(getWorld().getWidth()-X_BOUNDARY, getY());
-            ((ScrollingWorld)getWorld()).shiftWorld(-speed,getY());
+            ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
         } 
-        else if(vSpeed >=-12 && jumping==true && speed+getX() <= X_BOUNDARY)
+        else if(vSpeed >=-12  && speed+getX() <= X_BOUNDARY)
         {
             setLocation(X_BOUNDARY, getY());
             ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
-        }else if(vSpeed >=-12 && jumping==true && speed+getX() >= getWorld().getWidth()-X_BOUNDARY)
+        }
+        else if(vSpeed >=-12  && speed+getX() >= getWorld().getWidth()-X_BOUNDARY)
         {
             setLocation(getWorld().getWidth()-X_BOUNDARY, getY());
             ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
         }
-        else if(vSpeed >=-12 && jumping==true && speed+getX() > X_BOUNDARY )
+        else if(vSpeed >=-12  && speed+getX() > X_BOUNDARY )
         {
             ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
-        }else if(vSpeed >=-12 && jumping==true && speed+getX() < getWorld().getWidth()-X_BOUNDARY )
+        }else if(vSpeed >=-12  && speed+getX() < getWorld().getWidth()-X_BOUNDARY )
         {
             ((ScrollingWorld)getWorld()).shiftWorld(-speed,-vSpeed);
         }
-        else if(vSpeed >=-12 && jumping==true)
+        else if(vSpeed >=-12 )
+        {
             ((ScrollingWorld)getWorld()).shiftWorld(getX(),-vSpeed);
+        }
 
+    }
+    
+    public int getBombAmmo()
+    {
+        return bombAmmo;
     }
 
     public int getHealth()

@@ -4,12 +4,12 @@ public class PowerUpBar extends Actor
 {
     private static final int MISA = 0;
     private static final int IME = 2;
-    
+
     private int barWidth = 90; // the width of the color portion of the bar
     private int barHeight = 2; // the height of the color portion of the bar
     private int breakPercent = 20; // the percentage amount that changes the color of the bar
     private int breakValue = 20; // in tandem with breakPercent
-    
+
     private int character;
 
     private boolean usingBreakValue = false;
@@ -20,20 +20,19 @@ public class PowerUpBar extends Actor
     private int value = 0; // the current value of the bar
     private int maximumValue = 0; // the maximum value of the bar
     private int minimumValue = 0; // the minimum value of the bar
-    
+
     public PowerUpBar(int initValue, int maxValue, int character)
     {
         maximumValue = maxValue;
         setValue(initValue);
-        
+
         this.character = character;
         if(character == MISA)
             barColor = Color.RED;
         else
             barColor = Color.YELLOW;
     }
-    
-    
+
     private void newImage()
     {
         int barValue = barWidth * (value - minimumValue) / (maximumValue - minimumValue);
@@ -78,7 +77,6 @@ public class PowerUpBar extends Actor
     { 
         return value; 
     }
-
 
     
 }

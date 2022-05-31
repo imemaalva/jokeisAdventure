@@ -10,17 +10,18 @@ public class JokeisIndicator extends Actor
         jokeis[1] = new GreenfootImage("images/Jokeis_0.png");
         this.quantity = quantity;
     }
+
     public void act()
     {
         checkQuantity();
     }
-    
+
     private void checkQuantity()
     {
         if(getWorldOfType(ScrollingWorld.class).character.getJokeisQuantity()>=quantity)
             setImage(jokeis[1]);
         else
             setImage(jokeis[0]);
-        
+
     }
 }

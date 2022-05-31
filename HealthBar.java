@@ -88,6 +88,5 @@ public class HealthBar extends Actor
         return value; 
     }
 
-
     
 }

@@ -126,7 +126,11 @@ public class CharacterButton extends Actor
     
     public void checkClick(){
         if(Greenfoot.mouseClicked(this))
-                Greenfoot.setWorld(new Testing(character));
+        {
+        if(character !=MISA)
+            character = IME+1;
+                Greenfoot.setWorld(new Level1(character));
+            }
             
     }
     
