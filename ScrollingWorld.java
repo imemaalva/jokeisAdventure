@@ -20,7 +20,7 @@ public class ScrollingWorld extends World
     final static int SCROLL_HEIGHT = 400;
     private int worldWidth;
     private int worldHeight;
-    private GreenfootImage bimg;  
+    public GreenfootImage bimg;  
 
     private boolean change = false;
 
