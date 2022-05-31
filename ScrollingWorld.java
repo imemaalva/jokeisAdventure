@@ -11,7 +11,8 @@ public class ScrollingWorld extends World
     public PowerUpBar powerUpBar;
     public Inventory inventory;
 
-    int characterId=MISA;
+    public int characterId;
+    private int level;
 
     private int xOffset = 0;
     private int yOffset = 0;
@@ -23,13 +24,16 @@ public class ScrollingWorld extends World
 
     private boolean change = false;
 
-    public ScrollingWorld(int fullWidth, int fullHeight)
+    public ScrollingWorld(int fullWidth, int fullHeight ,int level, GreenfootImage background,int characterId)
     {   
         super(SCROLL_WIDTH, SCROLL_HEIGHT, 1, false);
+        this.level = level;
         worldWidth = fullWidth;
         worldHeight = fullHeight;
-        bimg = new GreenfootImage("images/Lvl_Jungle_0.png");
+        bimg = background;
         shiftWorld(0,0);
+        this.characterId = characterId;
+
     }
 
     public void act()
@@ -86,6 +90,11 @@ public class ScrollingWorld extends World
     public int getCharacter()
     {
         return characterId;
+    }
+    
+    public int getLevel()
+    {
+        return level;
     }
 
 }

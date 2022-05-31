@@ -4,11 +4,15 @@ public class Inventory extends Actor
     private static final int MISA = 0;
     private static final int IME = 1;
 
-    private int bomb=0;
+    private int bomb;
 
     private GreenfootImage [][]inventory;
-    Inventory()
+    Inventory(int bomb)
     {
+        if(bomb>0)
+            this.bomb = 1;
+        else
+            this.bomb = 0;
         inventory = new GreenfootImage [2][2];
         inventory[MISA][0] = new GreenfootImage("images/Inventory_0.png");
         inventory[MISA][1] = new GreenfootImage("images/Inventory_1.png");
