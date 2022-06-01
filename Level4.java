@@ -6,8 +6,8 @@ public class Level4 extends ScrollingWorld
     private static final int WORLD_HEIGHT = 608;
 
     private int x=0;
-    private static final int LEVEL = 0;
-    private static final int LEVEL_COUNTER = 2;
+    private static final int LEVEL = 1;
+    private static final int LEVEL_COUNTER = 4;
     
     private static final int MAX_COUNTER_THUNDER = 7;
 
