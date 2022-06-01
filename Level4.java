@@ -20,7 +20,7 @@ public class Level4 extends ScrollingWorld
 
     public Level4(int characterId, int health, int bombAmmo, int selectedItem, int score)
     {
-        super(WORLD_WIDTH, WORLD_HEIGHT, LEVEL, new GreenfootImage("images/Lvl_Cementery_0_7.png"),characterId);
+        super(WORLD_WIDTH, WORLD_HEIGHT, LEVEL, new GreenfootImage("images/Lvl_Cementery_0_6.png"),characterId);
         
         thunder = new GreenfootImage[MAX_COUNTER_THUNDER];
         thunder[0] = new GreenfootImage("images/Lvl_Cementery_0_6.png");
