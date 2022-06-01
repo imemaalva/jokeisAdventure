@@ -159,23 +159,23 @@ public class Level1 extends ScrollingWorld
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
         }
 
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-BLOCK_SIZE*5);
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-BLOCK_SIZE);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE*5);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE*5);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE);
 
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+3), WORLD_HEIGHT-(BLOCK_SIZE/2)-24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+3), WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-24);
         
         for(x=114; x<121;x++)
         {
-            addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
-            addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
+            addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE*4);
+            addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/4)-(BLOCK_SIZE/2));
         }
         
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-BLOCK_SIZE*5);
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-BLOCK_SIZE);
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
-        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE*5);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE*5);
+        addObject(new WoodPlatform(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE);
 
         for(x=123; x<127;x++)
         {

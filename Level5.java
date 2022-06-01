@@ -1,5 +1,5 @@
 import greenfoot.*;  
-public class Level4 extends ScrollingWorld
+public class Level5 extends ScrollingWorld
 {
 
     private static final int WORLD_WIDTH = 6784;
@@ -18,18 +18,18 @@ public class Level4 extends ScrollingWorld
 
     private GreenfootImage []thunder;
 
-    public Level4(int characterId, int health, int bombAmmo, int selectedItem, int score)
+    public Level5(int characterId, int health, int bombAmmo, int selectedItem, int score)
     {
         super(WORLD_WIDTH, WORLD_HEIGHT, LEVEL, new GreenfootImage("images/Lvl_Cementery_0_7.png"),characterId);
         
         thunder = new GreenfootImage[MAX_COUNTER_THUNDER];
-        thunder[0] = new GreenfootImage("images/Lvl_Cementery_0_6.png");
-        thunder[1] = new GreenfootImage("images/Lvl_Cementery_0_0.png");
-        thunder[2] = new GreenfootImage("images/Lvl_Cementery_0_1.png");
-        thunder[3] = new GreenfootImage("images/Lvl_Cementery_0_2.png");
-        thunder[4] = new GreenfootImage("images/Lvl_Cementery_0_3.png");
-        thunder[5] = new GreenfootImage("images/Lvl_Cementery_0_4.png");
-        thunder[6] = new GreenfootImage("images/Lvl_Cementery_0_5.png");
+        thunder[0] = new GreenfootImage("images/Lvl_Cementery_1_0.png");
+        thunder[1] = new GreenfootImage("images/Lvl_Cementery_1_1.png");
+        thunder[2] = new GreenfootImage("images/Lvl_Cementery_1_2.png");
+        thunder[3] = new GreenfootImage("images/Lvl_Cementery_1_3.png");
+        thunder[4] = new GreenfootImage("images/Lvl_Cementery_1_4.png");
+        thunder[5] = new GreenfootImage("images/Lvl_Cementery_1_5.png");
+        thunder[6] = new GreenfootImage("images/Lvl_Cementery_1_6.png");
     
         character = new MainCharacter(characterId,health,score,selectedItem,bombAmmo);
         
