@@ -192,4 +192,9 @@ public class Level2 extends ScrollingWorld
             addObject(new JokeisIndicator(i), 16+BLOCK_SIZE*4+BLOCK_SIZE*i, SCROLL_HEIGHT-(BLOCK_SIZE/2)*3);
         addObject(new Score(), 0,0);
     }
+    public void act()
+    {
+        if(character.getDead()==true)
+            bgMusic.stop();
+    }
 }

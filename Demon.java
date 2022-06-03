@@ -28,7 +28,7 @@ public class Demon extends Enemy {
     private int holdToThrow = 0;
 
     public Demon(){
-        super(INITIAL_HEALTH, SPEED, 2, STRENGTH, JUMP_STRENGTH);
+        super(INITIAL_HEALTH, SPEED, 2, STRENGTH, JUMP_STRENGTH,false,0);
         appearing = false;
         appearingStart = true;
 

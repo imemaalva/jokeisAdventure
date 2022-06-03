@@ -1041,4 +1041,12 @@ public class MainCharacter extends Actor
     {
         return score;
     }
+    public int getCharacter()
+    {
+        return character;
+    }
+    public boolean getDead()
+    {
+        return died;
+    }
 }

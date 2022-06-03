@@ -12,6 +12,11 @@ public class Level1 extends ScrollingWorld
     public Level1(int characterId)
     {
         super(WORLD_WIDTH, WORLD_HEIGHT, LEVEL, new GreenfootImage("images/Lvl_Jungle_0.png"), characterId);
+        if(bgMusic!=null)
+        bgMusic.stop();
+        bgMusic = new GreenfootSound("sounds/Welcome to the Jungle.mp3");
+        
+        bgMusic.playLoop();
         
         character = new MainCharacter(characterId,100,0,0,0);
         
@@ -319,7 +324,7 @@ public class Level1 extends ScrollingWorld
         addObject(new Jokeis(), 16+BLOCK_SIZE*10, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
         addObject(new Jokeis(), 16+BLOCK_SIZE*12, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
         addObject(new Jokeis(), 16+BLOCK_SIZE*30, WORLD_HEIGHT-(BLOCK_SIZE/2)*3-BLOCK_SIZE);
-        addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*(x-5), WORLD_HEIGHT-BLOCK_SIZE*3);
+        addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*x, WORLD_HEIGHT-BLOCK_SIZE*3);
 
         
         
@@ -344,6 +349,11 @@ public class Level1 extends ScrollingWorld
             addObject(new JokeisIndicator(i), 16+BLOCK_SIZE*4+BLOCK_SIZE*i, SCROLL_HEIGHT-(BLOCK_SIZE/2)*3);
         addObject(new Score(), 0,0);
 
+    }
+    public void act()
+    {
+        if(character.getDead()==true)
+            bgMusic.stop();
     }
 
 }

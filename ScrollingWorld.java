@@ -2,6 +2,7 @@ import greenfoot.*;
 import java.util.List;
 public class ScrollingWorld extends World
 {
+    public static GreenfootSound bgMusic;
     static final int BLOCK_SIZE = 32;
     static final int MISA = 0;
     static final int IME = 2;
@@ -34,25 +35,6 @@ public class ScrollingWorld extends World
         shiftWorld(0,0);
         this.characterId = characterId;
 
-    }
-
-    public void act()
-    {
-        changeCharacter();
-    }
-
-    private void changeCharacter()
-    {
-        if(Greenfoot.isKeyDown("SHIFT") && change == false)
-        {
-            if (characterId == MISA)
-                characterId = IME;
-            else
-                characterId = MISA;
-            change = true;
-        }
-        if(!Greenfoot.isKeyDown("SHIFT") && change == true)
-            change = false;
     }
 
     public void shiftWorld(int x, int y) 

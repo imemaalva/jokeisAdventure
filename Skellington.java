@@ -23,7 +23,7 @@ public class Skellington extends Enemy {
     private int holdToJump=0;
 
     public Skellington(){
-        super(INITIAL_HEALTH, SPEED, 1, STRENGHT, JUMP_STRENGTH);
+        super(INITIAL_HEALTH, SPEED, 1, STRENGHT, JUMP_STRENGTH, false, 0);
         appearing = true;
 
         jump = new GreenfootImage[2];

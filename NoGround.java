@@ -34,34 +34,14 @@ public class NoGround extends ScrollingActor
                 case 2:
                     Greenfoot.setWorld(new Level2(character, health, bombAmmo, selectedItem, score));
                     break;
-                    /*
-                case 3:
-                    Greenfoot.setWorld(new Level3());
-                    break;
 
                 case 4:
-                    Greenfoot.setWorld(new WinScreen());
+                    Greenfoot.setWorld(new Level4(character, health, bombAmmo, selectedItem, score));
                     break;
 
                 case 5:
-                    Greenfoot.setWorld(new Level5());
+                    Greenfoot.setWorld(new Level5(character, health, bombAmmo, selectedItem, score));
                     break;
-
-                case 6:
-                    Greenfoot.setWorld(new Level6());
-                    break;
-
-                case 7:
-                    Greenfoot.setWorld(new WinScreen());
-                    break;
-
-                case 8:
-                    Greenfoot.setWorld(new Level8());
-                    break;
-
-                case 9:
-                    Greenfoot.setWorld(new Level9());
-                    break;*/
 
             }
         }

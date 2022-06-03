@@ -32,18 +32,22 @@ public class Enemy extends ScrollingActor{
     public boolean destroyed = false;
     public boolean appearing = true;
     public boolean appearingStart = false;
+    private boolean boss;
 
     public static final int ACCELERATION = 1;
     public int vSpeed = 0;
     public boolean jumping = false;
     public boolean collision = false;
+    private int level;
 
-    public Enemy(int health, int speed, int type, int strength, int jumpStrength){
+    public Enemy(int health, int speed, int type, int strength, int jumpStrength, boolean boss, int level){
         this.health = health;
         this.speed = speed;
         enemyType = type;
         this.strength = strength;
         this.jumpStrength = jumpStrength;
+        this.boss = boss;
+        this.level = level;
     }
 
 
@@ -51,8 +55,22 @@ public class Enemy extends ScrollingActor{
     {
         if(health <= 0)
         {
+            if (boss==true)
+                switch(level)
+                {
+                    case 3:
+                    getWorldOfType(Level3.class).addObject(new Portal(level),getX(),getY());
+                    break;
+                    case 6:
+                    getWorldOfType(Level6.class).addObject(new Portal(level),getX(),getY());
+                    break;
+                    case 9:
+                    getWorldOfType(Level9.class).addObject(new Portal(level),getX(),getY()+18);
+                    break;
+                }
             destroyed = true;
             getWorld().removeObject(this);
+                
         }
 
     }
@@ -74,7 +92,7 @@ public class Enemy extends ScrollingActor{
 
     public boolean onGround()
     {
-        Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/2, Block.class);
+        Actor ground = getOneObjectAtOffset(0, getImage().getHeight()/2+8, Block.class);
         if(ground == null)
         {
             jumping = true;

@@ -20,10 +20,14 @@ public class RetryButton extends Actor
     {
         if(Greenfoot.mouseClicked(this))
         {
+            getWorldOfType(GameOverScreen.class).gameOverMusic.stop();
             switch(level)
             {
                 case JUNGLE:
                     Greenfoot.setWorld(new Level1(character));
+                break;
+                case CEMENTERY:
+                    Greenfoot.setWorld(new Level4(character,100,0,0,0));
                 break;
                     
             }

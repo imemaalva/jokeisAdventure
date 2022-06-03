@@ -1,4 +1,6 @@
 import greenfoot.*; 
+import greenfoot.GreenfootSound;
+
 public class MenuButton extends Actor
 {
     private static final int PLAY = 0;
@@ -8,6 +10,7 @@ public class MenuButton extends Actor
     
     private int skin;
     private int menu;
+
     
     public MenuButton(int skin , int menu){
         this.skin = skin;
@@ -55,7 +58,7 @@ public class MenuButton extends Actor
                 Greenfoot.setWorld(new HowToPlay());
             break;
             
-            case RETURN: 
+            case RETURN:  
                 Greenfoot.setWorld(new MainMenu());
             break;
         }

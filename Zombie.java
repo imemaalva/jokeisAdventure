@@ -20,7 +20,7 @@ public class Zombie extends Enemy {
 
 
     public Zombie(){
-        super(INITIAL_HEALTH, SPEED, 0, STRENGTH, 0);
+        super(INITIAL_HEALTH, SPEED, 0, STRENGTH, 0, false, 0);
         appearing = true;
 
         fall = new GreenfootImage[2];

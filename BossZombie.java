@@ -18,7 +18,7 @@ public class BossZombie extends Enemy {
     private GreenfootImage []fall;
 
     public BossZombie(){
-        super(INITIAL_HEALTH, SPEED, 0, STRENGTH, 0);
+        super(INITIAL_HEALTH, SPEED, 0, STRENGTH, 0,true,3);
 
         appearing = false;
         appearingStart = true;

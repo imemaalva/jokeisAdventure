@@ -127,6 +127,7 @@ public class CharacterButton extends Actor
     public void checkClick(){
         if(Greenfoot.mouseClicked(this))
         {
+        getWorldOfType(Menu.class).menuMusic.stop();
         if(character !=MISA)
             character = IME+1;
                 Greenfoot.setWorld(new Level1(character));
