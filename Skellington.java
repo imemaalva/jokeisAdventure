@@ -10,7 +10,7 @@ public class Skellington extends Enemy {
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 25;
     private static final int STRENGHT = 6;
-    private static final int JUMP_STRENGTH = 12;
+    private static final int JUMP_STRENGTH = 13;
 
     private GreenfootImage [][]stay;
     private GreenfootImage [][]attack;
@@ -219,7 +219,7 @@ public class Skellington extends Enemy {
 
     private void checkJumping()
     {
-        if(holdToJump >=20)
+        if(holdToJump >=20 && appearing == false)
         {
             holdToJump = 0;
             if (direction == RIGHT)

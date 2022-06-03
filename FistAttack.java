@@ -6,9 +6,12 @@ public class FistAttack extends Weapon
     private int damageQuantity;
 
     private int timeToAttack=0;
+    
+    private GreenfootSound hit = new GreenfootSound("sounds/Throw.mp3");
 
     public FistAttack(int damageMultiplicator)
     {
+        hit.play();
         damageQuantity = DAMAGE * damageMultiplicator;
         super.setDamage(damageQuantity);
     }

@@ -27,8 +27,11 @@ public class Level2 extends ScrollingWorld
         for(x=9;x<34;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
             
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*22, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
+            
         addObject(new NoGround(LEVEL_COUNTER,characterId,character.getHealth(),character.getBombAmmo(),character.getSelectedItem(),character.getScore()),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
         
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE-24);
         for(x=35;x<37;x++)
         {
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
@@ -60,8 +63,10 @@ public class Level2 extends ScrollingWorld
         for(x = 45;x<47;x++)
             addObject(new NoGround(LEVEL_COUNTER,characterId,character.getHealth(),character.getBombAmmo(),character.getSelectedItem(),character.getScore()),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
         
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+9), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE-24);
         for(x=47;x<73;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-3), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
 
         for(x=73;x<77;x++)
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -90,6 +95,8 @@ public class Level2 extends ScrollingWorld
 
         addObject(new FragileBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         addObject(new FragileBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+3), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+5), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
 
         for(x=99;x<108;x++)
         {
@@ -112,6 +119,10 @@ public class Level2 extends ScrollingWorld
 
         for(x=126;x<162;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+8), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+16), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+24), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+32), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
 
         addObject(new Dirt(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         for(x=162;x<165;x++)
@@ -127,6 +138,7 @@ public class Level2 extends ScrollingWorld
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
         }
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
         addObject(new Dirt(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
         addObject(new Dirt(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
 
@@ -173,6 +185,8 @@ public class Level2 extends ScrollingWorld
         for(x=188;x<212;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
             
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-15), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-20), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
         
         addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*(x-10), WORLD_HEIGHT-BLOCK_SIZE*3);
 

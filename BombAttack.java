@@ -11,6 +11,10 @@ public class BombAttack extends Weapon
     private int counterAnimation;
     private int currentImage=0;
     private int imageRepetition = 0;
+    
+    
+    private GreenfootSound explosion = new GreenfootSound("sounds/Explosion.wav");
+
 
     private GreenfootImage []explode;
     public BombAttack()
@@ -52,7 +56,10 @@ public class BombAttack extends Weapon
             super.setDamage(DAMAGE);
         }
         if(getImage() == explode[MAX_COUNTER_EXPLODE-1])
+        {
+            explosion.play();
             getWorld().removeObject(this);
+        }
         if(imageRepetition >=2)
         {
             imageRepetition = 0;

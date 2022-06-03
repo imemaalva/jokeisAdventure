@@ -17,6 +17,7 @@ public class Zombie extends Enemy {
     private GreenfootImage []appear;
     private GreenfootImage [][]walk;
     private GreenfootImage []fall;
+    
 
 
     public Zombie(){
@@ -113,7 +114,16 @@ public class Zombie extends Enemy {
             checkChasing();
             checkFall(); 
             checkWallColision();
+            checkSound();
         }
+    }
+    private void checkSound()
+    {
+        if (hurted==true)
+        {
+        }
+        
+        
     }
 
     private void animation(){

@@ -14,7 +14,7 @@ public class Level7 extends ScrollingWorld
         super(WORLD_WIDTH, WORLD_HEIGHT, LEVEL, new GreenfootImage("images/Lvl_Hell_0.png"),characterId);
         if(bgMusic!=null)
         bgMusic.stop();
-        bgMusic = new GreenfootSound("sounds/TheTrooper.mp3");
+        bgMusic = new GreenfootSound("sounds/The Trooper.mp3");
         bgMusic.playLoop();
 
         character = new MainCharacter(characterId,health,score,selectedItem,bombAmmo);

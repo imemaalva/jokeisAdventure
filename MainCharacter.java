@@ -47,6 +47,8 @@ public class MainCharacter extends Actor
     private GreenfootImage [][]run;
     private GreenfootImage []jump;
     private GreenfootImage []fall;
+    
+    private GreenfootSound itemCollect = new GreenfootSound("sounds/Item.mp3");
 
     //Player resources
     private int character; 
@@ -710,6 +712,7 @@ public class MainCharacter extends Actor
 
         if(Greenfoot.isKeyDown("SPACE") && power == 100)
         {
+            itemCollect.play();
             powerUp=true;
         }
 
@@ -930,6 +933,7 @@ public class MainCharacter extends Actor
         Actor bomb = getOneIntersectingObject(BombAmmo.class);
         if(bomb != null)
         {
+            itemCollect.play();
             getWorld().removeObject(bomb);
             bombAmmo+=5;
             getWorldOfType(ScrollingWorld.class).inventory.setBombExistence(bombAmmo);
@@ -941,6 +945,7 @@ public class MainCharacter extends Actor
         Actor life = getOneIntersectingObject(HealthCure.class);
         if(life != null)
         {
+            itemCollect.play();
             getWorld().removeObject(life);
             health = 100;
         }
@@ -971,6 +976,7 @@ public class MainCharacter extends Actor
         Actor jokeis = getOneIntersectingObject(Jokeis.class);
         if(jokeis != null)
         {
+            itemCollect.play();
             getWorld().removeObject(jokeis);
             score+=100;
             jokeisQuantity++;

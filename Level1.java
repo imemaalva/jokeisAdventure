@@ -29,7 +29,7 @@ public class Level1 extends ScrollingWorld
         for(x=23; x<33;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
 
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE-2-24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
         
         for(x=33; x<35;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);

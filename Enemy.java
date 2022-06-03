@@ -33,6 +33,12 @@ public class Enemy extends ScrollingActor{
     public boolean appearing = true;
     public boolean appearingStart = false;
     private boolean boss;
+    
+    private GreenfootSound sword = new GreenfootSound("sounds/Sword.mp3");
+    private GreenfootSound attack = new GreenfootSound("sounds/monster.wav");
+    private GreenfootSound bones = new GreenfootSound("sounds/bones.mp3");
+    private GreenfootSound hurtedSound = new GreenfootSound("sounds/monster_death.wav");
+    private GreenfootSound punch = new GreenfootSound("sounds/Hit.mp3");
 
     public static final int ACCELERATION = 1;
     public int vSpeed = 0;
@@ -82,6 +88,14 @@ public class Enemy extends ScrollingActor{
         {
             if(weapon.getDamage() > 0)
             {
+                if(enemyType == 1)
+                bones.play();
+                else
+                hurtedSound.play();
+                if(weapon instanceof SwordAttack || weapon instanceof KnifeAttack)
+                    sword.play();
+                else if(weapon instanceof FistAttack)
+                    punch.play();
                 getWorld().removeObject(weapon);
                 health -= weapon.getDamage();
                 hurted = true;
@@ -207,6 +221,11 @@ public class Enemy extends ScrollingActor{
         }
         else if (distance < 32 &&holdToAttack >= 20 && hurted == false && vulnerability == true )
         {
+            if (enemyType == 1)
+            bones.play();
+            else
+            attack.play();
+            
             if(direction == RIGHT)
                 getWorld().addObject(new BasicEnemyAttack(strength),getX()+8,getY());
             else

@@ -6,6 +6,7 @@ public class CharacterButton extends Actor
     
     private static final int MISA = 0;
     private static final int IME = 1;
+    private GreenfootSound button = new GreenfootSound("sounds/button.mp3");
     
     
     private int counterAnimation;
@@ -127,6 +128,7 @@ public class CharacterButton extends Actor
     public void checkClick(){
         if(Greenfoot.mouseClicked(this))
         {
+            button.play();
         getWorldOfType(Menu.class).menuMusic.stop();
         if(character !=MISA)
             character = IME+1;

@@ -60,6 +60,7 @@ public class Level5 extends ScrollingWorld
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+7), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+7), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+7), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+8), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
         for(x=23;x<25;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
 
@@ -101,6 +102,7 @@ public class Level5 extends ScrollingWorld
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+7), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+7), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*9);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+7), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*12);
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+4), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*9-24);
 
         for(x=33;x<40;x++)
             addObject(new DarkWoodPlatform(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE*9);
@@ -112,6 +114,7 @@ public class Level5 extends ScrollingWorld
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*9);
         }
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3-24);
         for(x=43;x<46;x++)
         {
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
@@ -178,6 +181,7 @@ public class Level5 extends ScrollingWorld
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*10);
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*11-24);
 
         for(int y=0;y<11;y++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*y);
@@ -221,6 +225,12 @@ public class Level5 extends ScrollingWorld
             x++;
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*y);
         }
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3-24);
+            
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+12), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3-24);
+            
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+20), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3-24);
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+30), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3-24);
 
         for(x=102;x<106;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
@@ -282,6 +292,8 @@ public class Level5 extends ScrollingWorld
 
         for(x=178;x<180;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
+            
+            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+4), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
 
         for(x=180;x<186;x++)
         {

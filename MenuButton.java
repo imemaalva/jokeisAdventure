@@ -7,6 +7,7 @@ public class MenuButton extends Actor
     private static final int SCORE = 1;
     private static final int HOW_TO_PLAY = 2;
     private static final int RETURN = 3;
+    private GreenfootSound button = new GreenfootSound("sounds/button.mp3");
     
     private int skin;
     private int menu;
@@ -45,6 +46,7 @@ public class MenuButton extends Actor
     
     private void checkClicked(){
         if(Greenfoot.mouseClicked(this)){
+            button.play();
              switch(skin){
             case PLAY: 
                 Greenfoot.setWorld(new ChooseYourCharacter());
