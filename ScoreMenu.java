@@ -13,9 +13,9 @@ public class ScoreMenu extends Menu
     {
         if(menuMusic==null)
         {
-        menuMusic = new GreenfootSound("sounds/Sweet Child O' Mine.mp3");
-        
-        menuMusic.playLoop();
+            menuMusic = new GreenfootSound("sounds/Sweet Child O' Mine.mp3");
+
+            menuMusic.playLoop();
         }
         Scanner dato, datoNombres;
         int x=300,y=130;
@@ -51,6 +51,4 @@ public class ScoreMenu extends Menu
             y += 30;
         }
     }
-    
-
 }

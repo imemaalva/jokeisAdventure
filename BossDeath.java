@@ -23,7 +23,7 @@ public class BossDeath extends Enemy {
     private int holdToJump=0;
 
     public BossDeath(){
-        super(INITIAL_HEALTH, SPEED, 1, STRENGTH, JUMP_STRENGTH,true, 6);
+        super(INITIAL_HEALTH, SPEED, 1, STRENGTH, JUMP_STRENGTH,true, 6, SCORE);
         appearing = false;
         appearingStart = true;
 

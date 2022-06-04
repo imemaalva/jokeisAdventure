@@ -126,10 +126,8 @@ public class Level6 extends ScrollingWorld
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
 
         addObject(new BossDeath(), BLOCK_SIZE*(x-6), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
-        
-        
-        addObject(character, 96,200);
 
+        addObject(character, 96,200);
         bar = new HealthBar(character.getHealth(),100);
         powerUpBar = new PowerUpBar(character.getPowerUpQuantity(),100, characterId);
         inventory = new Inventory(character.getBombAmmo());

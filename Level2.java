@@ -12,9 +12,9 @@ public class Level2 extends ScrollingWorld
     public Level2(int characterId, int health, int bombAmmo, int selectedItem, int score)
     {
         super(WORLD_WIDTH, WORLD_HEIGHT, LEVEL, new GreenfootImage("images/Lvl_Jungle_1.png"),characterId);
-        
+
         character = new MainCharacter(characterId,health,score,selectedItem,bombAmmo);
-        
+
         addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
         addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
         addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-BLOCK_SIZE*5);
@@ -26,11 +26,11 @@ public class Level2 extends ScrollingWorld
         addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+8), WORLD_HEIGHT-BLOCK_SIZE*2);
         for(x=9;x<34;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-            
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*22, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
-            
+
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*22, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
+
         addObject(new NoGround(LEVEL_COUNTER,characterId,character.getHealth(),character.getBombAmmo(),character.getSelectedItem(),character.getScore()),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
-        
+
         addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE-24);
         for(x=35;x<37;x++)
         {
@@ -38,9 +38,10 @@ public class Level2 extends ScrollingWorld
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         }
-        
+
         addObject(new NoGround(LEVEL_COUNTER,characterId,character.getHealth(),character.getBombAmmo(),character.getSelectedItem(),character.getScore()),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
-        
+
+        addObject(new Jokeis(), (BLOCK_SIZE/2)+BLOCK_SIZE*39, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
         for(x=38;x<41;x++)
         {
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
@@ -48,21 +49,20 @@ public class Level2 extends ScrollingWorld
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
         }
-        
+
         for(x = 41;x<43;x++)
             addObject(new NoGround(LEVEL_COUNTER,characterId,character.getHealth(),character.getBombAmmo(),character.getSelectedItem(),character.getScore()),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
-        
-        
+
         for(x=43;x<45;x++)
         {
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
             addObject(new GrayBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         }
-        
+
         for(x = 45;x<47;x++)
             addObject(new NoGround(LEVEL_COUNTER,characterId,character.getHealth(),character.getBombAmmo(),character.getSelectedItem(),character.getScore()),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2));
-        
+
         addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+9), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE-24);
         for(x=47;x<73;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -95,8 +95,8 @@ public class Level2 extends ScrollingWorld
 
         addObject(new FragileBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         addObject(new FragileBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+3), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+5), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+3), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x+5), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
 
         for(x=99;x<108;x++)
         {
@@ -147,7 +147,7 @@ public class Level2 extends ScrollingWorld
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
         }
-        
+
         addObject(new FragileBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         addObject(new FragileBrick(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
 
@@ -176,6 +176,7 @@ public class Level2 extends ScrollingWorld
 
         for(x=186;x<188;x++)
         {
+            addObject(new Jokeis(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7);
             addObject(new Dirt(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
             addObject(new Dirt(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
@@ -184,15 +185,13 @@ public class Level2 extends ScrollingWorld
 
         for(x=188;x<212;x++)
             addObject(new Grass(), (BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-            
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-15), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
-        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-20), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*24);
-        
+
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-15), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
+        addObject(new Zombie(), (BLOCK_SIZE/2)+BLOCK_SIZE*(x-20), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
+
         addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*(x-10), WORLD_HEIGHT-BLOCK_SIZE*3);
 
-        
         addObject(character, 96,200);
-
         bar = new HealthBar(character.getHealth(),100);
         powerUpBar = new PowerUpBar(character.getPowerUpQuantity(),100, characterId);
         inventory = new Inventory(character.getBombAmmo());
@@ -206,6 +205,7 @@ public class Level2 extends ScrollingWorld
             addObject(new JokeisIndicator(i), 16+BLOCK_SIZE*4+BLOCK_SIZE*i, SCROLL_HEIGHT-(BLOCK_SIZE/2)*3);
         addObject(new Score(), 0,0);
     }
+
     public void act()
     {
         if(character.getDead()==true)

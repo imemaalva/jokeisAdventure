@@ -27,7 +27,7 @@ public class BossDemon extends Enemy {
     private int holdToThrow = 0;
     
     public BossDemon(){
-        super(INITIAL_HEALTH, SPEED, 2, STRENGTH, JUMP_STRENGTH,true,9);
+        super(INITIAL_HEALTH, SPEED, 2, STRENGTH, JUMP_STRENGTH,true,9, SCORE);
         appearing = false;
         appearingStart = true;
 

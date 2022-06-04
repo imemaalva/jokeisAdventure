@@ -41,6 +41,7 @@ public class Portal extends ScrollingActor
                     Greenfoot.setWorld(new Level7(character, health, bombAmmo, selectedItem, score));
                 break;
                 case 9:
+                    getWorldOfType(ScrollingWorld.class).bgMusic.stop();
                     Greenfoot.setWorld(new ScoreMenu());
                 break;
             }

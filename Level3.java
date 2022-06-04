@@ -155,8 +155,7 @@ public class Level3 extends ScrollingWorld
         }
         for(x=59;x<61;x++)
             addObject(new GrayBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
-            
-    
+
         addObject(new BossZombie(), BLOCK_SIZE*(x-8), WORLD_HEIGHT-BLOCK_SIZE*6);
         addObject(character, 96,200);
         bar = new HealthBar(character.getHealth(),100);
@@ -172,6 +171,7 @@ public class Level3 extends ScrollingWorld
             addObject(new JokeisIndicator(i), 16+BLOCK_SIZE*4+BLOCK_SIZE*i, SCROLL_HEIGHT-(BLOCK_SIZE/2)*3);
         addObject(new Score(), 0,0);
     }
+
     public void act()
     {
         if(character.getDead()==true)

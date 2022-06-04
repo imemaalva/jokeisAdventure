@@ -28,7 +28,15 @@ public class Level8 extends ScrollingWorld
 
         addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
 
-        addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-BLOCK_SIZE*6);        
+        addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-BLOCK_SIZE*6);
+
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+8), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+16), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+24), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+32), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+40), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+48), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+
         for(x=16;x<67;x++)
             addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
 
@@ -70,7 +78,13 @@ public class Level8 extends ScrollingWorld
 
         addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
 
-        addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-BLOCK_SIZE*6);        
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);  
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+8), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+16), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+24), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+32), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+40), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7); 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+48), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7);       
 
         for(x=98;x<149;x++)
             addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
@@ -87,6 +101,8 @@ public class Level8 extends ScrollingWorld
         for(x=158;x<164;x++)
             addObject(new RedGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7);
 
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+4), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*7);
+
         for(x=164;x<176;x++)
             addObject(new RedGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
 
@@ -97,6 +113,7 @@ public class Level8 extends ScrollingWorld
         for(x=178;x<180;x++)
             addObject(new RedGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
         addObject(new RedGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x-1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
+        addObject(new Demon(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
 
         for(x=180;x<185;x++)
             addObject(new RedGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -107,7 +124,6 @@ public class Level8 extends ScrollingWorld
         for(x=192;x<212;x++)
             addObject(new RedGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
 
-       
         
         addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*(x-3), WORLD_HEIGHT-BLOCK_SIZE*10);
 
@@ -125,6 +141,7 @@ public class Level8 extends ScrollingWorld
             addObject(new JokeisIndicator(i), 16+BLOCK_SIZE*4+BLOCK_SIZE*i, SCROLL_HEIGHT-(BLOCK_SIZE/2)*3);
         addObject(new Score(), 0,0);
     }
+
     public void act()
     {
         if(character.getDead()==true)

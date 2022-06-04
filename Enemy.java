@@ -34,7 +34,7 @@ public class Enemy extends ScrollingActor{
     public boolean appearing = true;
     public boolean appearingStart = false;
     private boolean boss;
-    
+
     private GreenfootSound sword = new GreenfootSound("sounds/Sword.mp3");
     private GreenfootSound attack = new GreenfootSound("sounds/monster.wav");
     private GreenfootSound bones = new GreenfootSound("sounds/bones.mp3");
@@ -47,9 +47,10 @@ public class Enemy extends ScrollingActor{
     public boolean collision = false;
     private int level;
 
-    public Enemy(int health, int speed, int type, int strength, int jumpStrength, boolean boss, int level){
+    public Enemy(int health, int speed, int type, int strength, int jumpStrength, boolean boss, int level, int score){
         this.health = health;
         this.speed = speed;
+        this.score = score;
         enemyType = type;
         this.strength = strength;
         this.jumpStrength = jumpStrength;
@@ -57,33 +58,30 @@ public class Enemy extends ScrollingActor{
         this.level = level;
     }
 
-
     public void checkDestroyed()
     {
         MainCharacter player =getWorldOfType(ScrollingWorld.class).character;
         if(health <= 0)
         {
-<<<<<<< HEAD
             if (boss==true)
                 switch(level)
                 {
                     case 3:
-                    getWorldOfType(Level3.class).addObject(new Portal(level),getX(),getY());
-                    break;
+                        getWorldOfType(Level3.class).addObject(new Portal(level),getX(),getY());
+                        break;
                     case 6:
-                    getWorldOfType(Level6.class).addObject(new Portal(level),getX(),getY());
-                    break;
+                        getWorldOfType(Level6.class).addObject(new Portal(level),getX(),getY());
+                        break;
                     case 9:
-                    getWorldOfType(Level9.class).addObject(new Portal(level),getX(),getY()+18);
-                    break;
+                        getWorldOfType(Level9.class).addObject(new Portal(level),getX(),getY()+18);
+                        break;
                 }
-=======
+
             if(player!=null)
                 player.setScore(score);
->>>>>>> d5c9645 (Score board)
             destroyed = true;
             getWorld().removeObject(this);
-                
+
         }
 
     }
@@ -96,9 +94,9 @@ public class Enemy extends ScrollingActor{
             if(weapon.getDamage() > 0)
             {
                 if(enemyType == 1)
-                bones.play();
+                    bones.play();
                 else
-                hurtedSound.play();
+                    hurtedSound.play();
                 if(weapon instanceof SwordAttack || weapon instanceof KnifeAttack)
                     sword.play();
                 else if(weapon instanceof FistAttack)
@@ -218,7 +216,7 @@ public class Enemy extends ScrollingActor{
             {
                 walking = false;
             }
-                attacking = false;
+            attacking = false;
             holdToAttack = 20;
         }
         else if (distance > 160+15*enemyType)
@@ -229,15 +227,15 @@ public class Enemy extends ScrollingActor{
         else if (distance < 32 &&holdToAttack >= 20 && hurted == false && vulnerability == true )
         {
             if (enemyType == 1)
-            bones.play();
+                bones.play();
             else
-            attack.play();
-            
+                attack.play();
+
             if(direction == RIGHT)
                 getWorld().addObject(new BasicEnemyAttack(strength),getX()+8,getY());
             else
                 getWorld().addObject(new BasicEnemyAttack(strength),getX()-8,getY());
-                walking = false;
+            walking = false;
             attacking = true;
             holdToAttack=0;
         }

@@ -1054,7 +1054,7 @@ public class MainCharacter extends Actor
     public boolean getDead()
     {
         return died;
-    
+    }
     public void setScore(int score){
         this.score+=score;
     }

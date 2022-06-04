@@ -22,7 +22,7 @@ public class Level4 extends ScrollingWorld
     {
         super(WORLD_WIDTH, WORLD_HEIGHT, LEVEL, new GreenfootImage("images/Lvl_Cementery_0_6.png"),characterId);
         if(bgMusic!=null)
-        bgMusic.stop();
+            bgMusic.stop();
         bgMusic = new GreenfootSound("sounds/For Whom the Bell Tolls.mp3");
         bgMusic.playLoop();
 
@@ -36,9 +36,9 @@ public class Level4 extends ScrollingWorld
         thunder[6] = new GreenfootImage("images/Lvl_Cementery_0_5.png");
 
         character = new MainCharacter(characterId,health,score,selectedItem,bombAmmo);
-        
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*8, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
-        
+
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*8, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
+
         for(x=0;x<9;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
 
@@ -48,7 +48,7 @@ public class Level4 extends ScrollingWorld
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
         for(x=17;x<19;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+8), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4-24);
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+8), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4-24);
 
         for(x=19;x<36;x++)
             addObject(new DarkWoodPlatform(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE*4);
@@ -59,8 +59,8 @@ public class Level4 extends ScrollingWorld
         addObject(new DarkWoodPlatform(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+3), WORLD_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE*3);
         addObject(new DarkWoodPlatform(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+4), WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE*2);
         addObject(new DarkWoodPlatform(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+5), WORLD_HEIGHT-(BLOCK_SIZE/4)-BLOCK_SIZE*2);
-        
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+13), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+13), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
 
         for(x=42;x<64;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -72,8 +72,9 @@ public class Level4 extends ScrollingWorld
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+5), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+5), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
 
+        addObject(new Jokeis(), (BLOCK_SIZE/2)+BLOCK_SIZE*67, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         for(x=66;x<73;x++)
         {
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -92,7 +93,7 @@ public class Level4 extends ScrollingWorld
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+1), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x+2), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
         for(x=82;x<87;x++)
         {
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -129,7 +130,7 @@ public class Level4 extends ScrollingWorld
 
         for(x=110;x<112;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
         for(x=112;x<114;x++)
         {
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -140,7 +141,9 @@ public class Level4 extends ScrollingWorld
         }
         for(x=114;x<116;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+
+        addObject(new Jokeis(), (BLOCK_SIZE/2)+BLOCK_SIZE*117, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
         for(x=116;x<118;x++)
         {
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -151,7 +154,7 @@ public class Level4 extends ScrollingWorld
         }
         for(x=118;x<120;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
         for(x=120;x<122;x++)
         {
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
@@ -176,7 +179,7 @@ public class Level4 extends ScrollingWorld
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*5);
         }
-            addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
+        addObject(new Skellington(),(BLOCK_SIZE/2)+BLOCK_SIZE*(x), WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2-24);
         for(x=129;x<131;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         for(x=131;x<133;x++)
@@ -192,6 +195,8 @@ public class Level4 extends ScrollingWorld
         addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*2);
         for(x=149;x<155;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*3);
+
+        addObject(new Jokeis(), (BLOCK_SIZE/2)+BLOCK_SIZE*159, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
         for(x=155;x<157;x++)
         {
             addObject(new DarkWoodPlatform(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-(BLOCK_SIZE/4)-BLOCK_SIZE*3);
@@ -242,10 +247,7 @@ public class Level4 extends ScrollingWorld
         for(x=190;x<212;x++)
             addObject(new BlackGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE);
 
-
-        
         addObject(new RoomPass(LEVEL_COUNTER, characterId), BLOCK_SIZE*(x-3), WORLD_HEIGHT-BLOCK_SIZE*3);
-
         addObject(character, 96,200);
         bar = new HealthBar(character.getHealth(),100);
         powerUpBar = new PowerUpBar(character.getPowerUpQuantity(),100, characterId);
