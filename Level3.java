@@ -139,6 +139,9 @@ public class Level3 extends ScrollingWorld
 
         for(x=45;x<47;x++)
             addObject(new GrayBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
+            
+
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*49, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
         for(x=47;x<51;x++)
         {
             addObject(new GrayBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
@@ -147,6 +150,8 @@ public class Level3 extends ScrollingWorld
         }
         for(x=51;x<55;x++)
             addObject(new GrayBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
+            
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*57, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*8);
         for(x=55;x<59;x++)
         {
             addObject(new GrayBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*4);
