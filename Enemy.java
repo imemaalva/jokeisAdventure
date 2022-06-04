@@ -24,6 +24,7 @@ public class Enemy extends ScrollingActor{
     public int speed;
     private int strength;
     public int jumpStrength;
+    private int score;
 
     public boolean attacking = false;
     public boolean hurted = false;
@@ -59,8 +60,10 @@ public class Enemy extends ScrollingActor{
 
     public void checkDestroyed()
     {
+        MainCharacter player =getWorldOfType(ScrollingWorld.class).character;
         if(health <= 0)
         {
+<<<<<<< HEAD
             if (boss==true)
                 switch(level)
                 {
@@ -74,6 +77,10 @@ public class Enemy extends ScrollingActor{
                     getWorldOfType(Level9.class).addObject(new Portal(level),getX(),getY()+18);
                     break;
                 }
+=======
+            if(player!=null)
+                player.setScore(score);
+>>>>>>> d5c9645 (Score board)
             destroyed = true;
             getWorld().removeObject(this);
                 

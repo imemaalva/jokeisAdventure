@@ -6,6 +6,8 @@ public class Zombie extends Enemy {
     private static final int MAX_COUNTER_HURT = 4;
     private static final int MAX_COUNTER_APPEAR = 8;
     private static final int MAX_COUNTER_WALK = 12;
+    
+    private static final int SCORE = 50;
 
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 20;

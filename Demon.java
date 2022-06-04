@@ -9,6 +9,8 @@ public class Demon extends Enemy {
     private static final int MAX_COUNTER_FALL = 2;
     private static final int MAX_COUNTER_JUMP = 2;
 
+    private static final int SCORE = 150;
+    
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 30;
     private static final int STRENGTH = 8;

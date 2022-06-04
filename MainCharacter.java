@@ -463,13 +463,13 @@ public class MainCharacter extends Actor
                 switch(getWorldOfType(ScrollingWorld.class).getLevel())
                 {
                     case JUNGLE:
-                        Greenfoot.setWorld(new JungleGameOver(character));
+                        Greenfoot.setWorld(new JungleGameOver(character, score));
                     break;
                     case CEMENTERY:
-                        Greenfoot.setWorld(new CementeryGameOver(character));
+                        Greenfoot.setWorld(new CementeryGameOver(character, score));
                     break;
                     case HELL:
-                        Greenfoot.setWorld(new HellGameOver(character));
+                        Greenfoot.setWorld(new HellGameOver(character, score));
                     break;
                 }
         }
@@ -1054,5 +1054,8 @@ public class MainCharacter extends Actor
     public boolean getDead()
     {
         return died;
+    
+    public void setScore(int score){
+        this.score+=score;
     }
 }

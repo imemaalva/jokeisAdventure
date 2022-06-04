@@ -2,9 +2,9 @@ import greenfoot.*;
 public class CementeryGameOver extends GameOverScreen
 {
     
-    public CementeryGameOver(int character)
+    public CementeryGameOver(int character, int score)
     {
-        super(1, character);
+        super(1, character, score);
         if (character == MISA)
         bg =new GreenfootImage("images/GameOver_Cementery_Misa.png");
         else

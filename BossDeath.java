@@ -7,6 +7,8 @@ public class BossDeath extends Enemy {
     private static final int MAX_COUNTER_WALK = 12;
     private static final int MAX_COUNTER_JUMP = 12;
 
+    private static final int SCORE = 1000;
+    
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 60;
     private static final int STRENGTH = 15;

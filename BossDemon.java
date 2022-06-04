@@ -9,6 +9,8 @@ public class BossDemon extends Enemy {
     private static final int MAX_COUNTER_FALL = 2;
     private static final int MAX_COUNTER_JUMP = 2;
 
+    private static final int SCORE = 1500;
+    
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 80;
     private static final int STRENGTH = 15;

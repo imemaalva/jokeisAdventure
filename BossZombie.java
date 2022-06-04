@@ -7,6 +7,8 @@ public class BossZombie extends Enemy {
     private static final int MAX_COUNTER_APPEAR = 8;
     private static final int MAX_COUNTER_WALK = 6;
 
+    private static final int SCORE = 500;
+    
     private static final int SPEED = 3;
     private static final int INITIAL_HEALTH = 50;
     private static final int STRENGTH = 10;

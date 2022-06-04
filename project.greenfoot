@@ -42,6 +42,7 @@ class.Zombie.image=Zombie_right_0.png
 dependency1.from=ScrollingWorld
 dependency1.to=MainCharacter
 dependency1.type=UsesDependency
+<<<<<<< HEAD
 dependency10.from=Level8
 dependency10.to=RoomPass
 dependency10.type=UsesDependency
@@ -341,6 +342,136 @@ dependency189.to=Level2
 dependency189.type=UsesDependency
 dependency19.from=Level9
 dependency19.to=RedGrass
+=======
+dependency10.from=Level6
+dependency10.to=Inventory
+dependency10.type=UsesDependency
+dependency100.from=JokeisIndicator
+dependency100.to=ScrollingWorld
+dependency100.type=UsesDependency
+dependency101.from=Weapon
+dependency101.to=Block
+dependency101.type=UsesDependency
+dependency102.from=Enemy
+dependency102.to=MainCharacter
+dependency102.type=UsesDependency
+dependency103.from=Enemy
+dependency103.to=Weapon
+dependency103.type=UsesDependency
+dependency104.from=Enemy
+dependency104.to=BasicEnemyAttack
+dependency104.type=UsesDependency
+dependency105.from=Enemy
+dependency105.to=ScrollingWorld
+dependency105.type=UsesDependency
+dependency106.from=Enemy
+dependency106.to=Block
+dependency106.type=UsesDependency
+dependency107.from=BossDemon
+dependency107.to=Block
+dependency107.type=UsesDependency
+dependency108.from=BossDemon
+dependency108.to=FireBallAttack
+dependency108.type=UsesDependency
+dependency109.from=Demon
+dependency109.to=Block
+dependency109.type=UsesDependency
+dependency11.from=Level6
+dependency11.to=IdMainCharacter
+dependency11.type=UsesDependency
+dependency110.from=Demon
+dependency110.to=FireBallAttack
+dependency110.type=UsesDependency
+dependency111.from=BossDeath
+dependency111.to=Block
+dependency111.type=UsesDependency
+dependency112.from=Skellington
+dependency112.to=Block
+dependency112.type=UsesDependency
+dependency113.from=Lava
+dependency113.to=MainCharacter
+dependency113.type=UsesDependency
+dependency114.from=Lava
+dependency114.to=Level2
+dependency114.type=UsesDependency
+dependency115.from=Lava
+dependency115.to=Level3
+dependency115.type=UsesDependency
+dependency116.from=RoomPass
+dependency116.to=MainCharacter
+dependency116.type=UsesDependency
+dependency117.from=RoomPass
+dependency117.to=Level2
+dependency117.type=UsesDependency
+dependency118.from=RoomPass
+dependency118.to=Level3
+dependency118.type=UsesDependency
+dependency119.from=RoomPass
+dependency119.to=Level4
+dependency119.type=UsesDependency
+dependency12.from=Level6
+dependency12.to=Cursor
+dependency12.type=UsesDependency
+dependency120.from=RoomPass
+dependency120.to=Level5
+dependency120.type=UsesDependency
+dependency121.from=EnemyAttack
+dependency121.to=Block
+dependency121.type=UsesDependency
+dependency122.from=FragileBrick
+dependency122.to=Weapon
+dependency122.type=UsesDependency
+dependency123.from=NoGround
+dependency123.to=MainCharacter
+dependency123.type=UsesDependency
+dependency124.from=NoGround
+dependency124.to=Level2
+dependency124.type=UsesDependency
+dependency125.from=Score
+dependency125.to=ScrollingWorld
+dependency125.type=UsesDependency
+dependency126.from=Inventory
+dependency126.to=ScrollingWorld
+dependency126.type=UsesDependency
+dependency127.from=RetryButton
+dependency127.to=Level1
+dependency127.type=UsesDependency
+dependency128.from=MenuButton
+dependency128.to=ChooseYourCharacter
+dependency128.type=UsesDependency
+dependency129.from=MenuButton
+dependency129.to=ScoreMenu
+dependency129.type=UsesDependency
+dependency13.from=Level6
+dependency13.to=JokeisIndicator
+dependency13.type=UsesDependency
+dependency130.from=MenuButton
+dependency130.to=HowToPlay
+dependency130.type=UsesDependency
+dependency131.from=MenuButton
+dependency131.to=MainMenu
+dependency131.type=UsesDependency
+dependency132.from=CharacterButton
+dependency132.to=Level1
+dependency132.type=UsesDependency
+dependency14.from=Level6
+dependency14.to=Score
+dependency14.type=UsesDependency
+dependency15.from=Level4
+dependency15.to=MainCharacter
+dependency15.type=UsesDependency
+dependency16.from=Level4
+dependency16.to=RoomPass
+dependency16.type=UsesDependency
+dependency17.from=Level4
+dependency17.to=HealthBar
+dependency17.type=UsesDependency
+dependency18.from=Level4
+dependency18.to=PowerUpBar
+dependency18.type=UsesDependency
+dependency19.from=Level4
+dependency19.to=Inventory
+>>>>>>> d5c9645 (Score board)
 dependency19.type=UsesDependency
 dependency190.from=NoGround
 dependency190.to=Level4
@@ -375,6 +506,7 @@ dependency199.type=UsesDependency
 dependency2.from=ScrollingWorld
 dependency2.to=HealthBar
 dependency2.type=UsesDependency
+<<<<<<< HEAD
 dependency20.from=Level9
 dependency20.to=BlackBrick
 dependency20.type=UsesDependency
@@ -413,10 +545,42 @@ dependency28.to=Score
 dependency28.type=UsesDependency
 dependency29.from=Level6
 dependency29.to=MainCharacter
+=======
+dependency20.from=Level4
+dependency20.to=IdMainCharacter
+dependency20.type=UsesDependency
+dependency21.from=Level4
+dependency21.to=Cursor
+dependency21.type=UsesDependency
+dependency22.from=Level4
+dependency22.to=JokeisIndicator
+dependency22.type=UsesDependency
+dependency23.from=Level4
+dependency23.to=Score
+dependency23.type=UsesDependency
+dependency24.from=Level5
+dependency24.to=MainCharacter
+dependency24.type=UsesDependency
+dependency25.from=Level5
+dependency25.to=RoomPass
+dependency25.type=UsesDependency
+dependency26.from=Level5
+dependency26.to=HealthBar
+dependency26.type=UsesDependency
+dependency27.from=Level5
+dependency27.to=PowerUpBar
+dependency27.type=UsesDependency
+dependency28.from=Level5
+dependency28.to=Inventory
+dependency28.type=UsesDependency
+dependency29.from=Level5
+dependency29.to=IdMainCharacter
+>>>>>>> d5c9645 (Score board)
 dependency29.type=UsesDependency
 dependency3.from=ScrollingWorld
 dependency3.to=PowerUpBar
 dependency3.type=UsesDependency
+<<<<<<< HEAD
 dependency30.from=Level6
 dependency30.to=BlackGrass
 dependency30.type=UsesDependency
@@ -446,10 +610,42 @@ dependency38.to=Score
 dependency38.type=UsesDependency
 dependency39.from=Level7
 dependency39.to=MainCharacter
+=======
+dependency30.from=Level5
+dependency30.to=Cursor
+dependency30.type=UsesDependency
+dependency31.from=Level5
+dependency31.to=JokeisIndicator
+dependency31.type=UsesDependency
+dependency32.from=Level5
+dependency32.to=Score
+dependency32.type=UsesDependency
+dependency33.from=Level2
+dependency33.to=MainCharacter
+dependency33.type=UsesDependency
+dependency34.from=Level2
+dependency34.to=GrayBrick
+dependency34.type=UsesDependency
+dependency35.from=Level2
+dependency35.to=Grass
+dependency35.type=UsesDependency
+dependency36.from=Level2
+dependency36.to=NoGround
+dependency36.type=UsesDependency
+dependency37.from=Level2
+dependency37.to=FragileBrick
+dependency37.type=UsesDependency
+dependency38.from=Level2
+dependency38.to=Dirt
+dependency38.type=UsesDependency
+dependency39.from=Level2
+dependency39.to=RoomPass
+>>>>>>> d5c9645 (Score board)
 dependency39.type=UsesDependency
 dependency4.from=ScrollingWorld
 dependency4.to=Inventory
 dependency4.type=UsesDependency
+<<<<<<< HEAD
 dependency40.from=Level7
 dependency40.to=Demon
 dependency40.type=UsesDependency
@@ -479,10 +675,42 @@ dependency48.to=PowerUpBar
 dependency48.type=UsesDependency
 dependency49.from=Level7
 dependency49.to=Inventory
+=======
+dependency40.from=Level2
+dependency40.to=HealthBar
+dependency40.type=UsesDependency
+dependency41.from=Level2
+dependency41.to=PowerUpBar
+dependency41.type=UsesDependency
+dependency42.from=Level2
+dependency42.to=Inventory
+dependency42.type=UsesDependency
+dependency43.from=Level2
+dependency43.to=IdMainCharacter
+dependency43.type=UsesDependency
+dependency44.from=Level2
+dependency44.to=Cursor
+dependency44.type=UsesDependency
+dependency45.from=Level2
+dependency45.to=JokeisIndicator
+dependency45.type=UsesDependency
+dependency46.from=Level2
+dependency46.to=Score
+dependency46.type=UsesDependency
+dependency47.from=Level3
+dependency47.to=MainCharacter
+dependency47.type=UsesDependency
+dependency48.from=Level3
+dependency48.to=GrayBrick
+dependency48.type=UsesDependency
+dependency49.from=Level3
+dependency49.to=Lava
+>>>>>>> d5c9645 (Score board)
 dependency49.type=UsesDependency
 dependency5.from=ScrollingWorld
 dependency5.to=ScrollingActor
 dependency5.type=UsesDependency
+<<<<<<< HEAD
 dependency50.from=Level7
 dependency50.to=IdMainCharacter
 dependency50.type=UsesDependency
@@ -652,6 +880,177 @@ editor.fx.0.y=-8
 height=784
 package.numDependencies=202
 package.numTargets=65
+=======
+dependency50.from=Level3
+dependency50.to=RoomPass
+dependency50.type=UsesDependency
+dependency51.from=Level3
+dependency51.to=HealthBar
+dependency51.type=UsesDependency
+dependency52.from=Level3
+dependency52.to=PowerUpBar
+dependency52.type=UsesDependency
+dependency53.from=Level3
+dependency53.to=Inventory
+dependency53.type=UsesDependency
+dependency54.from=Level3
+dependency54.to=IdMainCharacter
+dependency54.type=UsesDependency
+dependency55.from=Level3
+dependency55.to=Cursor
+dependency55.type=UsesDependency
+dependency56.from=Level3
+dependency56.to=JokeisIndicator
+dependency56.type=UsesDependency
+dependency57.from=Level3
+dependency57.to=Score
+dependency57.type=UsesDependency
+dependency58.from=Level1
+dependency58.to=MainCharacter
+dependency58.type=UsesDependency
+dependency59.from=Level1
+dependency59.to=Sand
+dependency59.type=UsesDependency
+dependency6.from=Level6
+dependency6.to=MainCharacter
+dependency6.type=UsesDependency
+dependency60.from=Level1
+dependency60.to=Grass
+dependency60.type=UsesDependency
+dependency61.from=Level1
+dependency61.to=Zombie
+dependency61.type=UsesDependency
+dependency62.from=Level1
+dependency62.to=Dirt
+dependency62.type=UsesDependency
+dependency63.from=Level1
+dependency63.to=HealthCure
+dependency63.type=UsesDependency
+dependency64.from=Level1
+dependency64.to=FragileBrick
+dependency64.type=UsesDependency
+dependency65.from=Level1
+dependency65.to=WoodPlatform
+dependency65.type=UsesDependency
+dependency66.from=Level1
+dependency66.to=BombAmmo
+dependency66.type=UsesDependency
+dependency67.from=Level1
+dependency67.to=Jokeis
+dependency67.type=UsesDependency
+dependency68.from=Level1
+dependency68.to=RoomPass
+dependency68.type=UsesDependency
+dependency69.from=Level1
+dependency69.to=Water
+dependency69.type=UsesDependency
+dependency7.from=Level6
+dependency7.to=RoomPass
+dependency7.type=UsesDependency
+dependency70.from=Level1
+dependency70.to=HealthBar
+dependency70.type=UsesDependency
+dependency71.from=Level1
+dependency71.to=PowerUpBar
+dependency71.type=UsesDependency
+dependency72.from=Level1
+dependency72.to=Inventory
+dependency72.type=UsesDependency
+dependency73.from=Level1
+dependency73.to=IdMainCharacter
+dependency73.type=UsesDependency
+dependency74.from=Level1
+dependency74.to=Cursor
+dependency74.type=UsesDependency
+dependency75.from=Level1
+dependency75.to=JokeisIndicator
+dependency75.type=UsesDependency
+dependency76.from=Level1
+dependency76.to=Score
+dependency76.type=UsesDependency
+dependency77.from=MainMenu
+dependency77.to=MenuButton
+dependency77.type=UsesDependency
+dependency78.from=HowToPlay
+dependency78.to=MenuButton
+dependency78.type=UsesDependency
+dependency79.from=ScoreMenu
+dependency79.to=MenuButton
+dependency79.type=UsesDependency
+dependency8.from=Level6
+dependency8.to=HealthBar
+dependency8.type=UsesDependency
+dependency80.from=ChooseYourCharacter
+dependency80.to=MenuButton
+dependency80.type=UsesDependency
+dependency81.from=ChooseYourCharacter
+dependency81.to=CharacterButton
+dependency81.type=UsesDependency
+dependency82.from=GameOverScreen
+dependency82.to=RetryButton
+dependency82.type=UsesDependency
+dependency83.from=GameOverScreen
+dependency83.to=ScoreMenu
+dependency83.type=UsesDependency
+dependency84.from=IdMainCharacter
+dependency84.to=ScrollingWorld
+dependency84.type=UsesDependency
+dependency85.from=Cursor
+dependency85.to=ScrollingWorld
+dependency85.type=UsesDependency
+dependency86.from=MainCharacter
+dependency86.to=JungleGameOver
+dependency86.type=UsesDependency
+dependency87.from=MainCharacter
+dependency87.to=CementeryGameOver
+dependency87.type=UsesDependency
+dependency88.from=MainCharacter
+dependency88.to=HellGameOver
+dependency88.type=UsesDependency
+dependency89.from=MainCharacter
+dependency89.to=FistAttack
+dependency89.type=UsesDependency
+dependency9.from=Level6
+dependency9.to=PowerUpBar
+dependency9.type=UsesDependency
+dependency90.from=MainCharacter
+dependency90.to=SwordAttack
+dependency90.type=UsesDependency
+dependency91.from=MainCharacter
+dependency91.to=KnifeAttack
+dependency91.type=UsesDependency
+dependency92.from=MainCharacter
+dependency92.to=BombAttack
+dependency92.type=UsesDependency
+dependency93.from=MainCharacter
+dependency93.to=EnemyAttack
+dependency93.type=UsesDependency
+dependency94.from=MainCharacter
+dependency94.to=ScrollingWorld
+dependency94.type=UsesDependency
+dependency95.from=MainCharacter
+dependency95.to=Block
+dependency95.type=UsesDependency
+dependency96.from=MainCharacter
+dependency96.to=BombAmmo
+dependency96.type=UsesDependency
+dependency97.from=MainCharacter
+dependency97.to=HealthCure
+dependency97.type=UsesDependency
+dependency98.from=MainCharacter
+dependency98.to=FragileBrick
+dependency98.type=UsesDependency
+dependency99.from=MainCharacter
+dependency99.to=Jokeis
+dependency99.type=UsesDependency
+editor.fx.0.height=728
+editor.fx.0.width=899
+editor.fx.0.x=79
+editor.fx.0.y=25
+height=822
+package.numDependencies=132
+package.numTargets=61
+>>>>>>> d5c9645 (Score board)
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -662,7 +1061,7 @@ publish.title=
 publish.url=
 readme.height=60
 readme.name=@README
-readme.width=49
+readme.width=48
 readme.x=10
 readme.y=10
 simulation.speed=51
@@ -744,28 +1143,40 @@ target19.width=120
 target19.x=0
 target19.y=0
 target2.height=70
-target2.name=ScrollingWorld
+target2.name=Water
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=120
 target2.x=0
 target2.y=0
 target20.height=70
+<<<<<<< HEAD
 target20.name=Level8
+=======
+target20.name=ScrollingActor
+>>>>>>> d5c9645 (Score board)
 target20.showInterface=false
 target20.type=ClassTarget
 target20.width=120
 target20.x=0
 target20.y=0
 target21.height=70
+<<<<<<< HEAD
 target21.name=ScrollingActor
+=======
+target21.name=Lava
+>>>>>>> d5c9645 (Score board)
 target21.showInterface=false
 target21.type=ClassTarget
 target21.width=120
 target21.x=0
 target21.y=0
 target22.height=70
+<<<<<<< HEAD
 target22.name=Level9
+=======
+target22.name=Level6
+>>>>>>> d5c9645 (Score board)
 target22.showInterface=false
 target22.type=ClassTarget
 target22.width=120
@@ -779,105 +1190,161 @@ target23.width=120
 target23.x=0
 target23.y=0
 target24.height=70
+<<<<<<< HEAD
 target24.name=Lava
+=======
+target24.name=FragileBrick
+>>>>>>> d5c9645 (Score board)
 target24.showInterface=false
 target24.type=ClassTarget
 target24.width=120
 target24.x=0
 target24.y=0
 target25.height=70
+<<<<<<< HEAD
 target25.name=Level6
+=======
+target25.name=Zombie
+>>>>>>> d5c9645 (Score board)
 target25.showInterface=false
 target25.type=ClassTarget
 target25.width=120
 target25.x=0
 target25.y=0
 target26.height=70
+<<<<<<< HEAD
 target26.name=FragileBrick
+=======
+target26.name=ScoreMenu
+>>>>>>> d5c9645 (Score board)
 target26.showInterface=false
 target26.type=ClassTarget
 target26.width=120
 target26.x=0
 target26.y=0
 target27.height=70
+<<<<<<< HEAD
 target27.name=Level7
+=======
+target27.name=Level4
+>>>>>>> d5c9645 (Score board)
 target27.showInterface=false
 target27.type=ClassTarget
 target27.width=120
 target27.x=0
 target27.y=0
 target28.height=70
+<<<<<<< HEAD
 target28.name=ScoreMenu
+=======
+target28.name=Demon
+>>>>>>> d5c9645 (Score board)
 target28.showInterface=false
 target28.type=ClassTarget
 target28.width=120
 target28.x=0
 target28.y=0
 target29.height=70
+<<<<<<< HEAD
 target29.name=Zombie
+=======
+target29.name=Level5
+>>>>>>> d5c9645 (Score board)
 target29.showInterface=false
 target29.type=ClassTarget
 target29.width=120
 target29.x=0
 target29.y=0
 target3.height=70
-target3.name=Water
+target3.name=ScrollingWorld
 target3.showInterface=false
 target3.type=ClassTarget
 target3.width=120
 target3.x=0
 target3.y=0
 target30.height=70
+<<<<<<< HEAD
 target30.name=Demon
+=======
+target30.name=HealthCure
+>>>>>>> d5c9645 (Score board)
 target30.showInterface=false
 target30.type=ClassTarget
 target30.width=150
 target30.x=0
 target30.y=0
 target31.height=70
+<<<<<<< HEAD
 target31.name=Level4
+=======
+target31.name=SwordAttack
+>>>>>>> d5c9645 (Score board)
 target31.showInterface=false
 target31.type=ClassTarget
 target31.width=120
 target31.x=0
 target31.y=0
 target32.height=70
+<<<<<<< HEAD
 target32.name=HealthCure
+=======
+target32.name=RoomPass
+>>>>>>> d5c9645 (Score board)
 target32.showInterface=false
 target32.type=ClassTarget
 target32.width=120
 target32.x=0
 target32.y=0
 target33.height=70
+<<<<<<< HEAD
 target33.name=Level5
+=======
+target33.name=GrayBrick
+>>>>>>> d5c9645 (Score board)
 target33.showInterface=false
 target33.type=ClassTarget
 target33.width=120
 target33.x=0
 target33.y=0
 target34.height=70
+<<<<<<< HEAD
 target34.name=SwordAttack
+=======
+target34.name=Score
+>>>>>>> d5c9645 (Score board)
 target34.showInterface=false
 target34.type=ClassTarget
 target34.width=120
 target34.x=0
 target34.y=0
 target35.height=70
+<<<<<<< HEAD
 target35.name=RoomPass
+=======
+target35.name=BlackBrick
+>>>>>>> d5c9645 (Score board)
 target35.showInterface=false
 target35.type=ClassTarget
 target35.width=120
 target35.x=0
 target35.y=0
 target36.height=70
+<<<<<<< HEAD
 target36.name=GrayBrick
+=======
+target36.name=EnemyAttack
+>>>>>>> d5c9645 (Score board)
 target36.showInterface=false
 target36.type=ClassTarget
 target36.width=120
 target36.x=0
 target36.y=0
 target37.height=70
+<<<<<<< HEAD
 target37.name=Score
+=======
+target37.name=Level2
+>>>>>>> d5c9645 (Score board)
 target37.showInterface=false
 target37.type=ClassTarget
 target37.width=120
@@ -905,7 +1372,11 @@ target4.width=120
 target4.x=0
 target4.y=0
 target40.height=70
+<<<<<<< HEAD
 target40.name=Level2
+=======
+target40.name=Block
+>>>>>>> d5c9645 (Score board)
 target40.showInterface=false
 target40.type=ClassTarget
 target40.width=120
@@ -919,56 +1390,88 @@ target41.width=120
 target41.x=0
 target41.y=0
 target42.height=70
+<<<<<<< HEAD
 target42.name=BossDeath
+=======
+target42.name=BasicEnemyAttack
+>>>>>>> d5c9645 (Score board)
 target42.showInterface=false
 target42.type=ClassTarget
 target42.width=120
 target42.x=0
 target42.y=0
 target43.height=70
+<<<<<<< HEAD
 target43.name=Level3
+=======
+target43.name=Inventory
+>>>>>>> d5c9645 (Score board)
 target43.showInterface=false
 target43.type=ClassTarget
 target43.width=120
 target43.x=0
 target43.y=0
 target44.height=70
+<<<<<<< HEAD
 target44.name=BasicEnemyAttack
+=======
+target44.name=RetryButton
+>>>>>>> d5c9645 (Score board)
 target44.showInterface=false
 target44.type=ClassTarget
 target44.width=120
 target44.x=0
 target44.y=0
 target45.height=70
+<<<<<<< HEAD
 target45.name=Level1
+=======
+target45.name=HealthBar
+>>>>>>> d5c9645 (Score board)
 target45.showInterface=false
 target45.type=ClassTarget
 target45.width=120
 target45.x=0
 target45.y=0
 target46.height=70
+<<<<<<< HEAD
 target46.name=Inventory
+=======
+target46.name=FistAttack
+>>>>>>> d5c9645 (Score board)
 target46.showInterface=false
 target46.type=ClassTarget
 target46.width=120
 target46.x=0
 target46.y=0
 target47.height=70
+<<<<<<< HEAD
 target47.name=RetryButton
+=======
+target47.name=MenuButton
+>>>>>>> d5c9645 (Score board)
 target47.showInterface=false
 target47.type=ClassTarget
 target47.width=120
 target47.x=0
 target47.y=0
 target48.height=70
+<<<<<<< HEAD
 target48.name=HealthBar
+=======
+target48.name=BlackGrass
+>>>>>>> d5c9645 (Score board)
 target48.showInterface=false
 target48.type=ClassTarget
-target48.width=120
+target48.width=140
 target48.x=0
 target48.y=0
 target49.height=70
+<<<<<<< HEAD
 target49.name=FistAttack
+=======
+target49.name=WoodPlatform
+>>>>>>> d5c9645 (Score board)
 target49.showInterface=false
 target49.type=ClassTarget
 target49.width=120
@@ -982,41 +1485,62 @@ target5.width=120
 target5.x=0
 target5.y=0
 target50.height=70
+<<<<<<< HEAD
 target50.name=MenuButton
+=======
+target50.name=JungleGameOver
+>>>>>>> d5c9645 (Score board)
 target50.showInterface=false
 target50.type=ClassTarget
 target50.width=120
 target50.x=0
 target50.y=0
 target51.height=70
+<<<<<<< HEAD
 target51.name=BlackGrass
+=======
+target51.name=BombAmmo
+>>>>>>> d5c9645 (Score board)
 target51.showInterface=false
 target51.type=ClassTarget
 target51.width=120
 target51.x=0
 target51.y=0
 target52.height=70
+<<<<<<< HEAD
 target52.name=WoodPlatform
+=======
+target52.name=NoGround
+>>>>>>> d5c9645 (Score board)
 target52.showInterface=false
 target52.type=ClassTarget
 target52.width=120
 target52.x=0
 target52.y=0
 target53.height=70
+<<<<<<< HEAD
 target53.name=JungleGameOver
+=======
+target53.name=Menu
+>>>>>>> d5c9645 (Score board)
 target53.showInterface=false
 target53.type=ClassTarget
 target53.width=120
 target53.x=0
 target53.y=0
 target54.height=70
+<<<<<<< HEAD
 target54.name=BombAmmo
+=======
+target54.name=CharacterButton
+>>>>>>> d5c9645 (Score board)
 target54.showInterface=false
 target54.type=ClassTarget
 target54.width=120
 target54.x=0
 target54.y=0
 target55.height=70
+<<<<<<< HEAD
 target55.name=Portal
 target55.showInterface=false
 target55.type=ClassTarget
@@ -1025,27 +1549,49 @@ target55.x=0
 target55.y=0
 target56.height=70
 target56.name=NoGround
+=======
+target55.name=DarkWoodPlatform
+target55.showInterface=false
+target55.type=ClassTarget
+target55.width=130
+target55.x=0
+target55.y=0
+target56.height=70
+target56.name=ChooseYourCharacter
+>>>>>>> d5c9645 (Score board)
 target56.showInterface=false
 target56.type=ClassTarget
-target56.width=120
+target56.width=150
 target56.x=0
 target56.y=0
 target57.height=70
+<<<<<<< HEAD
 target57.name=Menu
+=======
+target57.name=GameOverScreen
+>>>>>>> d5c9645 (Score board)
 target57.showInterface=false
 target57.type=ClassTarget
 target57.width=120
 target57.x=0
 target57.y=0
 target58.height=70
+<<<<<<< HEAD
 target58.name=CharacterButton
+=======
+target58.name=CementeryGameOver
+>>>>>>> d5c9645 (Score board)
 target58.showInterface=false
 target58.type=ClassTarget
-target58.width=120
+target58.width=140
 target58.x=0
 target58.y=0
 target59.height=70
+<<<<<<< HEAD
 target59.name=DarkWoodPlatform
+=======
+target59.name=Skellington
+>>>>>>> d5c9645 (Score board)
 target59.showInterface=false
 target59.type=ClassTarget
 target59.width=130
@@ -1059,19 +1605,28 @@ target6.width=120
 target6.x=0
 target6.y=0
 target60.height=70
+<<<<<<< HEAD
 target60.name=ChooseYourCharacter
+=======
+target60.name=RedGrass
+>>>>>>> d5c9645 (Score board)
 target60.showInterface=false
 target60.type=ClassTarget
 target60.width=150
 target60.x=0
 target60.y=0
 target61.height=70
+<<<<<<< HEAD
 target61.name=GameOverScreen
+=======
+target61.name=Jokeis
+>>>>>>> d5c9645 (Score board)
 target61.showInterface=false
 target61.type=ClassTarget
 target61.width=120
 target61.x=0
 target61.y=0
+<<<<<<< HEAD
 target62.height=70
 target62.name=CementeryGameOver
 target62.showInterface=false
@@ -1100,6 +1655,8 @@ target65.type=ClassTarget
 target65.width=120
 target65.x=0
 target65.y=0
+=======
+>>>>>>> d5c9645 (Score board)
 target7.height=70
 target7.name=Dirt
 target7.showInterface=false
@@ -1122,7 +1679,14 @@ target9.width=120
 target9.x=0
 target9.y=0
 version=3.0.0
+<<<<<<< HEAD
 width=1382
 world.lastInstantiated=Level5
 xPosition=0
 yPosition=0
+=======
+width=1440
+world.lastInstantiated=MainMenu
+xPosition=1599
+yPosition=25
+>>>>>>> d5c9645 (Score board)

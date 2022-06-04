@@ -13,6 +13,7 @@ public class MenuButton extends Actor
     private int menu;
 
     
+
     public MenuButton(int skin , int menu){
         this.skin = skin;
         this.menu = menu;
@@ -28,7 +29,7 @@ public class MenuButton extends Actor
             case PLAY: 
                 setImage("images/Button_Play.png");
             break;
-            
+        
             case SCORE: 
                 setImage("images/Button_Score.png");
             break;
