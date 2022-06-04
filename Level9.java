@@ -58,6 +58,15 @@ public class Level9 extends ScrollingWorld
 
         for(x=55;x<64;x++)
             addObject(new RedGrass(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*6);
+            
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*24, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*11);
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*27, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*11);
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*30, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*12);
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*33, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*12);
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*37, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*12);
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*40, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*12);
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*43, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*11);
+            addObject(new HealthCure(),(BLOCK_SIZE/2)+BLOCK_SIZE*46, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*11);
 
         for(x=24;x<28;x++)
             addObject(new BlackBrick(),(BLOCK_SIZE/2)+BLOCK_SIZE*x, WORLD_HEIGHT-(BLOCK_SIZE/2)-BLOCK_SIZE*10);
